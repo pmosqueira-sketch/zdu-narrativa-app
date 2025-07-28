@@ -1,0 +1,13 @@
+{
+  "id": "1aaae783-d8b2-4d29-9bb6-059008b243a8",
+  "nombre_archivo": "campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json",
+  "contenedor": "zdu-campanas",
+  "ruta": "/zdu-campanas/campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json",
+  "extension": "json",
+  "tamano": 1204,
+  "fecha_subida": "2025-07-26T04:18:37+00:00",
+  "actualizado": "2025-07-28T22:02:20.77186+00:00",
+  "fuente": "Azure Blob",
+  "correlacion_supabase": "campaña-sync-001",
+  "nombre_blob": "campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8"
+}

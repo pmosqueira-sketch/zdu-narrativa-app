@@ -1,0 +1,13 @@
+{
+  "id": "83d196c7-20a5-4897-982b-097e4e4c3182",
+  "nombre_archivo": "campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json",
+  "contenedor": "zdu-campanas",
+  "ruta": "/zdu-campanas/campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json",
+  "extension": "json",
+  "tamano": 1157,
+  "fecha_subida": "2025-07-26T04:18:37+00:00",
+  "actualizado": "2025-07-28T22:33:29.334+00:00",
+  "fuente": "campaña-sync-001",
+  "correlacion_supabase": "19d7ac55-0934-4033-94cb-d4b4fa560d58",
+  "nombre_blob": "campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json"
+}
