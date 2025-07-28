@@ -1,8 +1,11 @@
 {
-  "name": "zdu-narrativa-app",
+  "name": "zdu-app",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
