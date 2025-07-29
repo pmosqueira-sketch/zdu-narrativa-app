@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZDU Narrativa – Campañas</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; padding: 2rem; }
+    h1 { font-size: 2rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; background: #fff; }
+    th, td { border: 1px solid #ccc; padding: 12px; text-align: left; }
+    th { background-color: #222; color: white; }
+    button { margin-bottom: 1rem; padding: 0.5rem 1rem; }
+  </style>
+</head>
+<body>
+  <h1>ZDU Narrativa – Campañas activas</h1>
+  <button onclick="logout()">Cerrar sesión</button>
+
+  <div id="contenido">
+    <p><strong>Cargando campañas…</strong></p>
+  </div>
+
+  <script>
+    function logout() {
+      alert('Cerrar sesión simbólica');
+    }
+
+    async function cargarCampanas() {
+      try {
+        const res = await fetch('/api/campanas');
+        const data = await res.json();
+
+        if (!Array.isArray(data)) throw new Error('No es un arreglo');
+
+        const tabla = document.createElement('table');
+        tabla.innerHTML = `
+          <tr>
+            <th>Nombre</th>
+            <th>Estatus</th>
+            <th>Inicio</th>
+            <th>Estado</th>
+          </tr>
+        `;
+
+        data.forEach(c => {
+          tabla.innerHTML += `
+            <tr>
+              <td>${c.nombre}</td>
+              <td>${c.estatus}</td>
+              <td>${c.fecha_inicio?.split('T')[0] || '-'}</td>
+              <td>${c.estado}</td>
+            </tr>
+          `;
+        });
+
+        document.getElementById('contenido').innerHTML = '';
+        document.getElementById('contenido').appendChild(tabla);
+
+      } catch (err) {
+        document.getElementById('contenido').innerHTML = '<p>Error al cargar campañas</p>';
+        console.error(err);
+      }
+    }
+
+    cargarCampanas();
+  </script>
+</body>
+</html>

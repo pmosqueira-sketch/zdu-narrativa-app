@@ -1,0 +1,10 @@
+./.DS_Store
+./checkpoints/ZDU-ALPHA-GENIE/backbone/RAM_BACKLOG/README.md
+./checkpoint.md
+./estructura_actual.txt
+./backbone/.DS_Store
+./backbone/RAM_BACKLOG/.DS_Store
+./backbone/RAM_BACKLOG/ZDU-ALPHA-GENIE/RAM_TRACE.log
+./backbone/RAM_BACKLOG/ZDU-ALPHA-GENIE/screenshots/Screenshot 2025-07-29 at 13.00.20.png
+./backbone/RAM_BACKLOG/ZDU-ALPHA-GENIE/screenshots/Screenshot 2025-07-29 at 12.52.58.png
+./backbone/RAM_BACKLOG/ZDU-ALPHA-GENIE/README.md

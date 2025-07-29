@@ -1,0 +1,109 @@
+.
+├── .DS_Store
+├── .github
+│   └── workflows
+│       └── main_zdu.yml
+├── .gitignore
+├── ZDU-INFRA
+│   ├── ZDU_INFRA_MILESTONE_001.md
+│   └── main_zdu.yml
+├── ZDU_INFRA_MILESTONE_001.md
+├── app.js
+├── audit_jsons.cjs
+├── audit_repo_json_integrity.cjs
+├── blobs_zdu-campanas.json
+├── check_duplicates_and_update.cjs
+├── checkpoints
+│   ├── .DS_Store
+│   ├── ZDU_BLOB_SYNC_ENGINE_V1.md
+│   ├── ZDU_BLOB_VALIDATION_ENGINE_V1.md
+│   ├── ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md
+│   ├── ZDU_FOLDER_MAPPING_SCHEMA_V1.md
+│   ├── ZDU_INFRA_MILESTONE_002.md
+│   ├── ZDU_SUPABASE_AZURE_SYNC_V1.md
+│   ├── ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md
+│   ├── bitacora-sync-campanas.md
+│   ├── package-lock.json
+│   ├── package.json
+│   └── processed_campaigns.json
+├── crawler_zdu_playwright.py
+├── db
+│   └── checkpoints_table.sql
+├── estructura_final.txt
+├── lib
+├── main_zdu.yml
+├── middleware
+│   └── middleware.clerk.js
+├── middleware.clerk.js
+├── narrativa
+│   ├── campañas.sql
+│   ├── heroes_villanos.sql
+│   └── ingesta_supabase.sql
+├── package-lock.json
+├── package.json
+├── routes
+├── sync_blobs.cjs
+├── testSupabase.cjs
+├── test_blob_conn.py
+├── test_env.py
+├── test_supabase.py
+├── test_supabase_conn.py
+├── zdu
+│   ├── README.md
+│   ├── ai
+│   ├── assets
+│   │   ├── docs
+│   │   │   ├── arquitectura-hibrida.md
+│   │   │   ├── nodos-operativos.md
+│   │   │   └── sincronizacion-qma360.md
+│   │   ├── public
+│   │   │   ├── index.html
+│   │   │   └── private
+│   │   │       └── index.html
+│   │   └── scripts
+│   │       ├── testBlob.js
+│   │       └── testSupabase.js
+│   ├── casos
+│   ├── heroes
+│   │   └── zdu-alpha-genie
+│   │       ├── .DS_Store
+│   │       ├── backbone
+│   │       │   ├── .DS_Store
+│   │       │   └── RAM_BACKLOG
+│   │       │       ├── .DS_Store
+│   │       │       └── ZDU-ALPHA-GENIE
+│   │       │           ├── RAM_TRACE.log
+│   │       │           ├── README.md
+│   │       │           └── screenshots
+│   │       │               ├── Screenshot 2025-07-29 at 12.52.58.png
+│   │       │               └── Screenshot 2025-07-29 at 13.00.20.png
+│   │       ├── checkpoint.md
+│   │       ├── checkpoints
+│   │       │   └── ZDU-ALPHA-GENIE
+│   │       │       └── backbone
+│   │       │           └── RAM_BACKLOG
+│   │       │               └── README.md
+│   │       ├── estructura_actual.txt
+│   │       └── private
+│   ├── logs
+│   └── private
+│       ├── .env
+│       ├── bitacora_ingesta.cjs
+│       ├── bitacoras
+│       │   ├── auditoria-json-2025-07-28.log
+│       │   └── checkpoints.log
+│       ├── changelog.md
+│       ├── logs
+│       │   ├── auditoria_jsons.log
+│       │   ├── repo_json_audit.log
+│       │   └── supabase_sync.log
+│       └── sync_supabase_to_blobs.cjs
+├── zdu-campanas
+│   ├── campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json
+│   ├── campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json
+│   ├── campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json
+│   ├── campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json
+│   └── hospital_zdu002_brief.html
+└── zdu_chk_blob_diag_20250728.cjs
+
+34 directories, 73 files

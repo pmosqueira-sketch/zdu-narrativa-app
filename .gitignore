@@ -63,6 +63,13 @@ __pycache__/
 *.env
 
 # ================================
+# Carpetas internas privadas
+# ================================
+zdu/private/
+zdu/logs/
+
+# ================================
 # Playwright / Drivers pesados
 # ================================
 venv/lib/**/playwright/driver/node
+.env
