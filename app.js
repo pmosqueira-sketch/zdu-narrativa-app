@@ -1,8 +1,8 @@
 // app.js - Lógica simbiótica inicial para ZDU Narrativa App
 console.log("ZDU Narrativa App iniciada");
 
-require('dotenv').config();
-const { createClient } = require('@supabase/supabase-js');
+import 'dotenv/config';
+import { createClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;

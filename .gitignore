@@ -1,60 +1,68 @@
-# =========================
-# Ignorar archivos del sistema operativo
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# Archivos de entorno
-# =========================
-.env
-.env.local
-.env.*.local
-
-# =========================
+# ================================
 # Dependencias y paquetes
-# =========================
+# ================================
 node_modules/
+.env
 package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# =========================
+# ================================
 # Archivos temporales / desarrollo
-# =========================
+# ================================
 .vscode/
 .idea/
 *.log
 *.swp
 *.swo
 
-# =========================
+# ================================
 # Salidas de pruebas o scripts
-# =========================
+# ================================
 /coverage
 /dist
 /build
 /scripts/output/
 
-# =========================
+# ================================
 # Archivos temporales del sistema / git
-# =========================
+# ================================
 *.pid
 *.seed
 *.bak
 *.tmp
 *.orig
 
-# =========================
+# ================================
 # Archivos de Mac y Linux
-# =========================
+# ================================
 *.sublime-workspace
 *.sublime-project
 
-# =========================
+# ================================
 # Ignorar archivos creados por errores de merge
-# =========================
+# ================================
 *.merge_backup.*
 *.rej
 *.orig
+
+# ================================
+# Python virtualenv y caché
+# ================================
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ================================
+# Archivos de entorno
+# ================================
+.env
+*.env
+
+# ================================
+# Playwright / Drivers pesados
+# ================================
+venv/lib/**/playwright/driver/node
