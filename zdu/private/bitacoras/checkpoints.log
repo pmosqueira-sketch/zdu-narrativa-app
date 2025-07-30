@@ -38,3 +38,13 @@ errores: 18
 script: audit_repo_json_integrity_zdu.cjs
 fecha: 2025-07-29
 estado: completado
+[ZDU-CHK-F1-COMPLETE-20250729]
+tipo: fase
+descripcion: Cierre completo de la Fase 1 (auditoría, logs Azure, bitácora simbólica)
+estado: consolidado
+fecha: 2025-07-29
+componentes:
+  - logs Azure 25–29
+  - auditoría JSON
+  - checkpoint simbólico
+  - scripts de parsing
