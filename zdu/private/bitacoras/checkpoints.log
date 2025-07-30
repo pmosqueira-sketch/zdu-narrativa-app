@@ -1,0 +1,24 @@
+[ZDU-CHK-AUDIT-JSON-20250728]
+tipo: auditoria_json
+descripcion: Auditoría de integridad de archivos JSON en el repositorio.
+total_json: 164
+validos: 148
+errores: 16
+script: audit_repo_json_integrity.cjs
+fecha: 2025-07-28
+estado: completado
+[ZDU-CHK-INGESTA-20250729]
+tipo: ingesta_narrativa
+descripcion: Ingesta de campañas desde Supabase sincronizadas localmente.
+archivos_nuevos: 4
+origen: supabase_sync.cjs
+fecha: 2025-07-29
+estado: registrado
+[ZDU-CHK-LOGS-AZURE-20250729]
+tipo: ingesta_logs_azure
+descripcion: Ingesta técnica y narrativa de logs desde Azure App Service (contendor Docker).
+archivos_procesados: 8
+rango_fechas: 2025-07-25 a 2025-07-29
+scripts_utilizados: parsing_logs_docker.cjs, bitacora_ingesta.cjs
+formato: JSON estructurado con campos técnicos y simbólicos
+estado: consolidado
