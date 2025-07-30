@@ -22,3 +22,19 @@ rango_fechas: 2025-07-25 a 2025-07-29
 scripts_utilizados: parsing_logs_docker.cjs, bitacora_ingesta.cjs
 formato: JSON estructurado con campos técnicos y simbólicos
 estado: consolidado
+[ZDU-CHK-CIERRE-20250729]
+tipo: cierre_ingesta
+descripcion: Cierre oficial de la ingesta de logs Docker Azure (25 al 29 de julio).
+archivos_total: 5
+bloques_enriquecidos: 5
+estado: cerrado
+fecha: 2025-07-29
+[ZDU-CHK-AUDIT-JSON-20250729]
+tipo: auditoria_json
+descripcion: Auditoría de integridad de archivos JSON en el repositorio.
+total_json: 267
+validos: 249
+errores: 18
+script: audit_repo_json_integrity_zdu.cjs
+fecha: 2025-07-29
+estado: completado
