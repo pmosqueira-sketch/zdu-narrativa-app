@@ -73,3 +73,5 @@ zdu/logs/
 # ================================
 venv/lib/**/playwright/driver/node
 .env
+
+!zdu/private/bitacoras/checkpoints.log
