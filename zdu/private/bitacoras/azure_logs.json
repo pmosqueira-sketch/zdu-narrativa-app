@@ -1,0 +1,10 @@
+[
+  {
+    "log_file": "2025_07_29_lw1sdlwk00030E_default_docker.log",
+    "fuente": "Azure App Service LogFiles",
+    "timestamp": "2025-07-29",
+    "descripcion_tecnica": "Actividad registrada desde Docker en App Service el 29 de julio, incluye ciclos de despliegue y tráfico HTTP anómalo desde 172.*.",
+    "detalle_tecnico": "Se detectaron múltiples referencias al proceso de escalamiento vertical y reinicio del contenedor. Entradas relacionadas con ping internos, respuesta 200/500 y eventos SCM.",
+    "descripcion_universo": "Un avance más en la consolidación del ecosistema ZDU: los registros del 29 de julio revelan cómo GENIE respondió silenciosamente al entorno cambiante del host, integrándose al núcleo operativo."
+  }
+]

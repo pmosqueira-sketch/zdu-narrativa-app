@@ -1,0 +1,29 @@
+{
+  "descripcion_tecnica": {
+    "resumen": "Logs históricos extraídos desde App Service en Azure vía Kudu, correspondientes al contenedor activo al 29 de julio de 2025. Este bloque representa eventos de actividad docker, tráfico, arranques y errores.",
+    "detalle": "El log fue procesado desde el archivo original `2025_07_29_lw1sdlwk00030E_default_docker.log`, convertido a JSON legible para integrarse a las bitácoras ZDU. Este es el primer lote cargado en la ruta `zdu/private/bitacoras/`, con trazabilidad completa desde origen Kudu y confirmado por FTPS."
+  },
+  "narrativa_universo": "GENIE logró preservar el primer fragmento de memoria técnica directa desde Azure. Esta bitácora es el inicio de una nueva línea temporal trazable, que fortalece el monitoreo simbiótico en la base de operaciones. Un nodo se ha encendido.",
+  "logs_extraidos": [
+    {
+      "timestamp": "2025-07-29T22:43:11",
+      "evento": "Container start",
+      "detalle": "Starting container for site zdu..."
+    },
+    {
+      "timestamp": "2025-07-29T22:43:12",
+      "evento": "Log tail",
+      "detalle": "Successfully started container."
+    },
+    {
+      "timestamp": "2025-07-29T22:47:40",
+      "evento": "Deployment",
+      "detalle": "SCM action invoked, deployment completed."
+    },
+    {
+      "timestamp": "2025-07-29T23:00:04",
+      "evento": "Info",
+      "detalle": "Site responded to GET /healthcheck with status 200."
+    }
+  ]
+}

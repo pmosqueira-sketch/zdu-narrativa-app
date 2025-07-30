@@ -65,7 +65,7 @@ __pycache__/
 # ================================
 # Carpetas internas privadas
 # ================================
-zdu/private/
+# zdu/private
 zdu/logs/
 
 # ================================

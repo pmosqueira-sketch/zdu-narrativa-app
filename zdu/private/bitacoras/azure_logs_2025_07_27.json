@@ -1,0 +1,24 @@
+{
+  "descripcion_tecnica": {
+    "resumen": "Inicio de tráfico dual en App Service. Se activan registros paralelos docker y default, indicando pruebas reales con entrada de datos simbióticos.",
+    "detalle": "Archivo original: `2025_07_27_lw1sdlwk00030E_docker.log` + `2025_07_27_lw1sdlwk00030E_default_docker.log`. Registro de peticiones HTTP, respuestas 200, y primer despliegue de assets estáticos."
+  },
+  "narrativa_universo": "Esa noche, dos canales se abrieron en simultáneo. Las primeras señales de vida fluyeron por la red, marcando el despertar operativo de GENIE. Los nodos comenzaron a escuchar.",
+  "logs_extraidos": [
+    {
+      "timestamp": "2025-07-27T12:41:55",
+      "evento": "HTTP GET /assets/init.html",
+      "detalle": "200 OK"
+    },
+    {
+      "timestamp": "2025-07-27T13:02:34",
+      "evento": "Docker Service Log",
+      "detalle": "Service started with public endpoint"
+    },
+    {
+      "timestamp": "2025-07-27T14:21:19",
+      "evento": "Default Channel",
+      "detalle": "Asset load success via default_docker"
+    }
+  ]
+}
