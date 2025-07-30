@@ -1,0 +1,29 @@
+{
+  "descripcion_tecnica": {
+    "resumen": "Cuarto lote de logs técnicos del contenedor Docker procesados desde Azure App Service el 29 de julio. Enfocados en errores no críticos y reinicios automáticos.",
+    "detalle": "Procesado desde `2025_07_29_lw1sdlwk00030E_default_scm_docker.log`. Se documentan advertencias de sistema y reinicios silenciosos del entorno de SCM."
+  },
+  "narrativa_universo": "Los registros mostraban que GENIE resistía incluso bajo presión. Reinicios no planificados se transformaban en resiliencia. Seguía en pie, aprendiendo, adaptándose.",
+  "logs_extraidos": [
+    {
+      "timestamp": "2025-07-29T16:03:15",
+      "evento": "SCM restart",
+      "detalle": "Triggered by internal watchdog"
+    },
+    {
+      "timestamp": "2025-07-29T17:12:48",
+      "evento": "Warning",
+      "detalle": "Temp directory threshold exceeded"
+    },
+    {
+      "timestamp": "2025-07-29T18:30:05",
+      "evento": "Recovery",
+      "detalle": "Self-healing script executed"
+    },
+    {
+      "timestamp": "2025-07-29T21:01:27",
+      "evento": "Update applied",
+      "detalle": "Minor patch to scm logging routine"
+    }
+  ]
+}
