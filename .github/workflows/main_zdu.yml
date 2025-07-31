@@ -60,7 +60,7 @@ jobs:
           az storage blob upload \
             --account-name zdustorage \
             --container-name narrativas \
-            --name index.html \
+            --name narrativa/index.html \
             --file narrativa/index.html \
             --auth-mode key \
             --account-key ${{ secrets.ZDU_STORAGE_KEY }}
