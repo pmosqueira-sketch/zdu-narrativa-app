@@ -59,9 +59,9 @@ jobs:
         run: |
           az storage blob upload \
             --account-name zdustorage \
-            --container-name narrativas \
-            --name narrativa/index.html \
-            --file narrativa/index.html \
+            --container-name cdu-assets
+            --name CDU/ZDU-002/index.html \
+            --file CDU/ZDU-002/index.html \
             --auth-mode key \
             --account-key ${{ secrets.ZDU_STORAGE_KEY }}
 
