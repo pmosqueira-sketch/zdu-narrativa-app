@@ -1,9 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const rootDir = path.resolve(__dirname);
+const rootDir = path.resolve(__dirname, "../../..");
 const logDir = path.join(rootDir, "logs");
 const logFile = path.join(logDir, "repo_json_audit.log");
+const checkpointsFile = path.join(rootDir, "zdu/private/bitacoras/checkpoints.log");
 
 const report = [];
 let total = 0;
@@ -33,23 +34,26 @@ function scanDir(dir) {
   }
 }
 
+// Asegura que exista el directorio logs
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 
+// Ejecuta auditoría
 scanDir(rootDir);
 
+// Consola
 console.log("\nREPORTE DE AUDITORÍA GLOBAL DE JSONs");
 console.log("--------------------------------------");
 report.forEach(entry => {
   console.log(`${entry.status} → ${entry.file}`);
 });
-
 console.log("\nRESUMEN:");
 console.log(`Total JSONs encontrados: ${total}`);
 console.log(`Válidos: ${validos}`);
 console.log(`Con errores: ${errores}`);
 
+// Guarda en log plano
 const timestamp = new Date().toISOString();
 const logOutput = [
   `REPORTE DE AUDITORÍA GLOBAL DE JSONs - ${timestamp}`,
@@ -63,17 +67,19 @@ const logOutput = [
 ].join("\n");
 
 fs.writeFileSync(logFile, logOutput);
-const checkpointEntry = [
-  `[ZDU-CHK-AUDIT-JSON-${timestamp.slice(0,10).replace(/-/g, "")}]`,
+
+// Agrega checkpoint simbiótico
+const checkpoint = [
+  `[ZDU-CHK-AUDIT-JSON-${timestamp.slice(0, 10).replace(/-/g, "")}]`,
   `tipo: auditoria_json`,
-  `descripcion: Auditoría global de archivos JSON en el proyecto.`,
+  `descripcion: Auditoría de integridad de archivos JSON en el repositorio.`,
   `total_json: ${total}`,
   `validos: ${validos}`,
   `errores: ${errores}`,
-  `script: audit_repo_json_integrity.cjs`,
-  `fecha: ${timestamp.slice(0,10)}`,
+  `script: audit_repo_json_integrity_zdu.cjs`,
+  `fecha: ${timestamp.slice(0, 10)}`,
   `estado: completado`,
   ``
-].join('\n');
+].join("\n");
 
-fs.appendFileSync(path.join(rootDir, 'zdu/private/bitacoras/checkpoints.log'), checkpointEntry);
+fs.appendFileSync(checkpointsFile, checkpoint);
