@@ -23,3 +23,16 @@
 - Se valida conectividad directa y bidireccional GitHub → Azure.
 - Se define arquitectura híbrida modular con posibilidad de automatizar ingestas.
 - El universo ZDU obtiene trazabilidad de su infraestructura narrativa y técnica.
+
+### Versión v9.2-SUPABASE-AUDIT — Auditoría estructural de Supabase (31-Julio-2025)
+
+En esta versión se ejecutó una validación técnica completa sobre la conectividad entre la CLI de Supabase y el entorno de desarrollo local.
+
+- Se confirmó la autenticación CLI mediante token local.
+- Se resolvieron errores previos de linking (`project-ref`) y variables mal configuradas en `.env`.
+- Se auditó de forma automatizada la estructura completa del proyecto Supabase con 83 tablas activas.
+- Se generó el archivo `supabase_table_index.json` como snapshot para control futuro de integridad y referencias cruzadas.
+- Se desplegó menú interactivo para inspección por tabla desde NodeJS.
+- Se habilita la estructura para comparar, consolidar y optimizar el uso narrativo y técnico de las tablas actuales.
+
+> Esta marca representa el primer hito oficial de validación de infraestructura Supabase ↔ CLI ↔ Local Dev, base para la conexión posterior con Azure Blob y AppService.
