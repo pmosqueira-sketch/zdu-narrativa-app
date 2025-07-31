@@ -4,6 +4,7 @@ const path = require("path");
 const rootDir = path.resolve(__dirname);
 const logDir = path.join(rootDir, "logs");
 const logFile = path.join(logDir, "repo_json_audit.log");
+const jsonOutput = path.join(logDir, "repo_json_audit_data.json");
 
 const report = [];
 let total = 0;
@@ -20,36 +21,48 @@ function scanDir(dir) {
       scanDir(fullPath);
     } else if (entry.isFile() && entry.name.endsWith(".json")) {
       total++;
+      const mtime = fs.statSync(fullPath).mtime.toISOString();
       try {
         const content = fs.readFileSync(fullPath, "utf-8");
         JSON.parse(content);
-        report.push({ file: fullPath.replace(rootDir + "/", ""), status: "VALIDO" });
+        report.push({
+          file: fullPath.replace(rootDir + "/", ""),
+          status: "VALIDO",
+          ultima_modificacion: mtime
+        });
         validos++;
       } catch (err) {
-        report.push({ file: fullPath.replace(rootDir + "/", ""), status: "ERROR DE FORMATO JSON" });
+        report.push({
+          file: fullPath.replace(rootDir + "/", ""),
+          status: "ERROR DE PARSEO",
+          ultima_modificacion: mtime
+        });
         errores++;
       }
     }
   }
 }
 
+// Asegura carpeta logs
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
 
+// Ejecuta escaneo
 scanDir(rootDir);
 
+// Consola
 console.log("\nREPORTE DE AUDITORÍA GLOBAL DE JSONs");
 console.log("--------------------------------------");
 report.forEach(entry => {
   console.log(`${entry.status} → ${entry.file}`);
 });
-
 console.log("\nRESUMEN:");
 console.log(`Total JSONs encontrados: ${total}`);
 console.log(`Válidos: ${validos}`);
 console.log(`Con errores: ${errores}`);
 
+// Guarda archivo .log
 const timestamp = new Date().toISOString();
 const logOutput = [
   `REPORTE DE AUDITORÍA GLOBAL DE JSONs - ${timestamp}`,
@@ -61,8 +74,12 @@ const logOutput = [
   `Válidos: ${validos}`,
   `Con errores: ${errores}`,
 ].join("\n");
-
 fs.writeFileSync(logFile, logOutput);
+
+// Guarda archivo JSON estructurado
+fs.writeFileSync(jsonOutput, JSON.stringify(report, null, 2));
+
+// Guarda entrada en checkpoint.log
 const checkpointEntry = [
   `[ZDU-CHK-AUDIT-JSON-${timestamp.slice(0,10).replace(/-/g, "")}]`,
   `tipo: auditoria_json`,
@@ -75,5 +92,4 @@ const checkpointEntry = [
   `estado: completado`,
   ``
 ].join('\n');
-
 fs.appendFileSync(path.join(rootDir, 'zdu/private/bitacoras/checkpoints.log'), checkpointEntry);
