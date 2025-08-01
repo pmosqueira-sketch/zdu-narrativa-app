@@ -14,3 +14,12 @@ archivos_nuevos: 4
 origen: supabase_sync.cjs
 fecha: 2025-07-29
 estado: registrado
+[ZDU-CHK-AUDIT-JSON-20250801]
+tipo: auditoria_json
+descripcion: Auditoría global de archivos JSON en el proyecto.
+total_json: 251
+validos: 233
+errores: 18
+script: audit_repo_json_integrity.cjs
+fecha: 2025-08-01
+estado: completado

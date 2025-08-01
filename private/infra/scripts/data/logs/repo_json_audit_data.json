@@ -1,0 +1,17 @@
+[
+  {
+    "file": "data/processed_campaigns.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-28T23:51:10.000Z"
+  },
+  {
+    "file": "modules/logs/repo_json_audit_data.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-08-01T20:22:38.399Z"
+  },
+  {
+    "file": "modules/supabase_table_index.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-31T19:39:30.000Z"
+  }
+]

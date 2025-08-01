@@ -2,18 +2,18 @@ const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
 
-// Ruta al archivo de índice
-const indexPath = path.resolve(__dirname, 'ZDU-INFRA/supabase_table_index.json');
+// Ruta correcta al archivo JSON con índice de tablas
+const indexPath = path.resolve(__dirname, '../audits/modules/supabase_table_index.json');
 
 if (!fs.existsSync(indexPath)) {
-  console.error('No se encontró el archivo supabase_table_index.json');
+  console.error('ERROR: No se encontró el archivo supabase_table_index.json');
   process.exit(1);
 }
 
-const tables = JSON.parse(fs.readFileSync(indexPath));
+const raw = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+const tables = raw.tables || [];
 
-// Escaneo de coincidencias de tabla en todo el proyecto
-function scanProjectForTables(tableName, baseDir = '.') {
+function scanProjectForTables(tableName, baseDir = path.resolve(__dirname, '../../../..')) {
   const matches = [];
 
   function recursiveSearch(dir) {
@@ -23,9 +23,9 @@ function scanProjectForTables(tableName, baseDir = '.') {
       const fullPath = path.join(dir, entry.name);
 
       if (entry.isDirectory()) {
-        if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue;
+        if (entry.name === 'node_modules' || entry.name.startsWith('.git')) continue;
         recursiveSearch(fullPath);
-      } else {
+      } else if (entry.isFile() && (entry.name.endsWith('.js') || entry.name.endsWith('.cjs') || entry.name.endsWith('.json'))) {
         const content = fs.readFileSync(fullPath, 'utf8');
         if (content.includes(tableName)) {
           matches.push(fullPath);
@@ -38,9 +38,8 @@ function scanProjectForTables(tableName, baseDir = '.') {
   return matches;
 }
 
-// Menú interactivo
 async function showMenu() {
-  console.log('\nListado de tablas Supabase:\n');
+  console.log('\nListado de tablas Supabase\n');
 
   tables.forEach((table, i) => {
     console.log(`[${i + 1}] ${table}`);

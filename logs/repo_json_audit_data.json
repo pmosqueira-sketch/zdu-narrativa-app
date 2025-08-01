@@ -1,78 +1,8 @@
 [
   {
-    "file": "ZDU-INFRA/supabase_table_index.json",
+    "file": "logs/repo_json_audit_data.json",
     "status": "VALIDO",
-    "ultima_modificacion": "2025-07-31T19:44:43.191Z"
-  },
-  {
-    "file": "blobs_zdu-campanas.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T21:54:11.986Z"
-  },
-  {
-    "file": "checkpoints/node_modules/.package-lock.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.920Z"
-  },
-  {
-    "file": "checkpoints/node_modules/dotenv/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.793Z"
-  },
-  {
-    "file": "checkpoints/node_modules/node-fetch/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.908Z"
-  },
-  {
-    "file": "checkpoints/node_modules/tr46/lib/mappingTable.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.793Z"
-  },
-  {
-    "file": "checkpoints/node_modules/tr46/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.790Z"
-  },
-  {
-    "file": "checkpoints/node_modules/uuid/dist/cjs/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.862Z"
-  },
-  {
-    "file": "checkpoints/node_modules/uuid/dist/cjs-browser/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.862Z"
-  },
-  {
-    "file": "checkpoints/node_modules/uuid/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.862Z"
-  },
-  {
-    "file": "checkpoints/node_modules/webidl-conversions/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.791Z"
-  },
-  {
-    "file": "checkpoints/node_modules/whatwg-url/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.791Z"
-  },
-  {
-    "file": "checkpoints/package-lock.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.920Z"
-  },
-  {
-    "file": "checkpoints/package.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T22:05:29.918Z"
-  },
-  {
-    "file": "checkpoints/processed_campaigns.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-28T23:51:10.403Z"
+    "ultima_modificacion": "2025-07-31T20:37:06.781Z"
   },
   {
     "file": "node_modules/.package-lock.json",
@@ -1245,14 +1175,39 @@
     "ultima_modificacion": "2025-07-28T14:54:22.599Z"
   },
   {
-    "file": "package-lock.json",
+    "file": "private/infra/checkpoints/package-lock.json",
     "status": "VALIDO",
-    "ultima_modificacion": "2025-07-31T06:45:27.960Z"
+    "ultima_modificacion": "2025-08-01T06:20:01.112Z"
   },
   {
-    "file": "package.json",
+    "file": "private/infra/checkpoints/package.json",
     "status": "VALIDO",
-    "ultima_modificacion": "2025-07-31T06:45:27.961Z"
+    "ultima_modificacion": "2025-08-01T06:20:01.113Z"
+  },
+  {
+    "file": "private/infra/scripts/audits/data/processed_campaigns.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-28T23:51:10.000Z"
+  },
+  {
+    "file": "private/infra/scripts/audits/modules/logs/repo_json_audit_data.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-08-01T20:28:31.316Z"
+  },
+  {
+    "file": "private/infra/scripts/audits/modules/supabase_table_index.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-31T19:39:30.000Z"
+  },
+  {
+    "file": "private/infra/scripts/data/logs/repo_json_audit_data.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-08-01T20:25:23.336Z"
+  },
+  {
+    "file": "private/infra/scripts/logs/repo_json_audit_data.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-08-01T15:44:05.686Z"
   },
   {
     "file": "venv/lib/python3.12/site-packages/playwright/driver/package/api.json",
@@ -1275,11 +1230,6 @@
     "ultima_modificacion": "2025-07-29T00:09:08.284Z"
   },
   {
-    "file": "zdu/private/tmp/bitacora-simbolica-orig.json",
-    "status": "VALIDO",
-    "ultima_modificacion": "2025-07-31T17:52:01.696Z"
-  },
-  {
     "file": "zdu-campanas/campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json",
     "status": "VALIDO",
     "ultima_modificacion": "2025-07-28T22:50:57.102Z"
@@ -1298,5 +1248,10 @@
     "file": "zdu-campanas/campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json",
     "status": "VALIDO",
     "ultima_modificacion": "2025-07-28T22:50:57.103Z"
+  },
+  {
+    "file": "zdu-storage/blob-inventory/blobs_zdu-campanas.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-28T21:54:11.986Z"
   }
 ]

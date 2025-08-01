@@ -67,3 +67,4 @@ __pycache__/
 # ================================
 venv/lib/**/playwright/driver/node
 .git.zip
+.env

@@ -1,0 +1,12 @@
+[
+  {
+    "file": "logs/repo_json_audit_data.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-08-01T20:22:38.399Z"
+  },
+  {
+    "file": "supabase_table_index.json",
+    "status": "VALIDO",
+    "ultima_modificacion": "2025-07-31T19:39:30.000Z"
+  }
+]

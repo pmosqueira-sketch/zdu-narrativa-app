@@ -1,38 +1,43 @@
-require("dotenv").config();
-const { createClient } = require("@supabase/supabase-js");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../../../../.env") });
 
+const { createClient } = require("@supabase/supabase-js");
+
+// Validación de variables de entorno
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+  console.error("Variables de entorno no definidas. Verifica el archivo .env en /private.");
+  process.exit(1);
+}
+
+// Cliente Supabase
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_ANON_KEY
 );
 
-const outputDir = path.join(__dirname, "zdu-campanas");
-const logPath = path.join(__dirname, "logs", "supabase_sync.log");
-const omitidosPath = path.join(__dirname, "logs", "omitidos.log");
+// Definición de rutas internas (infraestructura controlada)
+const outputDir = path.join(__dirname, "../data/logs/");
+const logPath = path.join(outputDir, "supabase_sync.log");
+const omitidosPath = path.join(outputDir, "omitidos.log");
 
-// Crear carpetas si no existen
+// Asegura existencia del directorio
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
-}
-
-if (!fs.existsSync(path.dirname(logPath))) {
-  fs.mkdirSync(path.dirname(logPath), { recursive: true });
 }
 
 let omitidos = [];
 let generados = 0;
 
+// Función para escribir log
 function log(msg) {
   const timestamp = new Date().toISOString();
   fs.appendFileSync(logPath, `[${timestamp}] ${msg}\n`);
 }
 
+// Sincronización desde tabla `assets_blob_index`
 async function syncFromSupabase() {
-  const { data, error } = await supabase
-    .from("assets_blob_index")
-    .select("*");
+  const { data, error } = await supabase.from("assets_blob_index").select("*");
 
   if (error) {
     console.error("Error al obtener datos desde Supabase:", error.message);
@@ -65,7 +70,7 @@ async function syncFromSupabase() {
     }
   }
 
-  // Guardar lista de omitidos en archivo aparte
+  // Registro de omitidos
   if (omitidos.length > 0) {
     fs.writeFileSync(omitidosPath, omitidos.join("\n"), "utf8");
   }
@@ -74,9 +79,9 @@ async function syncFromSupabase() {
   console.log(resumen);
   log(resumen);
 
-  const msg = "Sincronización completada: Supabase → Blobs";
-  console.log(msg);
-  log(msg);
+  const finalMsg = "Sincronización completada: Supabase → Carpeta local controlada";
+  console.log(finalMsg);
+  log(finalMsg);
 }
 
 syncFromSupabase();
