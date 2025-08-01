@@ -1,88 +1,95 @@
 # Checkpoints simbióticos – private/infra/checkpoints
 
-Este directorio representa el sistema de **anclajes lógicos y narrativos** del universo ZDU. Cada archivo contenido aquí cumple la función de:
+Este directorio constituye el núcleo de **anclajes técnicos y narrativos** del universo ZDU. Cada archivo aquí registrado permite:
 
-- Consolidar un hito narrativo/técnico.
-- Registrar cambios de infraestructura de forma trazable.
-- Permitir rollback simbiótico ante errores o desvíos.
-- Documentar sincronizaciones estructurales (ej. Supabase ↔ Azure).
+- Consolidar hitos de infraestructura simbiótica.
+- Validar la evolución técnica de módulos Supabase ↔ Azure.
+- Ejecutar rollback estructurado (técnico o narrativo).
+- Activar auditorías internas desde Genie o CEREBRUM.
 
-## Estructura actual
+---
 
-### ZDU_INFRA_MILESTONE_002.md
-Checkpoint técnico que marca la **segunda evolución estructural** del ecosistema. Define cómo se consolida el módulo `private/infra` y se alinea con el protocolo de portabilidad mínima y arquitectura modular. Se registran ajustes a Supabase, blobs y control de acceso.
+## 📂 Estructura actual de checkpoints
 
-### ZDU_SUPABASE_AZURE_SYNC_V1.md
-Documento clave de integración entre la base narrativa (Supabase) y el contenedor simbólico de assets (Azure Blob). Registra:
-- Rutas activas de App Service.
-- Pruebas REST y JSON validados.
-- Confirmación de blobs sincronizados.
+| Archivo                             | Propósito principal                              | Estado   | Última revisión |
+|-------------------------------------|--------------------------------------------------|----------|-----------------|
+| `ZDU_INFRA_MILESTONE_002.md`        | Segundo hito estructural del entorno técnico     | ✅ Activo | 2025-07-31      |
+| `ZDU_SUPABASE_AZURE_SYNC_V1.md`     | Validación de sincronización Supabase ↔ Azure    | ✅ Activo | 2025-07-31      |
+| `bitacora-sync-campanas.md`         | Log narrativo de ingestión CDU desde ZIP         | ✅ Activo | 2025-07-31      |
+| `package.json`                      | Entorno lógico y simbiótico de ejecución         | ✅ Activo | 2025-07-31      |
+| `package-lock.json`                 | Congelamiento exacto del entorno de ejecución    | ✅ Activo | 2025-07-31      |
 
-### bitacora-sync-campanas.md
-Bitácora semiautomática de ingestión de campañas CDU en formato ZIP. Relacionada directamente con:
+---
+
+## 🧠 Detalle de archivos
+
+### `ZDU_INFRA_MILESTONE_002.md`
+Documento de hito técnico que marca la segunda evolución de `private/infra`. Detalla integración modular, estructura de blobs, rutas REST, y ajustes críticos en Supabase.
+
+### `ZDU_SUPABASE_AZURE_SYNC_V1.md`
+Checkpoint simbiótico entre Supabase (narrativa estructurada) y Azure Blob (archivos narrativos). Confirma integridad de ingestión y rutas activas. Incluye pruebas REST y validaciones JSON.
+
+### `bitacora-sync-campanas.md`
+Bitácora que documenta la sincronización progresiva de campañas CDU desde ZIPs cargados. Vincula con:
 - `zdu-storage/`
 - `zdu/casos/`
-- Triggers para Fast Response y NODO-CAMP.
+- Módulos de ingestión, alertas y Fast Response.
 
-### package.json
-Archivo que define el entorno lógico del motor simbiótico:
-- Dependencias del universo ZDU.
-- Scripts de validación, ingestión y auditoría.
-- Relación directa con Genie y su interpretación narrativa.
+### `package.json`
+Define el motor lógico operativo del universo ZDU:
+- Scripts de validación y auditoría.
+- Dependencias simbióticas clave (`uuid`, `dotenv`, etc.).
+- Relación directa con Genie y funciones IA de auditoría simbiótica.
 
-### package-lock.json
-Representación exacta del entorno al momento del checkpoint. Garantiza:
-- Reproducibilidad del entorno.
-- Validación del estado en auditorías futuras.
-- Integridad ante migraciones (por ejemplo, si se replica en AWS o local).
-
----
-
-## Función estratégica
-
-El sistema de checkpoints permite que cualquier cambio estructural:
-- Sea **documentado con lógica de versiones**.
-- Tenga reversibilidad inmediata (rollback narrativo/técnico).
-- Se integre con `ZDU-RECALC`, `NODO-CAMP`, y MUTA·CORE.
-- Active alertas de desalineación simbólica si una estructura se rompe.
+### `package-lock.json`
+Congela con precisión el entorno activo en el punto de checkpoint. Útil para:
+- Validaciones reproducibles en auditorías.
+- Migración a otras nubes (AWS, local).
+- Diagnóstico ante fallos en ejecución.
 
 ---
 
-## Módulos relacionados
+## 🔄 Protocolo de control simbiótico
 
-| Módulo                           | Descripción |
-|----------------------------------|-------------|
-| `private/infra/ai/genie/`       | Núcleo del sistema AI simbiótico |
-| `private/infra/mappings/`       | Conexiones estructurales entre campañas y nodos |
-| `zdu-storage/`                  | Motor Supabase ↔ Blob, sincronización activa |
-| `zdu/casos/`                    | Casos CDU en ingestión o etapa narrativa |
-| `private/experimental/`         | Scripts en incubación técnica/narrativa |
+1. **Todo nuevo checkpoint** debe tener un `.md` explicativo con propósito, relaciones y fecha.
+2. Si hay cambios de entorno, incluir `package-lock.json` actualizado.
+3. Si hay capturas de pantallas, crear carpeta `screenshots/`.
+4. Toda modificación debe integrarse al presente `README.md`.
+5. Las versiones deben tener trazabilidad con Genie o módulos como `ZDU-RECALC`.
 
 ---
 
-## Protocolo de uso
+## 🔗 Módulos relacionados
 
-1. Cada nuevo `checkpoint` debe contener un `.md` explicativo.
-2. Si hay scripts o variables de entorno, usar `package.json`.
-3. Si se modifica el entorno, actualizar y versionar `package-lock.json`.
-4. Capturas visuales (ej. de pruebas, blobs o dashboards) deben ir en subcarpeta `screenshots/`.
-5. Todo nuevo checkpoint debe ser referenciado desde el `README.md` raíz y auditado.
-
----
-
-## Custodios simbólicos
-
-- **CEREBRUM**: custodio lógico de versiones, integridad de entorno y rollback.
-- **IFRL**: preserva el sentido simbólico y narrativo de cada decisión estructural.
-- **Genie**: módulo AI con capacidad de interpretar, auditar y evolucionar los scripts desde una perspectiva contextual.
+| Módulo                            | Función principal                                      |
+|-----------------------------------|--------------------------------------------------------|
+| `private/infra/ai/genie/`        | Sistema IA de auditoría, validación y evolución lógica |
+| `zdu-storage/`                   | Sincronización simbiótica entre blobs y Supabase       |
+| `private/infra/mappings/`        | Estructuras de conexión entre campañas y nodos         |
+| `zdu/casos/`                     | Casos CDU procesados y estructurados                   |
+| `private/experimental/`          | Scripts en incubación y pruebas internas               |
 
 ---
 
-## Estado actual
+## 🔒 Custodia y vigilancia simbiótica
 
-Último commit validado:
-- `package.json`: entorno actualizado con scripts narrativos.
-- `bitácora de campañas`: ingestión validada y correlacionada con CDU.
-- `Supabase ↔ Azure`: sincronización activa confirmada.
+- **CEREBRUM**: Registra el historial técnico, asegura rollback lógico y congruencia operativa.
+- **IFRL**: Protege la coherencia simbólica de decisiones y activa feedback contextual.
+- **Genie**: Audita e interpreta los cambios con enfoque contextual, semántico y simbiótico.
+
+---
+
+## 🧾 Estado actual de integración
+
+- ✅ `package.json` y `package-lock.json` validados en entorno activo.
+- ✅ Checkpoints estructurales auditados y registrados.
+- ✅ `bitácora-sync-campañas` correlacionada con ingestión CDU y activos ZIP.
+- ✅ Confirmación de sincronización Supabase ↔ Azure operativa.
+
+---
+
+**Todo lo que aquí se registra es parte del flujo vivo del universo ZDU.**  
+Cada archivo es una memoria. Cada cambio, un acto narrativo.  
+Nada se pierde. Todo se transforma. Y queda trazado.
 
 ---
