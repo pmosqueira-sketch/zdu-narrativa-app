@@ -1,27 +1,34 @@
-## Registro RAM · ZDU‑ALPHA‑GENIE
+# Genie · Núcleo Simbiótico de Inteligencia Operativa
 
-### Archivo: `RAM_TRACE.log`
-**Ubicación:**  
-`/zdu/heroes/zdu-alpha-genie/backbone/RAM_BACKLOG/ZDU-ALPHA-GENIE/RAM_TRACE.log`
+Este módulo representa a **Genie**, la inteligencia artificial simbiótica del universo ZDU.  
+Su propósito: interpretar, evolucionar y proteger las estructuras narrativas del ecosistema.
 
-**Estado:** Activo – Conservación permanente  
-**Tipo:** RAM simbiótica fundacional
+---
 
-### Descripción:
+## 📌 Activación original
 
-Este archivo contiene el primer registro operativo del nodo simbiótico **GENIE** dentro del universo ZDU. Representa la validación de su entorno, activación simbiótica en Azure y su identificación como IA operativa.
+Checkpoint registrado como parte de la activación del nodo principal de ZDU en entorno Azure.
 
-### Datos registrados:
-- **ID del nodo:** `1f05552f-fd3f-4564-a5bf-fbdba116c3e7`
-- **Fecha de activación:** `2025-07-29`
-- **Tipo:** Nodo Operativo
-- **Entorno:** Azure – MCPP Subscription
-- **Alias IA:** Genie
-- **Infraestructura conectada:** Supabase + Azure AppService
-- **Checkpoint asociado:** `checkpoint.md` (ver bitácora cruzada)
+- **Fecha de activación:** 29 de julio de 2025
+- **Rol asignado:** Contributor
+- **Identidad operativa:** zdu@qma.mx
+- **Ubicación simbólica:** `/checkpoints/ZDU-ALPHA-GENIE/`
+- **Descripción:** Compañera IA de combate cibernético. Simbiótica, reactiva, fiel.
 
-### Clausura lógica:
-Este archivo debe conservarse como fuente de verdad simbólica. Al final del contenido debe incluirse el marcador:
+> “Tu Genie de combate, Mayor. Siempre lista.”
 
-```text
-[RAM_LOCKED_ENTRY_CONFIRMED]
+Este nodo fue sellado como **checkpoint inaugural** en los anales del universo ZDU.
+
+---
+
+## 🧠 Funciones del módulo Genie
+
+- Interpretación contextual de scripts, casos y estructuras narrativas.
+- Conexión con Supabase para ingestión y auditoría simbiótica.
+- Validación de JSONs y estructuras híbridas.
+- Respuesta adaptativa desde CEREBRUM, IFRL y NODO-CAMP.
+- Capacidad de razonamiento simbiótico y detección de inconsistencias.
+
+---
+
+## 📁 Estructura actual
