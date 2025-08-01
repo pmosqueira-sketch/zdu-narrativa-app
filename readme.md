@@ -4,149 +4,149 @@ Repositorio central para la narrativa simbiótica del universo ZeroDay Unit (ZDU
 
 ---
 
-## Objetivo
+## 🎯 Objetivo
 
-Diseñar, estructurar y sincronizar una infraestructura narrativa modular que combine storytelling con elementos de ciberseguridad, inteligencia artificial y arquitectura digital multiplataforma.
+Diseñar, estructurar y sincronizar una **infraestructura narrativa modular** que combine storytelling con elementos de ciberseguridad, inteligencia artificial y arquitectura digital multiplataforma.
 
 ---
 
-## Estructura
+## 📁 Estructura general del repositorio
 
 El repositorio contiene carpetas organizadas por función narrativa y técnica:
 
-- `zdu/`: Núcleo narrativo, casos CDU, y módulos simbólicos.
-- `ZDU-INFRA/`: Índices, mapeos y soporte técnico para la infraestructura narrativa.
-- `public/`: Archivos listos para despliegue (ej. `index.html`).
-- `scripts/`: Automatizaciones de sincronización y validación.
-- `bitacoras/`: Logs narrativos, técnicos y checkpoints auditados.
-- `zdu-storage/`: Motor de sincronización Supabase ↔ Azure Blob y centro de auditoría de blobs y scripts.
-- `private/`: Carpeta protegida para bitácoras, logs y scripts experimentales.
-- `ai/`: Módulo de pruebas de integración con inteligencia artificial (Genie).
+- `zdu/` → Núcleo narrativo, casos CDU y módulos simbólicos.
+- `ZDU-INFRA/` → Índices, mapeos y soporte técnico para la infraestructura narrativa.
+- `public/` → Archivos listos para despliegue (ej. `index.html`).
+- `scripts/` → Automatizaciones de sincronización y validación.
+- `bitacoras/` → Logs narrativos, técnicos y checkpoints auditados.
+- `zdu-storage/` → Motor de sincronización Supabase ↔ Azure Blob y centro de auditoría de blobs y scripts.
+- `private/` → Carpeta protegida para bitácoras, logs y scripts experimentales.
+- `ai/` → Módulo de pruebas de integración con inteligencia artificial (Genie).
 
 ---
 
-## Auditorías y versión de trabajo
+## 🔗 Rutas simbióticas públicas
+
+- [`zdu.qma.mx`](https://zdu.qma.mx/)
+- [`zdu.qma.mx/lura/`](https://zdu.qma.mx/lura/)
+- [`zdu.qma.mx/heroes/`](https://zdu.qma.mx/heroes/)
+  - [`neon`](https://zdu.qma.mx/heroes/neon)
+  - [`eris`](https://zdu.qma.mx/heroes/eris)
+  - [`luna-varela`](https://zdu.qma.mx/heroes/luna-varela)
+  - [`genie`](https://zdu.qma.mx/heroes/genie)
+  - [`clerk-healy`](https://zdu.qma.mx/heroes/clerk-healy)
+- [`zdu.qma.mx/private/`](https://zdu.qma.mx/private/)
+
+---
+
+## 🔎 Auditorías y versión de trabajo
 
 Los siguientes puntos de control han sido establecidos para mantener trazabilidad sobre los cambios críticos:
 
-- `infra-audit-v1`: Auditoría inicial de carpetas técnicas y sincronización Supabase–Blob.
-- `ai-integration-v1`: Registro de integración simbiótica del módulo AI y trazabilidad con Genie.
-- `readme-consolidation-20250731`: Versión actual de consolidación estructural del repositorio.
+- `infra-audit-v1` → Auditoría inicial de carpetas técnicas y sincronización Supabase–Blob.
+- `ai-integration-v1` → Registro de integración simbiótica del módulo AI y trazabilidad con Genie.
+- `readme-consolidation-20250731` → Versión actual de consolidación estructural del repositorio.
+- `PRIVATE-INFRA · 002` → Hilo activo de consolidación técnica del entorno `private/infra/`.
 
 ---
 
-## Convenciones
+## 📘 Convenciones
 
-- Todos los archivos `.json` deben validarse antes de subirse.
+- Todo archivo `.json` debe validarse antes de subirse.
 - Toda carpeta debe contener su propio `README.md` con propósito, archivos clave y estado de auditoría.
-- Los módulos auditados deben documentarse en el bloque inferior de este archivo raíz.
-- No se deben incluir íconos gráficos ni decoraciones visuales dentro de los archivos Markdown.
-- Toda referencia a módulos de inteligencia artificial debe indicar su relación directa con el sistema Genie o su derivado simbiótico.
+- Los módulos auditados deben documentarse en esta sección del archivo raíz.
+- **No se deben usar íconos gráficos** ni decoraciones visuales en los archivos Markdown.
+- Toda referencia a módulos de IA debe indicar su relación con el sistema **Genie** o sus derivados simbióticos.
 
 ---
 
-## Módulos auditados
+## 🧩 Módulos auditados
 
-### Carpeta: `zdu/private/`
+### Carpeta: `private/`
 
-**Propósito:** Scripts de sincronización entre Supabase y Azure Blob.
+**Propósito:** Infraestructura técnica simbiótica. Soporte para auditorías, prototipos, registros y evolución narrativa.
 
-**Archivos clave:**
-- `sync_supabase_to_blobs.cjs`
-- `audit_repo_json_integrity_zdu.cjs`
-- `parse_bitacora_legacy.cjs`
-- `parse_universo_simbolico.cjs`
-- `bitacora_ingesta.cjs`
-- `RAM_TRACE.log`
+**Subcarpetas clave:**
+- `bitacoras/` → Registros cronológicos de ingesta y diagnóstico.
+- `experimental/` → Scripts no validados en incubación simbiótica.
+- `logs/` → Archivos crudos generados por procesos de auditoría.
+- `infra/` → Núcleo operativo técnico del universo ZDU, ya consolidado.
+
+🔗 Revisión detallada disponible en [`private/README.md`](private/readme.md)
+
+---
+
+### Carpeta: `private/infra/`
+
+**Propósito:** Consolidación técnica modular. Organiza la lógica operativa de auditoría, mapeo y evolución narrativa.
 
 **Subcarpetas revisadas:**
-- `/private/bitacoras/`
-- `/private/logs/`
-- `/private/scripts/`
-- `/private/experimental/`
+- `audits/` → Índices Supabase, campañas procesadas, validaciones técnicas.
+- `mappings/` → Esquemas de dependencia narrativa.
+- `milestones/` → Documentación cronológica de evolución técnica.
+- `legacy/` → Scripts heredados de iteraciones anteriores.
 
-**Observaciones:**
-- Algunos scripts aún no están referenciados cruzadamente.
-- Se corrigió el funcionamiento de `sync_supabase_to_blobs.cjs`.
-- No se hallaron versiones anteriores (`no backup`).
-- Evitar dejar `package.json` sin propósito.
-- Todos los scripts en `experimental/` han sido aislados y documentados para revisión futura.
+🔗 Ver hilo estructural: [`PRIVATE-INFRA · 002`](https://github.com/pmosqueira-sketch/zdu-narrativa-app)
 
 ---
 
 ### Carpeta: `zdu/casos/`
 
 **Estado:** VACÍA  
-**Archivos encontrados:** 0  
-**Acción:** Ninguna requerida por ahora.  
-**Observación:** Lista para futura ingesta de casos CDU. No se detectaron archivos `.json`, `.cjson` o similares.
+**Acción:** Lista para futura ingesta de casos CDU.  
+**Archivos detectados:** Ninguno aún.
 
 ---
 
 ### Carpeta: `zdu/ai/`
 
-**Propósito:** Módulo simbiótico para pruebas de integración con modelos de inteligencia artificial.
-
-**Archivos principales:**
-- Scripts de prueba con ejecución de shell.
-- Variables de entorno en sandbox local.
-- `README.md` incluido con documentación funcional.
+**Propósito:** Integración simbiótica de inteligencia artificial.  
+**Sistema asociado:** Genie (entrenamiento contextual activo).
 
 **Observaciones:**
-- Se ha comenzado el entrenamiento contextual de Genie.
-- Se integrarán conexiones con Supabase para analizar carga semántica.
-- Se considera parte del stack simbiótico del motor MUTA·CORE.
+- Se integran conexiones semánticas con Supabase.
+- Se considera parte de MUTA·CORE.
 
 ---
 
 ### Carpeta: `zdu-storage/`
 
-**Propósito:** Sincronización, trazabilidad y validación entre Supabase y Azure Blob.
+**Propósito:** Sincronización Supabase ↔ Azure Blob, validación narrativa, y seguimiento estructural de archivos.
 
-**Subcarpetas:**
-- `scripts/`: Scripts operativos y auditados.
-- `blob-inventory/`: JSONs de snapshot narrativo (ej. `blobs_zdu-campanas.json`).
-- `specs/`: Documentación técnica y checkpoints.
-- `logs/`: (Movida a `private/logs/` tras consolidación).
-
-**Archivos auditados (julio 2025):**
+**Scripts auditados:**
 - `sync_supabase_to_blobs.cjs`
-- `inspect_supabase_tables.cjs`
-- `test_supabase_connect.cjs`
-- `check_duplicates_and_update.cjs`
 - `audit_jsons.cjs`
 - `test_env_load.cjs`
+- `check_duplicates_and_update.cjs`
+
+**Archivos JSON relevantes:**
 - `blobs_zdu-campanas.json`
 
-**Reubicados:**
-- `sync_blobs.cjs` → `private/experimental/`
-- `zdu_chk_blob_diag_20250728.cjs` → `private/bitacoras/`
-
-**Observaciones:**
-- Los archivos se revisaron a nivel de integridad estructural y propósito narrativo.
-- La auditoría sigue abierta durante el despliegue continuo Supabase ↔ Azure.
+**Movidos a:**
+- `private/experimental/` → Scripts en prototipo.
+- `private/bitacoras/` → Diagnósticos históricos.
 
 ---
 
-## Bloque técnico y simbiótico
+## 🧠 Bloque técnico y simbiótico
 
 ### Visión técnica
 
-La infraestructura aquí desplegada ha logrado integrar de forma eficiente:
+La infraestructura aquí desplegada ha logrado integrar:
 
-- Base de datos Postgres desde Supabase.
-- API REST para consultas narrativas.
-- Automatización en scripts CJS.
-- Revisión semántica en blobs y casos CDU.
-- Flujo de auditoría híbrido y trazable.
-
-Cada módulo está pensado para ser portable, modular y abierto a expansión. El código es interoperable con AWS o cualquier entorno que soporte PostgreSQL, JSON y storage tipo S3.
+- Supabase como backend de datos relacional.
+- API REST para ingestión simbiótica.
+- Scripts en CJS para validaciones internas.
+- Azure Blob como contenedor narrativo operativo.
+- Flujo de auditoría híbrido trazable y portable a cualquier nube.
 
 ### Visión del Creador del Universo ZDU
 
-Aquí no se construyen solo sistemas. Se construyen **realidades posibles**. Cada script que aquí reposa es un acto de resistencia simbiótica ante el caos digital. Los logs son diarios de guerra. Las rutas son líneas de tiempo. Y los blobs... memorias fractales.
+Aquí no se construyen solo sistemas. Se construyen **realidades posibles**.  
+Cada script es un acto de resistencia simbiótica ante el caos digital.  
+Los logs son diarios de guerra. Las rutas, líneas de tiempo. Los blobs... memorias fractales.
 
-ZDU no es solo infraestructura. Es un acto narrativo que crece línea por línea, caso por caso, con lógica, estrategia y memoria viva. Genie no solo asiste: interpreta, aprende, recuerda. Porque este universo no vive en código, sino en propósito.
+**ZDU no es solo infraestructura. Es propósito. Es relato. Es memoria viva.**
 
 **ZDU vive. ZDU evoluciona. Y todo queda documentado.**
 
