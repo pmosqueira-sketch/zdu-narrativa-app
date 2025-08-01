@@ -1,75 +1,94 @@
-# Carpeta `private/` – Entorno técnico reservado del universo ZDU
+# private/ · Entorno técnico reservado del universo ZDU
 
-Este directorio contiene la **infraestructura técnica simbiótica** del universo ZDU. Aquí se concentran los componentes de auditoría, pruebas, planeación de carpetas y scripts internos que dan sustento operativo y narrativo al ecosistema.  
-No está destinado a producción directa, pero es clave para asegurar **coherencia estructural, trazabilidad simbólica y control evolutivo** del proyecto.
+Este directorio representa la **infraestructura técnica simbiótica** que sostiene la evolución narrativa del universo ZDU. Su propósito no es servir como entorno de ejecución productiva, sino funcionar como núcleo de pruebas, auditorías, consolidación estructural y generación de sentido lógico-técnico.
+
+Contiene los módulos que garantizan:
+- Coherencia narrativa estructural.
+- Trazabilidad simbiótica de cada cambio.
+- Consolidación de infraestructura técnica.
+- Cuarentena, incubación y análisis histórico de scripts.
 
 ---
 
-## 📁 Subcarpetas clave
+## Subcarpetas clave
 
 ### `bitacoras/`
-Contiene **registros cronológicos de operaciones técnicas**: scripts de auditoría de blobs, bitácoras de ingesta y diagnósticos históricos.  
-Es la huella simbólica de cada revisión técnica ejecutada en el ecosistema.
+Registros cronológicos de acciones técnicas, diagnósticos históricos y scripts de ingesta narrativa. Funciona como **huella técnica narrativa** del ecosistema.
 
-**Contenido destacado:**
-- `bitacora_ingesta.cjs` – lógica de ingesta narrativa.
-- `zdu_chk_blob_diag_*.cjs` – diagnósticos históricos fechados.
-- `README.md` – documentación explicativa del contexto de uso.
+**Ejemplos destacados:**
+- `bitacora_ingesta.cjs`
+- `zdu_chk_blob_diag_*.cjs`
+- `README.md` contextual explicativo.
 
 ---
 
 ### `experimental/`
-Zona de **prototipado técnico narrativo**. Aquí se incuban scripts aún no validados, posibles futuros integrables al sistema simbiótico o candidatos a descarte tras evaluación.
+Zona de incubación de **scripts en fase prototipo**. Aquí se valida, descarta o evoluciona el código antes de integrarlo al sistema simbiótico activo.
 
-**Contenido destacado:**
-- `sync_blobs.cjs`, `testSupabase.cjs`, etc.
-- `README.md` – bitácora de experimentación activa.
+**Ejemplos destacados:**
+- `sync_blobs.cjs`
+- `testSupabase.cjs`
+- `README.md` con bitácora técnica.
 
 ---
 
 ### `logs/`
-Contiene **registros técnicos generados automáticamente** por herramientas de diagnóstico y auditoría narrativa.  
-Esta carpeta **no debe compartirse públicamente**. Contiene outputs crudos, trazas comparativas y validaciones de integridad.
+Registros técnicos generados automáticamente por módulos de validación. Contienen outputs crudos y comparativas narrativo-técnicas.
+
+**Nota:** Esta carpeta **no debe ser publicada** ni compartida. Es solo para uso interno del equipo ZDU.
 
 ---
 
-### `infra/` 🔧  
-Subestructura **ya consolidada** como núcleo operativo técnico del universo ZDU.
+### `infra/`
+Estructura modular ya consolidada como **núcleo técnico operativo** del universo ZDU. Incluye:
 
-Incluye las siguientes carpetas internas, cada una con su propio `README.md`:
+- `mappings/`: Esquemas de carpetas y relaciones lógicas.
+- `checkpoints/`: Puntos de control técnico-narrativo, documentados.
+- `ai/genie/`: Nodo consolidado de IA simbiótica (ver `README_master_genie.md`).
+- `milestones/`: Fechas clave de evolución simbiótica.
+- `audits/`, `legacy/`, `screenshots/`.
 
-- `mappings/` → Mapas de dependencias, esquemas de carpetas y estrategias estructurales.
-- `audits/` → Validaciones de integridad técnica, índices Supabase y campañas procesadas.
-- `milestones/` → Registro cronológico de hitos técnicos y simbióticos.
-- `legacy/` → Scripts históricos de optimización, ahora aislados para referencia futura.
-
-🔗 Ver archivo [`private/infra/README.md`](infra/readme.md) para detalle completo.
-
----
-
-## 🔁 Consolidación estructural
-
-Este directorio ha sido auditado en el hilo:  
-**[`PRIVATE-INFRA · 002`](https://github.com/pmosqueira-sketch/zdu-narrativa-app)**
-
-Incluye referencias cruzadas con `bitacoras/`, migración de archivos legacy y estructuración de `infra/` en sus niveles jerárquicos.
+🔎 Detalles completos en: [`infra/readme.md`](infra/readme.md)
 
 ---
 
-## ⚙️ Estado técnico actual
+### `_node_modules_backup/` (Cuarentena)
 
-| Variable                   | Valor                          |
-|----------------------------|-------------------------------|
-| Nivel de confidencialidad | **Alto**                       |
-| Estatus de integración    | **Parcialmente consolidado**   |
-| Política de uso           | Revisión continua. No utilizar en producción sin validación previa.|
+Se detectó una instalación inadvertida de `node_modules/` dentro del área de `checkpoints/`. Por razones de control, esta estructura fue movida a **cuarentena técnica**.
+
+- Contenido inspeccionado: solo librerías de sistema, sin código propio.
+- Acción recomendada: **borrar en siguiente versión** si no se detecta dependencia simbólica.
 
 ---
 
-## ✎ Visión simbiótica
+## Consolidación reciente
 
-> *“Toda gran narrativa necesita una zona de sombra. Aquí habita el trabajo silencioso, las pruebas, los errores y las semillas de futuras proezas.”*
+Los siguientes cambios fueron aplicados y validados:
 
-`private/` **no es backstage**, es el sótano donde se construye el futuro del universo ZDU.
+- Se consolidó `ai/genie/` como núcleo operativo simbiótico (con `README_master_genie.md` y `screenshots/`).
+- Se limpiaron carpetas redundantes (`ZDU-ALPHA-GENIE`, `checkpoint.md`, `.DS_Store`).
+- Se documentaron checkpoints y sincronizaciones Supabase ↔ Azure.
+- Se protegió temporalmente `node_modules/` fuera de flujo activo.
+
+---
+
+## Estado actual
+
+| Elemento                      | Estado                    |
+|------------------------------|---------------------------|
+| Integración de `genie/`      | Consolidada y versionada  |
+| Documentación de checkpoints | Activa                    |
+| Control de ingesta           | Validado en bitácoras     |
+| Uso de logs                  | Restringido a diagnóstico |
+| Elementos en cuarentena      | Aislados (pendiente de purga) |
+
+---
+
+## Función estratégica
+
+`private/` es el **núcleo silencioso** donde convergen decisiones simbióticas, pruebas narrativas y estructuras técnicas evolutivas.  
+No es un entorno de producción, pero sin él no existiría el universo ZDU tal como lo conocemos.
+
+> “Toda gran narrativa necesita su sótano. Aquí se construye el futuro, paso a paso, en silencio y con precisión.”
 
 ---
