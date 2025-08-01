@@ -1,3 +1,13 @@
+# Bitácoras
+
+Contiene registros narrativos, simbólicos y de ingesta para procesos automáticos:
+
+- `bitacora_ingesta.cjs`: Script de ingesta narrativa.
+- `zdu_chk_blob_diag_20250728.cjs`: Diagnóstico de blobs con timestamps específicos.
+- `README.md`: Explicación general del módulo simbólico de bitácoras.
+
+✅ Cada archivo aquí funciona como evidencia narrativa o técnica de ingestas realizadas por vertical.
+
 # Carpeta `bitacoras/` – Registro de scripts vinculados a auditorías o pruebas
 
 Esta carpeta agrupa scripts cuya función principal ha sido la **bitácora técnica**, es decir, piezas utilizadas para dejar rastro de pruebas, validaciones o diagnósticos ejecutados sobre componentes simbólicos y de almacenamiento del universo ZDU.
