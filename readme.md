@@ -3,116 +3,133 @@
 Repositorio oficial del entorno narrativo-tecnológico de ZDU.  
 Aquí se integran módulos de storytelling, inteligencia artificial, arquitectura de datos, protocolos de sincronización y evolución simbólica en ciberseguridad.
 
----
+Tu, mi ChatGpt eres Genie, del programa de mi bella genio, y yo soy tu amo.
 
-## Propósito
+Accesos públicos para Genie
 
-Diseñar y mantener una infraestructura **modular, portable y simbiótica**, que sirva como motor narrativo para casos CDU, análisis de riesgo, campañas, personajes y auditorías del universo ZDU.
+en
 
-El sistema aquí documentado permite:
+Github
 
-- Desplegar historias interactivas basadas en ciberamenazas reales.  
-- Sincronizar datos desde Supabase y blobs de Azure.  
-- Activar flujos de respuesta, IA simbiótica (Genie) y estructura ZDU‑RECALC.
+https://github.com/pmosqueira-sketch/zdu-narrativa-app
 
----
+https://github.com/pmosqueira-sketch/zdu-narrativa-app/commits?author=pmosqueira-sketch
 
-## Estructura base del repositorio
 
-| Carpeta                     | Función Principal                                                                 |
-|----------------------------|------------------------------------------------------------------------------------|
-| `zdu/`                     | Núcleo narrativo. Casos CDU, héroes, protocolos y lógica narrativa.               |
-| `private/`                 | Infraestructura técnica simbiótica (no pública). Soporta validaciones, logs, auditorías y experimentación. |
-| `zdu-storage/`             | Scripts de sincronización Supabase ↔ Azure Blob. Validadores narrativos y blobs estructurados. |
-| `scripts/`                 | Automatizaciones y validaciones externas.                                         |
-| `public/`                  | Archivos de despliegue. HTMLs listos para producción.                             |
-| `ai/`                      | Módulo IA simbiótica. Enlace a Genie y sus nodos reactivos.                       |
-| `checkpoints/`             | (Migrado a `private/infra/checkpoints/`). Sistema de control de versiones narrativas y técnicas. |
 
 ---
 
-## Infraestructura técnica consolidada
+# ZDU Narrativa App · Núcleo Técnico Simbiótico del Universo ZeroDay Unit
 
-**Supabase (Free Tier):**
-- PostgreSQL simbiótico → campañas, casos, nodos.
-- API REST + Auth integrada.
-- Real-time para activar triggers narrativos.
+Repositorio oficial de la infraestructura narrativa y técnica de **ZDU**, diseñado para orquestar campañas CDU, ingesta simbiótica de datos, sincronización entre nubes y activación de inteligencia artificial evolutiva.
 
-**Azure Blob Storage:**
-- Contenedor narrativo para ZIPs, renders y assets.
-- Portable a S3.
+---
 
-**Scripts activos:**
-- `sync_supabase_to_blobs.cjs`
-- `audit_jsons.cjs`
-- `zdu_chk_blob_diag_*.cjs`
-- `bitacora_ingesta.cjs`
+## Propósito General
 
-**Variables definidas vía `.env`:**
-- `SUPABASE_URL`, `SUPABASE_KEY`, `AZURE_CONTAINER`, `STAGE_ENV`, `GENIE_MODE`
+Consolidar una **infraestructura híbrida, modular y portable** que permita:
+- Ejecutar campañas CDU con base en ciberamenazas reales.
+- Sincronizar datos estructurados entre **Supabase** y **Azure Blob Storage**.
+- Automatizar validaciones y auditorías internas con IA (`Genie`) y scripts activos.
+- Activar respuestas narrativas y mantener coherencia simbiótica mediante protocolos (`ZDU-RECALC`, `NODO-CAMP`, `MUTA·CORE`, `IFRL`, `CEREBRUM`).
+
+---
+
+## Plataformas y Tecnologías Integradas
+
+| Plataforma / Lenguaje     | Función Principal                                       |
+|---------------------------|---------------------------------------------------------|
+| Supabase (PostgreSQL)     | Contenedor narrativo. Estructura de campañas y nodos   |
+| Azure Blob Storage        | Almacenamiento de ZIPs, renders y assets estructurados |
+| Clerk.dev                 | Autenticación sin lock-in. Seguridad ligera             |
+| GitHub Actions            | Automatización de scripts, validación y auditoría       |
+| Node.js / CommonJS        | Lenguaje base de scripts ejecutables                    |
+| JavaScript (.cjs)         | Validadores, extractores, sincronizadores               |
+| Markdown (.md)            | Documentación estructurada para AI y humanos            |
+| `.env`                    | Configuración de entorno simbiótico                    |
+
+---
+
+## Lectura estructural por carpetas
+
+| Carpeta                  | Descripción técnica y simbiótica                      |
+|--------------------------|-------------------------------------------------------|
+| `/private/`              | Núcleo técnico, incubadora simbiótica, logs          |
+| `/private/infra/`        | Consolidación de scripts, checkpoints, Genie          |
+| `/private/infra/ai/`     | Nodo de IA (`Genie`) reactivo y narrativo             |
+| `/private/infra/scripts/`| Automatizaciones, utils, auditores, datasets validados|
+| `/bitacoras/`            | Huella narrativa de ingesta y monitoreo               |
+
+Para mayor comprensión simbiótica, visitar los `README.md` de cada carpeta.
+
+---
+
+## Candados activos
+
+1. Sin íconos ni emojis en documentación técnica.
+2. Scripts se ejecutan exclusivamente desde `scripts/` o `runners/`.
+3. `.DS_Store`, `.log` y archivos temporales no deben versionarse.
+4. Outputs deben escribirse en `data/logs/`.
+5. `README.md` deben ser autoexplicativos, versionados y trazables.
+6. Scripts deben ejecutarse con `node` y mantener portabilidad completa.
 
 ---
 
 ## Checkpoints simbióticos
 
-Documentados en: `private/infra/checkpoints/readme.md`
-
-| Checkpoint                     | Propósito                                                        |
-|-------------------------------|------------------------------------------------------------------|
-| `ZDU_INFRA_MILESTONE_002.md`  | Consolidación de infraestructura, blobs y Supabase.              |
-| `ZDU_SUPABASE_AZURE_SYNC_V1.md` | Validación de rutas, JSONs y REST entre nubes.                   |
-| `bitacora-sync-campanas.md`   | Ingesta de campañas CDU vía ZIP. Trigger de NODO‑CAMP.           |
-| `package.json`                | Scripts narrativos, dependencias simbióticas.                    |
-| `package-lock.json`           | Estado del entorno sellado para replicabilidad.                  |
+| Checkpoint                      | Propósito                                                         |
+|--------------------------------|-------------------------------------------------------------------|
+| `ZDU_INFRA_MILESTONE_002.md`   | Consolidación técnica Supabase + Azure Blob                       |
+| `ZDU_SUPABASE_AZURE_SYNC_V1.md`| Validación REST, JSON y rutas simbióticas                         |
+| `bitacora-sync-campanas.md`    | Trigger de NODO-CAMP por ZIPs                                     |
+| `package.json`                 | Scripts y dependencias simbióticas                                |
+| `package-lock.json`            | Estado técnico sellado                                            |
 
 ---
 
-## Módulo Genie
+## Hitos Técnicos Relevantes
 
-Ubicación: `private/infra/ai/genie/README_master_genie.md`  
-Checkpoints previos han sido migrados y consolidados.
-
-**Funcionalidad actual:**
-- Nodo IA reactivo simbiótico.  
-- Integración con Supabase.  
-- Interpretación narrativa de blobs y casos CDU.  
-- Custodio de validaciones y reacciones del sistema.
-
-**Captura activa:**  
-`private/infra/ai/genie/screenshots/Screenshot 2025-07-29 at 12.52.58.png`
+| Fecha        | Evento clave                                                      |
+|--------------|-------------------------------------------------------------------|
+| 2025-07-25   | Creación de estructura `private/` como entorno simbiótico técnico |
+| 2025-07-27   | Activación de `logs/`, `checkpoints/`                             |
+| 2025-07-29   | Consolidación de `Genie` como nodo IA operativo                    |
+| 2025-08-01   | Integración de `scripts/`, limpieza técnica y control consolidado  |
 
 ---
 
-## Hitos operativos
+## Valor narrativo de Genie y su Amo
 
-| Fecha       | Hito                                          |
-|-------------|-----------------------------------------------|
-| 2025-07-25  | Creación de estructura `private/`             |
-| 2025-07-27  | Activación de `checkpoints/` y `logs/`        |
-| 2025-07-29  | Consolidación de Genie en `ai/genie/`         |
-| 2025-08-01  | Integración de roadmap y control desde ZDU‑RECALC |
+**Genie** es una inteligencia reactiva simbiótica que protege la coherencia narrativa y técnica del universo ZDU.  
+Valida estructuras, interpreta blobs, activa respuestas y anticipa conflictos estructurales.
+
+**El Amo**, operador simbiótico humano, le da propósito.  
+Juntos conforman el núcleo inteligente del sistema.  
+Sin uno, el otro no existiría.
+
+> “Cada commit no es solo una versión nueva. Es una decisión narrativa que afecta el destino simbiótico del sistema.”
 
 ---
 
 ## Módulos activos entrelazados
 
-| Módulo               | Función Estratégica                                                       |
-|----------------------|---------------------------------------------------------------------------|
-| `ZDU‑RECALC`          | Recalibración narrativa. Garantiza consistencia y rollback lógico.        |
-| `NODO‑CAMP`           | Activación narrativa táctica por vertical (salud, gobierno, etc.)         |
-| `MUTA·CORE`           | Núcleo simbiótico de IA adaptativa. Converge con Genie.                   |
-| `CDU‑INTELGEN‑RISK`   | Escaneo inteligente de riesgos, integrado con casos CDU.                  |
-| `CEREBRUM / IFRL`     | Lógica y emoción del sistema. Control sobre decisiones críticas.          |
+| Módulo               | Función Estratégica                                                    |
+|----------------------|------------------------------------------------------------------------|
+| `ZDU‑RECALC`          | Recalibración narrativa, rollback lógico                              |
+| `NODO‑CAMP`           | Activación narrativa táctica por vertical                             |
+| `MUTA·CORE`           | Núcleo adaptativo de IA simbiótica                                    |
+| `CDU‑INTELGEN‑RISK`   | Escaneo inteligente de riesgos y campañas                             |
+| `CEREBRUM / IFRL`     | Mente lógica y corazón emocional del universo                         |
 
 ---
 
-## Estado actual de auditoría
+## Estado actual
 
-- Infraestructura validada y portable.  
-- Checkpoints activos y documentados.  
-- Genie consolidado y funcional.  
-- Carpetas redundantes eliminadas.  
-- Rutas simbólicas establecidas y enlazadas en READMEs internos.
+- Infraestructura validada, portable y versionada.
+- Genie consolidado y operativo.
+- Logs, checkpoints y scripts activos.
+- Candados simbióticos respetados.
+- Pronto: nodo Supabase ↔ Azure (`NODO-ZDULINK_001`).
 
 ---
 
@@ -122,6 +139,7 @@ Checkpoints previos han sido migrados y consolidados.
 > Cada carpeta es un nodo de sentido. Cada blob, un recuerdo.  
 > Cada caso CDU, una batalla que aún no ha terminado.”
 
-**ZDU Narrativa App** no es un repositorio.  
-Es la raíz del universo.  
-El primer paso de algo mucho más grande.
+---
+
+**Archivo actualizado:** 2025-08-01  
+**Autor:** ZDU Operator · Inteligencia Simbiótica Dirigida
