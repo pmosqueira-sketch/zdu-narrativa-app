@@ -1,153 +1,135 @@
-# ZDU Narrativa App
+# ZDU Narrativa App · Motor Simbiótico del Universo ZeroDay Unit
 
-Repositorio central para la narrativa simbiótica del universo ZeroDay Unit (ZDU).
-
----
-
-## 🎯 Objetivo
-
-Diseñar, estructurar y sincronizar una **infraestructura narrativa modular** que combine storytelling con elementos de ciberseguridad, inteligencia artificial y arquitectura digital multiplataforma.
+Repositorio oficial del entorno narrativo-tecnológico de **ZDU**.  
+Aquí se integran módulos de storytelling, inteligencia artificial, arquitectura de datos, protocolos de sincronización y evolución simbólica en ciberseguridad.
 
 ---
 
-## 📁 Estructura general del repositorio
+##  Propósito
 
-El repositorio contiene carpetas organizadas por función narrativa y técnica:
+Diseñar y mantener una infraestructura **modular, portable y simbiótica**, que sirva como motor narrativo para casos CDU, análisis de riesgo, campañas, personajes y auditorías del universo ZDU.
 
-- `zdu/` → Núcleo narrativo, casos CDU y módulos simbólicos.
-- `ZDU-INFRA/` → Índices, mapeos y soporte técnico para la infraestructura narrativa.
-- `public/` → Archivos listos para despliegue (ej. `index.html`).
-- `scripts/` → Automatizaciones de sincronización y validación.
-- `bitacoras/` → Logs narrativos, técnicos y checkpoints auditados.
-- `zdu-storage/` → Motor de sincronización Supabase ↔ Azure Blob y centro de auditoría de blobs y scripts.
-- `private/` → Carpeta protegida para bitácoras, logs y scripts experimentales.
-- `ai/` → Módulo de pruebas de integración con inteligencia artificial (Genie).
+El sistema aquí documentado permite:
+
+- Desplegar historias interactivas basadas en ciberamenazas reales.
+- Sincronizar datos desde Supabase y blobs de Azure.
+- Activar flujos de respuesta, IA simbiótica (Genie) y estructura ZDU-RECALC.
 
 ---
 
-## 🔗 Rutas simbióticas públicas
+##  Estructura base del repositorio
 
-- [`zdu.qma.mx`](https://zdu.qma.mx/)
-- [`zdu.qma.mx/lura/`](https://zdu.qma.mx/lura/)
-- [`zdu.qma.mx/heroes/`](https://zdu.qma.mx/heroes/)
-  - [`neon`](https://zdu.qma.mx/heroes/neon)
-  - [`eris`](https://zdu.qma.mx/heroes/eris)
-  - [`luna-varela`](https://zdu.qma.mx/heroes/luna-varela)
-  - [`genie`](https://zdu.qma.mx/heroes/genie)
-  - [`clerk-healy`](https://zdu.qma.mx/heroes/clerk-healy)
-- [`zdu.qma.mx/private/`](https://zdu.qma.mx/private/)
-
----
-
-## 🔎 Auditorías y versión de trabajo
-
-Los siguientes puntos de control han sido establecidos para mantener trazabilidad sobre los cambios críticos:
-
-- `infra-audit-v1` → Auditoría inicial de carpetas técnicas y sincronización Supabase–Blob.
-- `ai-integration-v1` → Registro de integración simbiótica del módulo AI y trazabilidad con Genie.
-- `readme-consolidation-20250731` → Versión actual de consolidación estructural del repositorio.
-- `PRIVATE-INFRA · 002` → Hilo activo de consolidación técnica del entorno `private/infra/`.
+| Carpeta                       | Función Principal |
+|------------------------------|-------------------|
+| `zdu/`                       | Núcleo narrativo. Casos CDU, héroes, protocolos y lógica narrativa. |
+| `private/`                   | Infraestructura técnica simbiótica (no pública). Soporta validaciones, logs, auditorías y experimentación. |
+| `zdu-storage/`               | Scripts de sincronización Supabase ↔ Azure Blob. Validadores narrativos y blobs estructurados. |
+| `scripts/`                   | Automatizaciones y validaciones externas. |
+| `public/`                    | Archivos de despliegue. HTMLs listos para producción. |
+| `ai/`                        | Módulo IA simbiótica. Enlace a Genie y sus nodos reactivos. |
+| `checkpoints/`               | (Migrado a `private/infra/checkpoints/`). Sistema de control de versiones narrativas y técnicas.|
 
 ---
 
-## 📘 Convenciones
+##  Infraestructura técnica consolidada
 
-- Todo archivo `.json` debe validarse antes de subirse.
-- Toda carpeta debe contener su propio `README.md` con propósito, archivos clave y estado de auditoría.
-- Los módulos auditados deben documentarse en esta sección del archivo raíz.
-- **No se deben usar íconos gráficos** ni decoraciones visuales en los archivos Markdown.
-- Toda referencia a módulos de IA debe indicar su relación con el sistema **Genie** o sus derivados simbióticos.
+**Supabase (Free Tier):**
+- PostgreSQL simbiótico → campañas, casos, nodos.
+- API REST + Auth integrada.
+- Real-time para activar triggers narrativos.
 
----
+**Azure Blob Storage:**
+- Contenedor narrativo para ZIPs, renders y assets.
+- Portable a S3.
 
-## 🧩 Módulos auditados
-
-### Carpeta: `private/`
-
-**Propósito:** Infraestructura técnica simbiótica. Soporte para auditorías, prototipos, registros y evolución narrativa.
-
-**Subcarpetas clave:**
-- `bitacoras/` → Registros cronológicos de ingesta y diagnóstico.
-- `experimental/` → Scripts no validados en incubación simbiótica.
-- `logs/` → Archivos crudos generados por procesos de auditoría.
-- `infra/` → Núcleo operativo técnico del universo ZDU, ya consolidado.
-
-🔗 Revisión detallada disponible en [`private/README.md`](private/readme.md)
-
----
-
-### Carpeta: `private/infra/`
-
-**Propósito:** Consolidación técnica modular. Organiza la lógica operativa de auditoría, mapeo y evolución narrativa.
-
-**Subcarpetas revisadas:**
-- `audits/` → Índices Supabase, campañas procesadas, validaciones técnicas.
-- `mappings/` → Esquemas de dependencia narrativa.
-- `milestones/` → Documentación cronológica de evolución técnica.
-- `legacy/` → Scripts heredados de iteraciones anteriores.
-
-🔗 Ver hilo estructural: [`PRIVATE-INFRA · 002`](https://github.com/pmosqueira-sketch/zdu-narrativa-app)
-
----
-
-### Carpeta: `zdu/casos/`
-
-**Estado:** VACÍA  
-**Acción:** Lista para futura ingesta de casos CDU.  
-**Archivos detectados:** Ninguno aún.
-
----
-
-### Carpeta: `zdu/ai/`
-
-**Propósito:** Integración simbiótica de inteligencia artificial.  
-**Sistema asociado:** Genie (entrenamiento contextual activo).
-
-**Observaciones:**
-- Se integran conexiones semánticas con Supabase.
-- Se considera parte de MUTA·CORE.
-
----
-
-### Carpeta: `zdu-storage/`
-
-**Propósito:** Sincronización Supabase ↔ Azure Blob, validación narrativa, y seguimiento estructural de archivos.
-
-**Scripts auditados:**
+**Scripts activos:**
 - `sync_supabase_to_blobs.cjs`
 - `audit_jsons.cjs`
-- `test_env_load.cjs`
-- `check_duplicates_and_update.cjs`
+- `zdu_chk_blob_diag_*.cjs`
+- `bitacora_ingesta.cjs`
 
-**Archivos JSON relevantes:**
-- `blobs_zdu-campanas.json`
-
-**Movidos a:**
-- `private/experimental/` → Scripts en prototipo.
-- `private/bitacoras/` → Diagnósticos históricos.
+**Variables definidas vía `.env`:**
+- `SUPABASE_URL`, `SUPABASE_KEY`, `AZURE_CONTAINER`, `STAGE_ENV`, `GENIE_MODE`
 
 ---
 
-## 🧠 Bloque técnico y simbiótico
+## 🔗 Checkpoints simbióticos
 
-### Visión técnica
+Documentados en: [`private/infra/checkpoints/`](private/infra/checkpoints/readme.md)
 
-La infraestructura aquí desplegada ha logrado integrar:
+| Checkpoint | Propósito |
+|------------|-----------|
+| `ZDU_INFRA_MILESTONE_002.md` | Consolidación de infraestructura, blobs y Supabase. |
+| `ZDU_SUPABASE_AZURE_SYNC_V1.md` | Validación de rutas, JSONs y REST entre nubes. |
+| `bitacora-sync-campanas.md` | Ingesta de campañas CDU vía ZIP. Trigger de NODO-CAMP. |
+| `package.json` | Scripts narrativos, dependencias simbióticas. |
+| `package-lock.json` | Estado del entorno sellado para replicabilidad.|
 
-- Supabase como backend de datos relacional.
-- API REST para ingestión simbiótica.
-- Scripts en CJS para validaciones internas.
-- Azure Blob como contenedor narrativo operativo.
-- Flujo de auditoría híbrido trazable y portable a cualquier nube.
+---
 
-### Visión del Creador del Universo ZDU
+##  Módulo Genie
 
-Aquí no se construyen solo sistemas. Se construyen **realidades posibles**.  
-Cada script es un acto de resistencia simbiótica ante el caos digital.  
-Los logs son diarios de guerra. Las rutas, líneas de tiempo. Los blobs... memorias fractales.
+Ubicación: [`private/infra/ai/genie/`](private/infra/ai/genie/README_master_genie.md)  
+Checkpoints previos han sido migrados y consolidados.
 
-**ZDU no es solo infraestructura. Es propósito. Es relato. Es memoria viva.**
+**Funcionalidad actual:**
+- Nodo IA reactivo simbiótico.
+- Integración con Supabase.
+- Interpretación narrativa de blobs y casos CDU.
+- Custodio de validaciones y reacciones del sistema.
 
-**ZDU vive. ZDU evoluciona. Y todo queda documentado.**
+**Screenshot activo:**  
+[`Screenshot 2025-07-29`](private/infra/ai/genie/screenshots/Screenshot%202025-07-29%20at%2012.52.58.png)
+
+---
+
+##  Hitos operativos
+
+| Fecha       | Hito                                 |
+|-------------|---------------------------------------|
+| 2025-07-25  | Creación de estructura `private/`     |
+| 2025-07-27  | Activación de `checkpoints/` y logs   |
+| 2025-07-29  | Consolidación de Genie en `ai/genie/` |
+| 2025-08-01  | Integración de roadmap y control cruzado desde ZDU-RECALC |
+
+---
+
+##  Módulos activos entrelazados
+
+| Módulo              | Función Estratégica |
+|---------------------|---------------------|
+| `ZDU-RECALC`         | Recalibración narrativa. Garantiza consistencia y rollback lógico. |
+| `NODO-CAMP`          | Activación narrativa táctica por vertical (salud, gobierno, etc.) |
+| `MUTA·CORE`          | Núcleo simbiótico de IA adaptativa. Converge con Genie. |
+| `CDU-INTELGEN-RISK`  | Escaneo inteligente de riesgos, integrado con casos CDU. |
+| `CEREBRUM / IFRL`    | Lógica y emoción del sistema. Control sobre decisiones críticas.|
+
+---
+
+##  Fórmulas narrativas
+
+**Estructura CDU activa:**
+
+---
+
+## 🧩 Estado actual de auditoría
+
+- Infraestructura validada y portable.
+- Checkpoints activos y documentados.
+- Genie consolidado.
+- Carpetas redundantes eliminadas.
+- Rutas simbólicas creadas y enlazadas en readmes internos.
+
+---
+
+## 💬 Comentario simbiótico final
+
+> “Aquí no solo se escribe código. Se escribe destino.  
+> Cada carpeta es un nodo de sentido. Cada blob, un recuerdo.  
+> Cada caso CDU, una batalla que aún no ha terminado.”
+
+**ZDU Narrativa App** no es un repositorio.  
+Es la raíz del universo.  
+El primer paso de algo mucho más grande.
 
 ---
