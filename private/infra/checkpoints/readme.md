@@ -93,3 +93,8 @@ Cada archivo es una memoria. Cada cambio, un acto narrativo.
 Nada se pierde. Todo se transforma. Y queda trazado.
 
 ---
+
+### ZDU_CHECKPOINT_CLEANUP_20250801.md
+Checkpoint de limpieza estructural. Marca el cierre de una fase de auditoría interna, reubicación de carpetas redundantes, depuración de artefactos `.DS_Store`, exclusión de `.git.zip` y consolidación de Genie en su módulo maestro.  
+Este punto representa un **refresco completo del entorno de desarrollo**, asegurando que todo archivo en producción esté bajo control simbiótico, sin basura técnica ni duplicidades.  
+Se enlaza con `README_master_genie.md`, `private/infra/mappings/`, y sincronización de blobs.
