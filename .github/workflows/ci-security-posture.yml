@@ -32,7 +32,7 @@ permissions:
 
 env:
   LOG_DIR: private/infra/scripts/logs
-  SECURITY_BASE: private/quality/data-contracts   # ← (1) base configurable
+  SECURITY_BASE: private/quality/data-contracts
   PY_VERSION: "3.11"
 
 jobs:
@@ -66,13 +66,13 @@ jobs:
             echo "::warning::SECURITY_BASE does not exist: ${SECURITY_BASE}"
           fi
 
-      # Si tu script requiere más flags (p.ej. --owner), agrégalos aquí
+      # Si tu script requiere --owner, deja la línea activa; si no, bórrala.
       - name: Build Security Posture
         continue-on-error: true
         run: |
           python private/quality/pipelines/sec_posture.py \
             --base "${SECURITY_BASE}" \
-            --owner "pmosqueira-sketch" \  # <-- si tu script lo requiere
+            --owner "pmosqueira-sketch" \
             --out "${LOG_DIR}/security_posture.json"
 
       - name: Verify output exists
@@ -81,7 +81,7 @@ jobs:
           ls -la "${LOG_DIR}" || true
           if [ ! -f "${LOG_DIR}/security_posture.json" ]; then
             echo "::warning::security_posture.json no encontrado. Creando vacío para no romper el upload."
-            echo "{}" > "${LOG_DIR}/security_posture.json"    # ← (3) fallback
+            echo "{}" > "${LOG_DIR}/security_posture.json"
           fi
           echo "Size:"; wc -c "${LOG_DIR}/security_posture.json" || true
           echo "Head:"; head -c 500 "${LOG_DIR}/security_posture.json" || true
