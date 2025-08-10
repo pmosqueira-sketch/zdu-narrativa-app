@@ -1,7 +1,32 @@
 name: CI · Inventory + Lint + Schemas
 
 on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
   workflow_dispatch: {}
+  
   push:
     branches: [ main, master, develop ]
     paths-ignore:
