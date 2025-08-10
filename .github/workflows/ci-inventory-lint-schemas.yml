@@ -66,6 +66,7 @@ jobs:
       # =========================
       - name: Repo inventory
         run: |
+          set -e
           if [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
             python private/quality/console/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           elif [ -f "private/quality/pipelines/scan_repo.py" ]; then
@@ -75,7 +76,7 @@ jobs:
           elif [ -f "private/infra/scripts/scan_repo.py" ]; then
             python private/infra/scripts/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           else
-            python - <<'PY'
+            cat > /tmp/inventory_fallback.py <<'PY'
 import os, json, time
 root='.'
 summary={'files':0,'bytes':0,'by_ext':{},'latest_mtime':0}
@@ -96,6 +97,7 @@ summary['latest_mtime_iso']=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(summ
 os.makedirs('private/infra/scripts/logs', exist_ok=True)
 with open('private/infra/scripts/logs/inventory.json','w') as fh: json.dump(summary, fh, indent=2)
 PY
+            python /tmp/inventory_fallback.py || true
           fi
 
       # =========================
@@ -111,16 +113,17 @@ PY
         run: biome lint . --reporter=json > "$LOG_DIR/biome.json" || true
 
       # =========================
-      # Validate JSON against schemas (MAPEADO)
+      # Validate JSON against schemas (MAPEADO, sin here-doc)
       # =========================
       - name: Validate JSON against schemas (mapped)
         run: |
-          python - <<'PY'
+          set -e
+          cat > /tmp/schema_validate_mapped.py <<'PY'
 import os, json, glob, sys
 from jsonschema import Draft202012Validator as V
 
-SCHEMAS_DIR = os.environ["SCHEMAS_DIR"]
-LOG_DIR = os.environ["LOG_DIR"]
+SCHEMAS_DIR = os.environ.get("SCHEMAS_DIR", "private/quality/data-contracts")
+LOG_DIR = os.environ.get("LOG_DIR", "private/infra/scripts/logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
 # Mapa schema -> patrones de datos (ajústalo si cambian nombres)
@@ -174,8 +177,9 @@ outp = os.path.join(LOG_DIR, "schema_validation_report.json")
 with open(outp, "w", encoding="utf-8") as out:
   json.dump(results, out, indent=2, ensure_ascii=False)
 print(json.dumps(results, indent=2, ensure_ascii=False))
-sys.exit(0)  # no fallamos aún; gates en siguiente fase
+sys.exit(0)  # gates en fase siguiente
 PY
+          python /tmp/schema_validate_mapped.py
 
       - name: Summary
         run: |
