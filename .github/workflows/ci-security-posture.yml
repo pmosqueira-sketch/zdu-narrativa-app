@@ -44,16 +44,13 @@ jobs:
           pip install --upgrade jsonschema
           npm i -g ajv-cli ajv-formats
 
-      # ========= Generate posture =========
       - name: Generate security posture JSON
         run: |
-          set -e
           if [ -f "private/quality/pipelines/sec_posture.py" ]; then
             python private/quality/pipelines/sec_posture.py --out "$LOG_DIR/security_posture.json"
           elif [ -f "private/quality/console/pipelines/sec_posture.py" ]; then
             python private/quality/console/pipelines/sec_posture.py --out "$LOG_DIR/security_posture.json"
           else
-            # Fallback mínimo para no romper el job
             python - <<'PY'
 import json, os
 os.makedirs("private/infra/scripts/logs", exist_ok=True)
@@ -61,23 +58,18 @@ json.dump({"status":"fallback","items":[]}, open("private/infra/scripts/logs/sec
 PY
           fi
 
-      # ========= Validate with schema =========
       - name: Validate posture against schema (AJV)
         run: |
-          set +e
           rc=0
           SCH="$SCHEMAS_DIR/security_posture.schema.json"
           OUT="$LOG_DIR/security_posture.json"
           if [ -f "$SCH" ] && [ -f "$OUT" ]; then
-            ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false \
-              > "$LOG_DIR/security_posture_schema.txt" 2>&1 || rc=1
+            ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false > "$LOG_DIR/security_posture_schema.txt" 2>&1 || rc=1
           else
             echo "Schema or output not found" > "$LOG_DIR/security_posture_schema.txt"
             rc=1
           fi
           echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/security_schema_results.json"
-          # No fallamos el workflow: dejamos el status en artefactos/summary
-          exit 0
 
       - name: Summary
         run: |
