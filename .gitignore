@@ -83,3 +83,4 @@ venv/lib/**/playwright/driver/node
 .git.zip
 node_modules/
 .github/workflows/workflows/
+.github/workflows/workflows/
