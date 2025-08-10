@@ -1,6 +1,12 @@
-name: CI · Security Posture (manual)
+name: CI · Security Posture
 
 on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: "0 12 * * *"   # diario 12:00 UTC
   workflow_dispatch: {}
 
 permissions:
@@ -11,26 +17,55 @@ env:
   PY_VERSION: "3.11"
 
 jobs:
-  sec_posture:
+  security_posture:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PY_VERSION }} }
-      - run: mkdir -p "${LOG_DIR}"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+
+      - name: Ensure dirs
+        run: mkdir -p "${LOG_DIR}"
+
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install trivy jsonschema
-      - name: Generate security posture
+          pip install jsonschema
+
+      # Si tu script requiere más flags, los agregamos aquí
+      - name: Build Security Posture
         run: |
           python private/quality/pipelines/sec_posture.py \
             --out "${LOG_DIR}/security_posture.json"
-      - name: Upload logs
+
+      # Diagnóstico: ver qué hay en LOG_DIR y asegurar el archivo
+      - name: Verify output exists
+        run: |
+          echo "== LOG_DIR contents =="
+          ls -la "${LOG_DIR}" || true
+          if [ ! -f "${LOG_DIR}/security_posture.json" ]; then
+            echo "::warning::security_posture.json no encontrado. Creando vacío para no romper el upload."
+            echo "{}" > "${LOG_DIR}/security_posture.json"
+          fi
+          echo "Size:"; wc -c "${LOG_DIR}/security_posture.json" || true
+          echo "Head:"; head -c 500 "${LOG_DIR}/security_posture.json" || true
+
+      - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: security-posture
           path: ${{ env.LOG_DIR }}/security_posture.json
           if-no-files-found: warn
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Security Posture" >> $GITHUB_STEP_SUMMARY
+          echo "- Output: \`${LOG_DIR}/security_posture.json\`" >> $GITHUB_STEP_SUMMARY
