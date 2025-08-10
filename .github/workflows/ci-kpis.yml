@@ -3,8 +3,28 @@ name: CI · DevSecOps KPIs
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
   workflow_dispatch: {}
 
 permissions:
