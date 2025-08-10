@@ -83,13 +83,21 @@ venv/lib/**/playwright/driver/node
 # ================================
 .git.zip
 
-# audit reports
+# Git archive exports
+.git.zip
+
+# audit_reports (artefactos temporales)
 changed_integrations.txt
 deleted_all.txt
 deleted_integrations.txt
 diff_all.txt
 
-# Logs locales
+# Logs locales (no versionar)
 private/logs/
 private/infra/scripts/logs/
 
+# Dependencias locales
+node_modules/
+
+# Carpeta de workflows generados (si existiera)
+.github/workflows/workflows/

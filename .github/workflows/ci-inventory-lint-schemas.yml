@@ -1,0 +1,196 @@
+name: CI · Inventory + Lint + Schemas
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main, master, develop ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
+  pull_request:
+    branches: [ main, master, develop ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-inventory-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  SCHEMAS_DIR: private/quality/data-contracts
+  NODE_VERSION: '20'
+  PY_VERSION: '3.11'
+
+jobs:
+  inventory_lint_validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare log dir
+        run: mkdir -p "$LOG_DIR"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+          cache: 'pip'
+
+      - name: Install CLI tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade ruff jsonschema
+          npm i -g markdownlint-cli @biomejs/biome
+
+      # =========================
+      # Repo Inventory (con fallback)
+      # =========================
+      - name: Repo inventory
+        run: |
+          set -e
+          if [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
+            python private/quality/console/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/pipelines/scan_repo.py" ]; then
+            python private/quality/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/widgets/pipelines/scan_repo.py" ]; then
+            python private/quality/widgets/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/infra/scripts/scan_repo.py" ]; then
+            python private/infra/scripts/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          else
+            cat > /tmp/inventory_fallback.py <<'PY'
+import os, json, time
+root='.'
+summary={'files':0,'bytes':0,'by_ext':{},'latest_mtime':0}
+skip=['./.git','/node_modules','/.venv','/.pytest_cache']
+for dp,_,fs in os.walk(root):
+    if any(s in dp for s in skip): continue
+    for f in fs:
+        p=os.path.join(dp,f)
+        try:
+            st=os.stat(p)
+            summary['files']+=1
+            summary['bytes']+=st.st_size
+            ext=os.path.splitext(f)[1].lower() or 'noext'
+            summary['by_ext'][ext]=summary['by_ext'].get(ext,0)+1
+            if st.st_mtime>summary['latest_mtime']: summary['latest_mtime']=st.st_mtime
+        except: pass
+summary['latest_mtime_iso']=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(summary['latest_mtime']))
+os.makedirs('private/infra/scripts/logs', exist_ok=True)
+with open('private/infra/scripts/logs/inventory.json','w') as fh: json.dump(summary, fh, indent=2)
+PY
+            python /tmp/inventory_fallback.py || true
+          fi
+
+      # =========================
+      # Lint
+      # =========================
+      - name: Lint Markdown
+        run: markdownlint "**/*.md" --ignore "node_modules" --json > "$LOG_DIR/markdownlint.json" || true
+
+      - name: Lint Python (ruff)
+        run: ruff check . --output-format=json > "$LOG_DIR/ruff.json" || true
+
+      - name: Lint JS/TS (biome)
+        run: biome lint . --reporter=json > "$LOG_DIR/biome.json" || true
+
+      # =========================
+      # Validate JSON against schemas (MAPEADO, sin here-doc)
+      # =========================
+      - name: Validate JSON against schemas (mapped)
+        run: |
+          set -e
+          cat > /tmp/schema_validate_mapped.py <<'PY'
+import os, json, glob, sys
+from jsonschema import Draft202012Validator as V
+
+SCHEMAS_DIR = os.environ.get("SCHEMAS_DIR", "private/quality/data-contracts")
+LOG_DIR = os.environ.get("LOG_DIR", "private/infra/scripts/logs")
+os.makedirs(LOG_DIR, exist_ok=True)
+
+# Mapa schema -> patrones de datos (ajústalo si cambian nombres)
+mapping = {
+  "security_posture.schema.json": ["**/security_posture.json"],
+  "protocols.schema.json":       ["**/protocols.json"],
+  "logs.schema.json":            ["**/logs.json"],
+  "kpis.schema.json":            ["**/kpis.json"],
+  "devsecops_kpis.schema.json":  ["**/devsecops_kpis.json"],
+  "crawl.schema.json":           ["**/crawl_audit.json"],
+  "content_audit.schema.json":   ["**/content_audit.json"],
+  "campaigns.schema.json":       ["**/campaigns_latest.json"]
+}
+
+# Carga schemas
+schemas = {}
+for s in mapping:
+  p = os.path.join(SCHEMAS_DIR, s)
+  if os.path.isfile(p):
+    with open(p, "r", encoding="utf-8") as fh:
+      schemas[s] = json.load(fh)
+
+results = {"validated": [], "errors": []}
+
+for schema_name, patterns in mapping.items():
+  schema = schemas.get(schema_name)
+  if not schema:
+    results["errors"].append({"schema": schema_name, "error": "Schema not found"})
+    continue
+  validator = V(schema)
+  found_any = False
+  for pat in patterns:
+    for data_path in glob.glob(pat, recursive=True):
+      if data_path.endswith(".schema.json"):
+        continue
+      found_any = True
+      try:
+        with open(data_path, "r", encoding="utf-8") as f:
+          data = json.load(f)
+        issues = [e.message for e in sorted(validator.iter_errors(data), key=lambda e: e.path)]
+        if issues:
+          results["errors"].append({"file": data_path, "schema": schema_name, "issues": issues})
+        else:
+          results["validated"].append({"file": data_path, "schema": schema_name})
+      except Exception as ex:
+        results["errors"].append({"file": data_path, "schema": schema_name, "error": str(ex)})
+  if not found_any:
+    results["validated"].append({"file": "(not found)", "schema": schema_name})
+
+outp = os.path.join(LOG_DIR, "schema_validation_report.json")
+with open(outp, "w", encoding="utf-8") as out:
+  json.dump(results, out, indent=2, ensure_ascii=False)
+print(json.dumps(results, indent=2, ensure_ascii=False))
+sys.exit(0)  # gates en fase siguiente
+PY
+          python /tmp/schema_validate_mapped.py
+
+      - name: Summary
+        run: |
+          echo "## Inventory & Lint & Schemas" >> $GITHUB_STEP_SUMMARY
+          echo "- Logs dir: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Schemas dir: \`$SCHEMAS_DIR\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inventory-and-schemas-${{ github.run_number }}
+          path: ${{ env.LOG_DIR }}/**
+          if-no-files-found: warn

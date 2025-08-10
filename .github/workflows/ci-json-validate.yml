@@ -1,0 +1,76 @@
+name: CI · JSON validate
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ main, master, develop ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+  pull_request:
+    branches: [ main, master, develop ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-json-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  SCHEMAS_DIR: private/quality/data-contracts
+  NODE_VERSION: '20'
+
+jobs:
+  json_validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare log dir
+        run: mkdir -p "$LOG_DIR"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install AJV CLI
+        run: |
+          npm i -g ajv-cli ajv-formats
+
+      - name: Validate JSON against schemas (AJV)
+        shell: bash
+        run: |
+          set +e
+          rc=0
+
+          if [ -d "$SCHEMAS_DIR" ]; then
+            : > "$LOG_DIR/schemas_generic.txt"  # limpia/crea archivo de resultados
+
+            for s in "$SCHEMAS_DIR"/*.schema.json; do
+              [ -f "$s" ] || continue
+              # Valida todos los JSON versionados que no sean *.schema.json
+              while IFS= read -r d; do
+                ajv -c ajv-formats -s "$s" -d "$d" --strict=false >> "$LOG_DIR/schemas_generic.txt" 2>&1 || rc=1
+              done < <(git ls-files | grep -Ei '\.json$' | grep -v '\.schema\.json')
+            done
+          fi
+
+          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/schema_results.json"
+          # No fallamos el job: deja traza pero continúa el pipeline
+          exit 0
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: json-validate-${{ github.run_number }}
+          path: ${{ env.LOG_DIR }}/**
+          if-no-files-found: warn
