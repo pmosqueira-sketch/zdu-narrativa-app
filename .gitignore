@@ -52,6 +52,7 @@ scripts/output/
 # ================================
 .DS_Store
 __MACOSX/
+**/.DS_Store
 
 # ================================
 # Python virtual environments and cache
@@ -81,6 +82,22 @@ venv/lib/**/playwright/driver/node
 # Git archive exports
 # ================================
 .git.zip
+
+# Git archive exports
+.git.zip
+
+# audit_reports (artefactos temporales)
+changed_integrations.txt
+deleted_all.txt
+deleted_integrations.txt
+diff_all.txt
+
+# Logs locales (no versionar)
+private/logs/
+private/infra/scripts/logs/
+
+# Dependencias locales
 node_modules/
-.github/workflows/workflows/
+
+# Carpeta de workflows generados (si existiera)
 .github/workflows/workflows/
