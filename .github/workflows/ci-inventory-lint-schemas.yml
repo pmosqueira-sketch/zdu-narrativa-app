@@ -60,24 +60,24 @@ jobs:
       # Repo Inventory
       # =========================
       - name: Repo inventory
+        shell: bash
         run: |
-          set -e
-          if [ -f "private/quality/pipelines/scan_repo.py" ]; then
-            python private/quality/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
-          elif [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
+          if [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
             python private/quality/console/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/pipelines/scan_repo.py" ]; then
+            python private/quality/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/widgets/pipelines/scan_repo.py" ]; then
+            python private/quality/widgets/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           elif [ -f "private/infra/scripts/scan_repo.py" ]; then
             python private/infra/scripts/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           else
-            # Fallback inline minimal inventory
             python - <<'PY' || true
 import os, json, time
 root='.'
 summary={'files':0,'bytes':0,'by_ext':{},'latest_mtime':0}
-skip={'./.git','./node_modules','./.venv','./.pytest_cache'}
+skip=['./.git','/node_modules','/.venv','/.pytest_cache']
 for dp,_,fs in os.walk(root):
-    if any(dp.startswith(s) for s in skip): 
-        continue
+    if any(s in dp for s in skip): continue
     for f in fs:
         p=os.path.join(dp,f)
         try:
@@ -87,12 +87,12 @@ for dp,_,fs in os.walk(root):
             ext=os.path.splitext(f)[1].lower() or 'noext'
             summary['by_ext'][ext]=summary['by_ext'].get(ext,0)+1
             if st.st_mtime>summary['latest_mtime']: summary['latest_mtime']=st.st_mtime
-        except: 
-            pass
+        except: pass
 summary['latest_mtime_iso']=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(summary['latest_mtime']))
 os.makedirs('private/infra/scripts/logs', exist_ok=True)
 with open('private/infra/scripts/logs/inventory.json','w') as fh: json.dump(summary, fh, indent=2)
 PY
+
           fi
 
       - name: Lint Markdown
