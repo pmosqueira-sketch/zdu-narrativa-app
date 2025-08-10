@@ -1,6 +1,10 @@
-name: CI · DevSecOps KPIs (manual)
+name: CI · DevSecOps KPIs
 
 on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch: {}
 
 permissions:
@@ -17,7 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: ${{ env.PY_VERSION }} }
+        with:
+          python-version: ${{ env.PY_VERSION }}
       - run: mkdir -p "${LOG_DIR}"
       - name: Install deps
         run: |
