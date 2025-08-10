@@ -1,7 +1,7 @@
 name: CI · Inventory + Lint + Schemas
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   push:
     branches: [ main, master, develop ]
     paths-ignore:
@@ -33,8 +33,10 @@ jobs:
     defaults:
       run:
         shell: bash
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Prepare log dir
         run: mkdir -p "$LOG_DIR"
@@ -60,7 +62,6 @@ jobs:
       # Repo Inventory
       # =========================
       - name: Repo inventory
-        shell: bash
         run: |
           if [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
             python private/quality/console/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
@@ -92,7 +93,6 @@ summary['latest_mtime_iso']=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(summ
 os.makedirs('private/infra/scripts/logs', exist_ok=True)
 with open('private/infra/scripts/logs/inventory.json','w') as fh: json.dump(summary, fh, indent=2)
 PY
-
           fi
 
       - name: Lint Markdown
@@ -111,9 +111,7 @@ PY
           if [ -d "$SCHEMAS_DIR" ]; then
             for s in "$SCHEMAS_DIR"/*.schema.json; do
               [ -f "$s" ] || continue
-              base="$(basename "$s" .schema.json)"
-              # Busca JSONs que coincidan con el nombre base o cualquier .json (excluye los .schema.json)
-              git ls-files | grep -Ei "\.json$" | grep -v '\.schema\.json' | while read -r d; do
+              git ls-files | grep -Ei '\.json$' | grep -v '\.schema\.json' | while read -r d; do
                 ajv -c ajv-formats -s "$s" -d "$d" --strict=false >> "$LOG_DIR/schemas_generic.txt" 2>&1 || rc=1
               done
             done
@@ -127,8 +125,9 @@ PY
           echo "- Logs dir: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
           echo "- Schemas dir: \`$SCHEMAS_DIR\`" >> $GITHUB_STEP_SUMMARY
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifacts
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: inventory-and-schemas-${{ github.run_number }}
           path: ${{ env.LOG_DIR }}/**
