@@ -52,6 +52,7 @@ scripts/output/
 # ================================
 .DS_Store
 __MACOSX/
+**/.DS_Store
 
 # ================================
 # Python virtual environments and cache
