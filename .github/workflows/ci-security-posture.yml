@@ -50,10 +50,11 @@ jobs:
 
       # Si tu script requiere más flags (p.ej. --owner), agrégalos aquí
       - name: Build Security Posture
-        continue-on-error: true              # ← (2) no bloquea el flujo si falla
+        continue-on-error: true
         run: |
           python private/quality/pipelines/sec_posture.py \
             --base "${SECURITY_BASE}" \
+            --owner "pmosqueira-sketch" \  # <-- si tu script lo requiere
             --out "${LOG_DIR}/security_posture.json"
 
       - name: Verify output exists
