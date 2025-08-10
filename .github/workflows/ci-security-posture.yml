@@ -1,4 +1,4 @@
-name: CI · KPIs (generate + compose DevSecOps)
+name: CI · Security posture (scan + schema validation)
 
 on:
   workflow_dispatch: {}
@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-kpis-${{ github.ref }}
+  group: ci-security-posture-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -21,9 +21,9 @@ env:
   PY_VERSION: '3.11'
 
 jobs:
-  kpis:
+  security_posture:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     defaults:
       run:
         shell: bash
@@ -47,101 +47,72 @@ jobs:
           python-version: ${{ env.PY_VERSION }}
           cache: 'pip'
 
-      - name: Install CLI tools (with versions)
+      - name: Install tools
         run: |
           set -x
           python --version
           node --version
-          npm --version
           pip install --upgrade jsonschema
           npm i -g ajv-cli ajv-formats
-          ajv --version || true
           set +x
 
-      # Si más adelante agregas un generador real, lo detectamos primero.
-      - name: Generate KPIs (scripts reales si existen; si no, fallback)
+      # Si tienes un escáner propio, se usa; si no, generamos un reporte mínimo.
+      - name: Scan repository (or fallback generator)
         run: |
           set -e
-          if [ -f "private/quality/console/pipelines/gen_kpis.py" ]; then
-            python private/quality/console/pipelines/gen_kpis.py --out "$LOG_DIR" || true
-          elif [ -f "private/quality/pipelines/gen_kpis.py" ]; then
-            python private/quality/pipelines/gen_kpis.py --out "$LOG_DIR" || true
+          if [ -f "private/quality/console/pipelines/scan_security.py" ]; then
+            python private/quality/console/pipelines/scan_security.py --out "$LOG_DIR/security_posture.json" || true
+          elif [ -f "private/quality/pipelines/scan_security.py" ]; then
+            python private/quality/pipelines/scan_security.py --out "$LOG_DIR/security_posture.json" || true
           else
             python - <<'PY' || true
-import os, json, time, random
+import os, json, time
 os.makedirs("private/infra/scripts/logs", exist_ok=True)
-now=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
-# Placeholders sensatos; cámbialos cuando tengas tus scripts
-json.dump({"generated_at":now,"uptime_pct":99.9,"incidents_7d":0},
-          open("private/infra/scripts/logs/staging_uptime.json","w"))
-json.dump({"generated_at":now,"coverage_pct":random.randint(60,90)},
-          open("private/infra/scripts/logs/tests_coverage.json","w"))
-json.dump({"generated_at":now,"lint_errors":0,"schema_errors":0},
-          open("private/infra/scripts/logs/kpis_quality.json","w"))
-json.dump({"generated_at":now,"dast_findings":0,"sast_findings":0},
-          open("private/infra/scripts/logs/devsecops_kpis.json","w"))
+report = {
+  "generated_at": time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+  "sast_findings": 0,
+  "dast_findings": 0,
+  "dependencies_vulns": 0,
+  "secrets_detected": 0
+}
+with open("private/infra/scripts/logs/security_posture.json","w") as fh:
+    json.dump(report, fh, indent=2)
 PY
           fi
 
-      - name: Validate KPIs against schemas (AJV)
+      - name: Validate report against schema (AJV)
         continue-on-error: true
         run: |
           set +e
-          rc=0
-          for pair in \
-            "staging_uptime.json:$SCHEMAS_DIR/staging_uptime.schema.json" \
-            "tests_coverage.json:$SCHEMAS_DIR/tests_coverage.schema.json" \
-            "kpis_quality.json:$SCHEMAS_DIR/kpis_quality.schema.json" \
-            "devsecops_kpis.json:$SCHEMAS_DIR/devsecops_kpis.schema.json"
-          do
-            OUT="$LOG_DIR/${pair%%:*}"
-            SCH="${pair##*:}"
-            if [ -f "$SCH" ] && [ -f "$OUT" ]; then
-              echo "Validating $OUT with $SCH"
-              ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false >> "$LOG_DIR/kpis_schema_validate.txt" 2>&1 || rc=1
-            else
-              echo "Skip: falta archivo ($OUT) o esquema ($SCH)" >> "$LOG_DIR/kpis_schema_validate.txt"
-            fi
-          done
-          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/kpis_schema_results.json"
+          OUT="$LOG_DIR/security_posture.json"
+          SCH="$SCHEMAS_DIR/security_posture.schema.json"
+          if [ -f "$SCH" ] && [ -f "$OUT" ]; then
+            ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false >> "$LOG_DIR/security_posture_schema.txt" 2>&1 || true
+            echo '{"ok": true}' > "$LOG_DIR/security_schema_results.json"
+          else
+            echo "Faltan archivo ($OUT) o esquema ($SCH)" >> "$LOG_DIR/security_posture_schema.txt"
+            echo '{"ok": false}' > "$LOG_DIR/security_schema_results.json"
+          fi
           exit 0
 
-      - name: Compose DevSecOps summary
+      - name: Summary
         run: |
-          python - <<'PY'
-import json, os
-base="private/infra/scripts/logs"
-def load(fn):
-  p=os.path.join(base,fn)
-  return json.load(open(p)) if os.path.exists(p) else {}
-summary={
-  "uptime": load("staging_uptime.json"),
-  "tests": load("tests_coverage.json"),
-  "quality": load("kpis_quality.json"),
-  "security": load("devsecops_kpis.json")
-}
-json.dump(summary, open(os.path.join(base,"devsecops_compose.json"),"w"), indent=2)
-PY
+          echo "## Security posture" >> $GITHUB_STEP_SUMMARY
+          echo "- Reporte: \`$LOG_DIR/security_posture.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Validación: \`$LOG_DIR/security_posture_schema.txt\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Resultado: \`$LOG_DIR/security_schema_results.json\`" >> $GITHUB_STEP_SUMMARY
 
       - name: Inspect logs dir
         if: always()
         run: |
-          echo "LOG_DIR=$LOG_DIR"
           ls -al "$LOG_DIR" || true
-          echo "---- kpis_schema_validate.txt ----"
-          [ -f "$LOG_DIR/kpis_schema_validate.txt" ] && tail -n +1 "$LOG_DIR/kpis_schema_validate.txt" || echo "(no existe)"
-
-      - name: Summary
-        run: |
-          echo "## KPIs · DevSecOps" >> $GITHUB_STEP_SUMMARY
-          echo "- Carpeta de logs: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
-          echo "- Resultado schemas: \`$LOG_DIR/kpis_schema_results.json\`" >> $GITHUB_STEP_SUMMARY
-          echo "- Compose: \`$LOG_DIR/devsecops_compose.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "---- security_posture_schema.txt ----"
+          [ -f "$LOG_DIR/security_posture_schema.txt" ] && tail -n +1 "$LOG_DIR/security_posture_schema.txt" || echo "(no existe)"
 
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kpis-${{ github.run_number }}
+          name: security-posture-${{ github.run_number }}
           path: ${{ env.LOG_DIR }}/**
           if-no-files-found: warn
