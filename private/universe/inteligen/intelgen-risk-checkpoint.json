@@ -1,0 +1,25 @@
+{
+    "module": "INTELGEN-RISK",
+    "path": "/private/inteligen/",
+    "filename": "intelgen-risk-checkpoint.json",
+    "version": "1.0.0",
+    "description": "Checkpoint del m\u00f3dulo INTELGEN-RISK que sirve como punto de referencia l\u00f3gico para activaci\u00f3n y monitoreo por parte del ZDU-CRAWLER-AI.",
+    "linked_md": "INTELGEN-RISK.md",
+    "linked_ai_agent": "ZDU-CRAWLER-AI",
+    "status": "active",
+    "inputs": [
+        "threat-urls",
+        "vertical-tags",
+        "rule-stack-top25",
+        "mitre-sources",
+        "crawler-scan"
+    ],
+    "outputs": [
+        "risk-maps",
+        "trigger-alerts",
+        "recommendation-json",
+        "fast-response-init"
+    ],
+    "last_updated": "2025-08-02T00:00:00Z",
+    "next_review_due": "2025-09-01T00:00:00Z"
+}

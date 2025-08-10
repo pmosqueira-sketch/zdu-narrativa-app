@@ -1,0 +1,20 @@
+.
+├── README-AI-INVESTIGACION.md
+├── README-AI-MASTER copy.md
+├── README-AI-MASTER.md
+├── README-AI-MASTER2.md
+├── README.md
+├── ai_estructura.txt
+├── genie
+│   ├── README_master_genie.md
+│   └── screenshots
+│       └── Screenshot 2025-07-29 at 12.52.58.png
+├── historical
+├── ligas-tecnologias.md
+├── modulos-sugeridos
+│   ├── ZDU-GITHUB-CONTROL.md
+│   ├── ZDU-OSS-HEALTHSCAN.md
+│   └── ZDU-WORKFLOW-INTEL.md
+└── roadmap.md
+
+5 directories, 13 files

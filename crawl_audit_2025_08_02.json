@@ -1,0 +1,67 @@
+{
+  "agent": "iCrawler",
+  "timestamp": "2025-08-02T18:23:29.997302",
+  "status": "complete",
+  "files_detected": [
+    "private/infra/auth/jwt/clerk_supabase_jwks.json",
+    "private/infra/checkpoints/checkpoint_supabase_structure_2025-08-02.json",
+    "private/infra/checkpoints/package-lock.json",
+    "private/infra/checkpoints/package.json",
+    "private/infra/checkpoints/checkpoint_manifest.json",
+    "private/infra/ai/AI_Manifest.json",
+    "private/infra/ai/manifest/ZDU_AI_MANIFEST.json",
+    "private/infra/scripts/crawlers/Crawler_Manifest.json",
+    "private/infra/scripts/crawlers/manifest.crawler.json",
+    "private/infra/scripts/audits/modules/supabase_table_index.json",
+    "private/infra/scripts/audits/modules/bitacoras/processed_campaigns.json",
+    "private/infra/scripts/audits/modules/logs/repo_json_audit_data.json",
+    "private/infra/scripts/audits/data/processed_campaigns.json",
+    "private/infra/scripts/logs/repo_json_audit_data.json",
+    "private/infra/scripts/data/logs/campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json",
+    "private/infra/scripts/data/logs/campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json",
+    "private/infra/scripts/data/logs/campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json",
+    "private/infra/scripts/data/logs/campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json",
+    "private/infra/scripts/data/logs/repo_json_audit_data.json",
+    "private/infra/assets/qma360/estructura_qma360.json",
+    "private/infra/assets/qma360/QMA360_Manifest.json",
+    "private/infra/assets/qma360/estructura_qma360.sql",
+    "private/infra/assets/qma360/manifest_qma360.json",
+    "private/infra/sql/estructura_qma360_inserts.sql",
+    "private/infra/sql/supabase_qma360_estructura.sql",
+    "private/infra/sql/auditoria/supabase_structure_audit.sql",
+    "private/infra/sql/auditoria/structure_snapshots/snapshot_supabase_structure_2025-08-02.csv",
+    "private/inteligen/intelgen-risk-checkpoint.json"
+  ],
+  "total_files": 28,
+  "scan_scope": {
+    "root_path": "/private/",
+    "scan_types": [
+      "markdown",
+      "json",
+      "sql",
+      "csv"
+    ],
+    "include_dirs": [
+      "infra",
+      "framework",
+      "quality",
+      "checkpoints",
+      "scripts/crawlers"
+    ],
+    "supabase": {
+      "enabled": true,
+      "modules": [
+        "heroes",
+        "villanos",
+        "casos",
+        "campa\u00f1as",
+        "checkpoints",
+        "powers",
+        "crawler_output"
+      ]
+    },
+    "blob_storage_check": true,
+    "ram_check": true
+  },
+  "notes": "Activaci\u00f3n inicial. Validar consistencia l\u00f3gica en m\u00f3dulos estructurales. Asociar con AI Crawler ya instalado en entorno local Mac Studio. Verificar outputs con checkpointer."
+}

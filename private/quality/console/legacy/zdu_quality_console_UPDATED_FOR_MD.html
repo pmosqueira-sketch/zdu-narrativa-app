@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ZDU Quality Console · Auditoría MD</title>
+  <style>
+    body { background: #0c0c0c; color: #e0e0e0; font-family: monospace; padding: 2em; }
+    h2 { color: #00ffcc; }
+    button { background: #00ffcc; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #00ccaa; }
+    pre { background: #111; color: #0f0; padding: 1em; margin-top: 1em; max-height: 500px; overflow-y: auto; border-left: 4px solid #00ffcc; }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 ZDU Quality Console · Auditoría Markdown</h1>
+
+  <section>
+    <h2>Auditoría de Archivos .MD</h2>
+    <button onclick="loadAudit()">📂 Cargar auditoría</button>
+    <pre id="auditResult">Esperando acción del agente...</pre>
+  </section>
+
+  <script>
+    async function loadAudit() {
+      const res = await fetch('../infra/scripts/logs/audit_md_output.json');
+      if (!res.ok) {
+        document.getElementById('auditResult').textContent = '❌ Error al cargar el archivo de auditoría.';
+        return;
+      }
+      const data = await res.json();
+      let output = "";
+      data.forEach(entry => {
+        output += `[${entry.status.toUpperCase()}] ${entry.path} (${entry.lines || 0} líneas)\n`;
+      });
+      document.getElementById('auditResult').textContent = output;
+    }
+  </script>
+
+</body>
+</html>

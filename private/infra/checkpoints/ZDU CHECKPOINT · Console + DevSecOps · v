@@ -1,0 +1,197 @@
+ZDU CHECKPOINT · Console + DevSecOps · v1
+
+Ubicación sugerida: /private/infra/checkpoints/ZDU_CHECKPOINT_CONSOLE_DEVSECOPS_v1.md
+
+Fecha: 2025‑08‑10
+Ámbito: Consola QUALITY (Home, DevSecOps, Content, Security, Campaigns, Protocols) + Data Contracts + Pipelines iniciales + Server local.
+
+⸻
+
+1) Estado actual (resumen)
+	•	Consola operativa con navegación consistente y estilo unificado (modo oscuro).
+	•	Vistas activas:
+	•	Home (index.html): semáforo (critical_findings, http_200_rate, inventario).
+	•	DevSecOps (devsecops.html): KPIs de plataforma (delivery/calidad/seguridad/ops) y Platform Gate con umbrales desde gates_platform.config.json.
+	•	Content Audit (content.html): inventario desde content_audit.json.
+	•	Security Posture (security.html): hallazgos ordenados por severidad desde security_posture.json + filtros.
+	•	QMA‑C360 (campaigns.html): KPIs de campañas (open/bounce) desde kpis_quality.json.
+	•	Protocols (protocols.html): estado/avance (protocols_status.json), COMCON (brief/panels) y README_UNIVERSE.md con renderer Markdown + fallback.
+	•	Server local: python3 -m http.server 8000 en la raíz del repo.
+
+⸻
+
+2) Estructura de archivos
+
+/private/quality/console/
+  index.html
+  devsecops.html
+  content.html
+  security.html
+  campaigns.html
+  protocols.html
+
+/private/quality/data-contracts/
+  logs.schema.json
+  crawl.schema.json
+  kpis.schema.json
+  content_audit.schema.json
+  security_posture.schema.json
+  devsecops_kpis.schema.json
+  protocols.schema.json
+  comcon.schema.json
+
+/private/infra/scripts/logs/
+  md_audit_results.json
+  crawl_audit_latest.json
+  kpis_quality.json
+  content_audit.json
+  security_posture.json
+  devsecops_kpis.json
+  gates_platform.config.json
+  protocols_status.json
+  comcon_brief_sample.json
+
+/private/quality/pipelines/
+  generate_kpis.py
+  scan_repo.py
+  sec_posture.py
+  build_devsecops_kpis.py
+  campaigns_sample.csv
+
+
+⸻
+
+3) Contratos de datos (definidos)
+	•	content_audit.schema.json → inventario de archivos (path/kind/purpose/owner/size/last_modified/status/tags).
+	•	security_posture.schema.json → hallazgos de seguridad (type/target/severity/evidence/recommended_fix/status).
+	•	logs.schema.json → auditoría MD.
+	•	crawl.schema.json → eventos del crawler.
+	•	kpis.schema.json → KPIs genéricos (campañas/infra/seguridad/qa).
+	•	devsecops_kpis.schema.json → KPIs de plataforma (delivery/quality/security/operations) para Platform Gate.
+	•	protocols.schema.json → estado/avance de Fast Response, COMIX, IFRL, Cerebrum, COMCON.
+	•	comcon.schema.json → brief táctico + beats + panels + style.
+
+Pendiente (próximo sprint): campaigns.schema.json (normalización MailerLite/Brevo).
+
+⸻
+
+4) Pipelines disponibles
+	•	Inventario: scan_repo.py → content_audit.json (ignora __MACOSX, .DS_Store, .git, etc.).
+	•	Postura de seguridad: sec_posture.py → security_posture.json (secret scan básico, .htaccess hints).
+	•	KPIs campañas: generate_kpis.py → kpis_quality.json (opcional CSV).
+	•	KPIs plataforma: build_devsecops_kpis.py → devsecops_kpis.json (agrega DORA + calidad + seguridad + ops).
+Gates leídos desde gates_platform.config.json.
+
+Comandos de ejemplo
+
+# Server local
+yarn serve # (opcional) o
+python3 -m http.server 8000
+
+# Inventario
+python3 private/quality/pipelines/scan_repo.py \
+  --base ./private \
+  --out ./private/infra/scripts/logs/content_audit.json
+
+# Seguridad
+python3 private/quality/pipelines/sec_posture.py \
+  --base ./private \
+  --out ./private/infra/scripts/logs/security_posture.json
+
+# Campañas (demo)
+python3 private/quality/pipelines/generate_kpis.py \
+  --out ./private/infra/scripts/logs/kpis_quality.json \
+  --campaigns-csv ./private/quality/pipelines/campaigns_sample.csv
+
+# DevSecOps KPIs (plataforma)
+python3 private/quality/pipelines/build_devsecops_kpis.py \
+  --logs-root ./private/infra/scripts/logs \
+  --out ./private/infra/scripts/logs/devsecops_kpis.json
+
+
+⸻
+
+5) Umbrales del Platform Gate
+
+Archivo: /private/infra/scripts/logs/gates_platform.config.json
+
+Claves mínimas sugeridas:
+
+{
+  "delivery": { "deployment_frequency_min_per_7d": 4, "lead_time_hours_max": 24, "change_failure_rate_max_pct": 15, "mttr_hours_max": 4 },
+  "quality":  { "unit_test_coverage_min_pct": 80, "lint_errors_max": 5, "schema_validation_min_pct": 95 },
+  "security": { "critical_vulns_open_max": 0, "high_vulns_open_max": 3, "secrets_exposed_max": 0 },
+  "operations": { "staging_uptime_min_pct": 99.0, "error_rate_backend_max_pct": 1.0 }
+}
+
+devsecops.html lee este archivo; si no existe, usa defaults equivalentes.
+
+⸻
+
+6) Cómo correr y validar
+	1.	Levantar servidor: python3 -m http.server 8000 en la raíz del repo.
+	2.	Abrir consola: http://localhost:8000/private/quality/console/index.html.
+	3.	Verificar fuentes:
+	•	http://localhost:8000/private/infra/scripts/logs/content_audit.json
+	•	http://localhost:8000/private/infra/scripts/logs/security_posture.json
+	•	http://localhost:8000/private/infra/scripts/logs/devsecops_kpis.json
+	•	http://localhost:8000/private/universe/README_UNIVERSE.md (se puede descargar; la consola lo formatea).
+
+⸻
+
+7) Pendientes priorizados (Next Sprints)
+
+A) Integración CI/CD (GitHub Actions)
+	•	Jobs:
+	•	Inventory & Lint → scan_repo.py + lints (md, js, py) y validación de schemas.
+	•	Tests & Coverage → subir tests_coverage.json.
+	•	Security → secreto/SCA (Trivy/Snyk) y volcados a security_posture.json.
+	•	Build DevSecOps KPIs → build_devsecops_kpis.py en cada push a main.
+	•	Artefactos → publish a /private/infra/scripts/logs/ (branch gh-pages o storage interno).
+
+B) Postura de seguridad (ampliación)
+	•	Integrar Wordfence (waf logs), DNS/MX (chequeos), y Azure Blob ACL.
+	•	Normalizar severidades, ownership y SLA de cierre.
+
+C) Campaigns
+	•	Definir campaigns.schema.json + normalizador MailerLite/Brevo → campaigns_latest.json para campaigns.html.
+	•	Métricas adicionales: CTR, CTOR, spam rate, dominio, segmento.
+
+D) Protocolos
+	•	Cargar progreso real de Fast Response y COMIX.
+	•	Completar COMCON con assets/roles del universo (link a Supabase).
+
+E) UX/Clerk
+	•	Proteger /private/quality/console/ con Clerk (viewer/operator/admin).
+	•	Preferencias de umbrales editables desde UI (escribir gates_platform.config.json).
+
+⸻
+
+8) Riesgos / decisiones
+	•	Archivos locales (.md) pueden descargarse por MIME; el renderer del panel lo resuelve.
+	•	Consistencia de rutas: toda referencia usa /private/infra/scripts/logs/ absoluto; si se sirve desde otra raíz, ajustar a relativas.
+	•	Datos dummy: existen para validar la UI; reemplazar por pipelines CI/CD en sprints siguientes.
+
+⸻
+
+9) Checklist de cierre de versión (v1)
+	•	Home con semáforo.
+	•	DevSecOps con KPIs de plataforma y gate.
+	•	Content/Security/Campaigns/Protocols operativos.
+	•	Data contracts en /data-contracts.
+	•	JSONs en /infra/scripts/logs.
+	•	Pipelines base en /quality/pipelines.
+	•	README_UNIVERSE con render y fallback.
+
+⸻
+
+10) Commit sugerido
+
+git add private/quality/console/*.html \
+        private/quality/data-contracts/*.json \
+        private/infra/scripts/logs/*.json \
+        private/quality/pipelines/*
+
+git commit -m "QUALITY Console v1: dashboards + data contracts + pipelines + platform gate"
+
+Próximo hilo: ZDU DevSecOps · CI/CD & Integraciones (GitHub Actions, Clerk, MailerLite/Brevo, Wordfence, DNS/MX, Azure Blob).

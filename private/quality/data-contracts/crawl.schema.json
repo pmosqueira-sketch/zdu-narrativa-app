@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Crawler Audit Latest",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "timestamp",
+      "source",
+      "title",
+      "threat_type",
+      "severity",
+      "slug",
+      "url",
+      "status"
+    ],
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "source": {
+        "type": "string",
+        "description": "origin feed or site"
+      },
+      "title": {
+        "type": "string"
+      },
+      "threat_type": {
+        "type": "string",
+        "description": "e.g., vuln, phishing, breach, malware"
+      },
+      "severity": {
+        "type": "string",
+        "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ]
+      },
+      "slug": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string",
+        "format": "uri"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "mitigated",
+          "ignored"
+        ]
+      },
+      "related_targets": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "notes": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ZDU · Crawler Audit Viewer</title>
+  <style>
+    body { background-color: #121212; color: #e0e0e0; font-family: Helvetica, sans-serif; padding: 20px; }
+    h1 { color: #00ffcc; }
+    pre { background-color: #1e1e1e; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    .section { margin-bottom: 30px; }
+    .tag { font-weight: bold; color: #00ffff; }
+    .status-complete { color: #00ff00; font-weight: bold; }
+    .status-empty { color: #ff4444; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>ZDU · Crawler Audit Viewer</h1>
+
+  <div class="section">
+    <h2>📋 Instrucciones</h2>
+    <p>Coloca el archivo <code>crawl_audit_2025_08_02.json</code> en la misma carpeta que este HTML.<br>
+    Luego ábrelo en tu navegador y haz clic en el botón para visualizar el análisis.</p>
+    <input type="file" id="fileInput" />
+  </div>
+
+  <div class="section">
+    <h2>📑 Resultado</h2>
+    <div id="result">
+      <p>Carga el archivo JSON para ver el resultado.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function(evt) {
+      const file = evt.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const data = JSON.parse(e.target.result);
+        let html = '<div class="section">';
+        html += `<p><span class="tag">Agente:</span> ${data.agent}</p>`;
+        html += `<p><span class="tag">Estado:</span> <span class="status-${data.status}">${data.status.toUpperCase()}</span></p>`;
+        html += `<p><span class="tag">Archivos detectados:</span> ${data.total_files}</p>`;
+        html += `<p><span class="tag">Fecha:</span> ${data.timestamp}</p>`;
+        html += `<p><span class="tag">Notas:</span> ${data.notes}</p>`;
+        html += '</div>';
+        html += '<div class="section"><h3>🧾 Archivos:</h3><pre>' + data.files_detected.join('\n') + '</pre></div>';
+        document.getElementById('result').innerHTML = html;
+      };
+      reader.readAsText(file);
+    });
+  </script>
+
+</body>
+</html>

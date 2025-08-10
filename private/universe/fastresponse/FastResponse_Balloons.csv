@@ -1,0 +1,5 @@
+scene_id,scene_phase,timeline_order,panel_id,hero_name,hero_slug,balloon_type,balloon_text,balloon_position,emotional_tone,trigger_event,render_lock,style_tags,last_updated
+FR-Prep-001,Preparation,1,P1,NeonMind,neonmind,speech,"Sistemas en verde, CISO. Listos para elevar el nivel de vigilancia.",top-left,calm,system_ready,SCENE_PREP_READY,tail:short;emphasis:none,2025-08-09T01:39:55.711028Z
+FR-Detect-003,Detection & Analysis,2,P2,Eris Sentinel,eris-sentinel,thought,Si Neon le vuelve a sonreír al CISO… resuelvo esto antes que nadie.,bottom-right,jealous,sees_Neon_CISO_interaction,SCENE_CONTAINMENT_TRIANGLE,bubble:cloud;opacity:0.9,2025-08-09T01:39:55.711039Z
+FR-Contain-002,Containment & Eradication,3,P3,Magna,magna,speech,Corte aplicado. Segmentación OT en marcha. ¡Nadie entra!,center,determined,ot_segment_apply,SCENE_CONTAINMENT_ACTIVE,bold:true;tail:long,2025-08-09T01:39:55.711042Z
+FR-Lessons-001,Lessons Learned,4,P4,Luna Varela,luna-varela,speech,Gracias por su confianza. Mañana les compartimos el informe final.,top-center,composed,stakeholder_briefing,SCENE_AFTER_BRIEFING,font:light,2025-08-09T01:39:55.711045Z

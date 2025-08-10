@@ -1,0 +1,38 @@
+{
+    "manifest_name": "ZDU_AI_MANIFEST",
+    "generated_on": "2025-08-02 05:56:29",
+    "structure": {
+        "ai_root": "private/infra/ai/",
+        "description": "M\u00f3dulo maestro de inteligencia artificial aplicada al universo ZDU. Contiene manifiestos, m\u00f3dulos internos, y v\u00ednculos a componentes simbi\u00f3ticos como MUTA\u00b7CORE, IFRL, y Cerebrum.",
+        "files": [
+            {
+                "filename": "README-AI-MASTER.md",
+                "purpose": "Documento principal del m\u00f3dulo AI. Define objetivos, componentes clave y arquitectura simbi\u00f3tica.",
+                "status": "activo"
+            }
+        ],
+        "submodules": [
+            {
+                "name": "genie",
+                "path": "private/infra/ai/genie/",
+                "description": "Espacio reservado para m\u00f3dulos experimentales y herramientas desarrolladas por Genie. Puede incluir conectores, crawlers o validadores."
+            }
+        ],
+        "historical": [
+            {
+                "filename": "ZDU_AI_RESEARCH_SNAPSHOT_20250801.zip",
+                "path": "private/infra/checkpoints/",
+                "description": "Snapshot de investigaci\u00f3n simbi\u00f3tica previo a consolidaci\u00f3n del manifiesto AI.",
+                "status": "resguardo"
+            }
+        ],
+        "experimental": [
+            {
+                "filename": "README-AI-MASTER2.md",
+                "path": "private/infra/experimental/",
+                "description": "Versi\u00f3n alterna del manifiesto AI, con posibles elementos heredados o de prueba.",
+                "status": "archivado"
+            }
+        ]
+    }
+}

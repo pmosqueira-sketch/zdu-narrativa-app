@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "estructura": {
+    "qma360": {
+      "salud-beneficios": "Argumentarios comerciales por vertical",
+      "salud-casos-estudio": "Casos de \u00e9xito sector salud",
+      "salud-datasheets": "PDFs t\u00e9cnicos de fabricantes",
+      "banca-beneficios": "Campa\u00f1as QMA orientadas a banca",
+      "banca-datasheets": "Fichas t\u00e9cnicas sector financiero",
+      "educacion-textsheets": "Textsheets para sector educativo",
+      "global-productos": "Cat\u00e1logo de productos activos (iboss, S1, etc.)",
+      "documentos": "Archivos generales por campa\u00f1a o producto",
+      "scripts": "Automatizaciones y crawlers espec\u00edficos"
+    }
+  }
+}

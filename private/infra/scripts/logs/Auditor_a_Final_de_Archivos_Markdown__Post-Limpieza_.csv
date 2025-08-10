@@ -1,0 +1,121 @@
+,Archivo,Ruta,Tipo,Ubicación,Estado
+35,README_INFRA_MAPPINGS_CONSOLIDADO.md,private/infra/checkpoints/README_INFRA_MAPPINGS_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+22,SUPABASE-STRUCTURE-AUDIT.md,private/infra/checkpoints/SUPABASE-STRUCTURE-AUDIT.md,other,✅ En checkpoints,🟢 Consolidado
+38,ZDU_AUDIT_INFRA_010825.md,private/infra/checkpoints/ZDU_AUDIT_INFRA_010825.md,other,✅ En checkpoints,🟢 Consolidado
+47,ZDU_CHECKPOINTS_INDEX.md,private/infra/checkpoints/ZDU_CHECKPOINTS_INDEX.md,other,✅ En checkpoints,🟢 Consolidado
+30,ZDU_CHECKPOINTS_MASTER_CONSOLIDATED.md,private/infra/checkpoints/ZDU_CHECKPOINTS_MASTER_CONSOLIDATED.md,other,✅ En checkpoints,🟢 Consolidado
+29,ZDU_CHECKPOINT_AI_README_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_AI_README_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+24,ZDU_CHECKPOINT_AUDITORIA_MD_FINALv1_2025_08_03.md,private/infra/checkpoints/ZDU_CHECKPOINT_AUDITORIA_MD_FINALv1_2025_08_03.md,other,✅ En checkpoints,🟢 Consolidado
+20,ZDU_CHECKPOINT_CLEANUP_20250801.md,private/infra/checkpoints/ZDU_CHECKPOINT_CLEANUP_20250801.md,other,✅ En checkpoints,🟢 Consolidado
+45,ZDU_CHECKPOINT_CLEANUP_MDUS_2025_08_03.md,private/infra/checkpoints/ZDU_CHECKPOINT_CLEANUP_MDUS_2025_08_03.md,other,✅ En checkpoints,🟢 Consolidado
+44,ZDU_CHECKPOINT_CLERK_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_CLERK_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+23,ZDU_CHECKPOINT_COMPONENTES_ZDU.md,private/infra/checkpoints/ZDU_CHECKPOINT_COMPONENTES_ZDU.md,other,✅ En checkpoints,🟢 Consolidado
+36,ZDU_CHECKPOINT_INFRA_EXPERIMENTAL.md,private/infra/checkpoints/ZDU_CHECKPOINT_INFRA_EXPERIMENTAL.md,other,✅ En checkpoints,🟢 Consolidado
+31,ZDU_CHECKPOINT_INFRA_MAPPINGS_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_INFRA_MAPPINGS_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+42,ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,private/infra/checkpoints/ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,other,✅ En checkpoints,🟢 Consolidado
+19,ZDU_CHECKPOINT_MD_REZAGADOS_2025_08_03.md,private/infra/checkpoints/ZDU_CHECKPOINT_MD_REZAGADOS_2025_08_03.md,other,✅ En checkpoints,🟢 Consolidado
+46,ZDU_CHECKPOINT_PRIVET_README_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_PRIVET_README_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+41,ZDU_CHECKPOINT_QUALITY_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_QUALITY_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+43,ZDU_CHECKPOINT_SQL_CONSOLIDADO.md,private/infra/checkpoints/ZDU_CHECKPOINT_SQL_CONSOLIDADO.md,other,✅ En checkpoints,🟢 Consolidado
+33,ZDU_CHECKPOINT_VISUAL_CODE_0803.md,private/infra/checkpoints/ZDU_CHECKPOINT_VISUAL_CODE_0803.md,other,✅ En checkpoints,🟢 Consolidado
+37,ZDU_CONTAINER_VALIDATION_010825.md,private/infra/checkpoints/ZDU_CONTAINER_VALIDATION_010825.md,other,✅ En checkpoints,🟢 Consolidado
+25,ZDU_CRAWLER_SCRIPTS_CONSOLIDATION_20250803.md,private/infra/checkpoints/ZDU_CRAWLER_SCRIPTS_CONSOLIDATION_20250803.md,other,✅ En checkpoints,🟢 Consolidado
+18,ZDU_INFRA_MILESTONE_002.md,private/infra/checkpoints/ZDU_INFRA_MILESTONE_002.md,other,✅ En checkpoints,🟢 Consolidado
+32,ZDU_SUPABASE_AZURE_SYNC_V1.md,private/infra/checkpoints/ZDU_SUPABASE_AZURE_SYNC_V1.md,other,✅ En checkpoints,🟢 Consolidado
+40,ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,private/infra/checkpoints/ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,other,✅ En checkpoints,🟢 Consolidado
+26,bitacora-sync-campanas.md,private/infra/checkpoints/bitacora-sync-campanas.md,other,✅ En checkpoints,🟢 Consolidado
+21,changelog.md,private/infra/checkpoints/changelog.md,other,✅ En checkpoints,🟢 Consolidado
+27,iCrawler.md,private/infra/checkpoints/iCrawler.md,other,✅ En checkpoints,🟢 Consolidado
+39,qma360_candado_readmes.md,private/infra/checkpoints/qma360_candado_readmes.md,other,✅ En checkpoints,🟢 Consolidado
+34,readme.md,private/infra/checkpoints/readme.md,readmes,✅ En checkpoints,🟢 Consolidado
+17,zdu_quality_checkpoint_AUDIT_MD_JSON_20250803.md,private/infra/checkpoints/zdu_quality_checkpoint_AUDIT_MD_JSON_20250803.md,other,✅ En checkpoints,🟢 Consolidado
+28,zdu_quality_checkpoint_PHASE_IV.md,private/infra/checkpoints/zdu_quality_checkpoint_PHASE_IV.md,other,✅ En checkpoints,🟢 Consolidado
+119,CEREBRUM.md,private/universe/cerebrum/CEREBRUM.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+116,IFRL.md,private/universe/ifrl/IFRL.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+105,INTELGEN-RISK.md,private/inteligen/INTELGEN-RISK.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+117,MUTACORE.md,private/universe/mutacore/MUTACORE.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+115,NODO-CAMP.md,private/campaigns/NODO-CAMP.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+118,NODO-CAMP.md,private/universe/nodecamp/NODO-CAMP.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+4,README copy.md,private/infra/experimental/README copy.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+6,README-AI-MASTER2.md,private/infra/experimental/README-AI-MASTER2.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+52,README-AI-REST.md,private/infra/ai/docs/README-AI-REST.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+53,README-AI-ROADMAP.md,private/infra/ai/docs/README-AI-ROADMAP.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+104,README-INTELGEN-RISK.md,private/inteligen/README-INTELGEN-RISK.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+101,README-JAVA-ENV.md,private/infra/validation/README-JAVA-ENV.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+111,README-ZDU-FRAMEWORK.md,private/framework/README-ZDU-FRAMEWORK.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+62,README-iCrawler.md,private/infra/scripts/crawlers/README-iCrawler.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+0,README.md,./README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+1,README.md,private/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+9,README.md,private/infra/auth/jwt/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+12,README.md,private/infra/zdu-storage/blob-inventory/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+15,README.md,private/infra/zdu-storage/specs/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+50,README.md,private/infra/ai/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+58,README.md,private/infra/ai/clerk/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+59,README.md,private/infra/scripts/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+61,README.md,private/infra/scripts/crawlers/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+66,README.md,private/infra/scripts/audits/modules/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+68,README.md,private/infra/scripts/utils/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+69,README.md,private/infra/scripts/data/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+81,README.md,private/infra/assets/qma360/banca/input/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+82,README.md,private/infra/assets/qma360/banca/output/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+83,README.md,private/infra/assets/qma360/banca/procesado/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+84,README.md,private/infra/assets/qma360/industria/input/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+85,README.md,private/infra/assets/qma360/industria/output/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+86,README.md,private/infra/assets/qma360/industria/procesado/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+88,README.md,private/infra/assets/qma360/gobierno/input/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+89,README.md,private/infra/assets/qma360/gobierno/output/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+90,README.md,private/infra/assets/qma360/gobierno/procesado/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+93,README.md,private/infra/assets/qma360/salud/input/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+94,README.md,private/infra/assets/qma360/salud/output/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+95,README.md,private/infra/assets/qma360/salud/procesado/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+102,README.md,private/infra/sql/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+106,README.md,private/bitacoras/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+108,README.md,private/quality/README.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+10,README_AUTH.md,private/infra/auth/jwt/README_AUTH.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+60,README_CRAWLER_ZDU.md,private/infra/scripts/crawlers/README_CRAWLER_ZDU.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+64,README_INTELGEN-MD-AUDIT.md,private/infra/scripts/audits/runners/README_INTELGEN-MD-AUDIT.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+96,README_PARTNER_SYNC.md,private/infra/assets/qma360/partners/README_PARTNER_SYNC.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+79,README_QMA360_STRUCTURE.md,private/infra/assets/qma360/README_QMA360_STRUCTURE.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+2,README_SUPRASTRUCTURE.md,private/infra/README_SUPRASTRUCTURE.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+72,README_ZDU_MANIFESTS.md,private/infra/mappings/README_ZDU_MANIFESTS.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+92,README_banca-beneficios.md,private/infra/assets/qma360/banca-beneficios/README_banca-beneficios.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+97,README_banca-datasheets.md,private/infra/assets/qma360/banca-datasheets/README_banca-datasheets.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+100,README_blackcat.md,private/infra/assets/villanos/blackhat/README_blackcat.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+98,README_educacion-textsheets.md,private/infra/assets/qma360/educacion-textsheets/README_educacion-textsheets.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+77,README_luna_varela.md,private/infra/assets/heroes/luna-varela/README_luna_varela.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+54,README_master_genie.md,private/infra/ai/genie/README_master_genie.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+80,README_qma360.md,private/infra/assets/qma360/README_qma360.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+76,README_renders.md,private/infra/assets/renders/README_renders.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+87,README_salud-beneficios.md,private/infra/assets/qma360/salud-beneficios/README_salud-beneficios.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+91,README_salud-casos-estudio.md,private/infra/assets/qma360/salud-casos-estudio/README_salud-casos-estudio.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+99,README_salud-datasheets.md,private/infra/assets/qma360/salud-datasheets/README_salud-datasheets.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+113,RULESTACK.md,private/rules/RULESTACK.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+103,SUPABASE-STRUCTURE-AUDIT.md,private/infra/sql/auditoria/structure_snapshots/SUPABASE-STRUCTURE-AUDIT.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+78,ZDU-002_README.md,private/infra/assets/cdu/ZDU-002/ZDU-002_README.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+57,ZDU-GITHUB-CONTROL.md,private/infra/ai/modulos-sugeridos/ZDU-GITHUB-CONTROL.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+56,ZDU-OSS-HEALTHSCAN.md,private/infra/ai/modulos-sugeridos/ZDU-OSS-HEALTHSCAN.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+112,ZDU-RECALC.md,private/recalc/ZDU-RECALC.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+114,ZDU-RULESTACK.md,private/rules/ZDU-RULESTACK.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+107,ZDU-SIGMA-CORE-CHECKPOINT.md,private/quality/ZDU-SIGMA-CORE-CHECKPOINT.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+55,ZDU-WORKFLOW-INTEL.md,private/infra/ai/modulos-sugeridos/ZDU-WORKFLOW-INTEL.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+16,ZDU_BLOB_SYNC_ENGINE_V1.md,private/infra/zdu-storage/specs/ZDU_BLOB_SYNC_ENGINE_V1.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+14,ZDU_BLOB_VALIDATION_ENGINE_V1.md,private/infra/zdu-storage/specs/ZDU_BLOB_VALIDATION_ENGINE_V1.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+75,ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,private/infra/mappings/ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+74,ZDU_FOLDER_MAPPING_SCHEMA_V1.md,private/infra/mappings/ZDU_FOLDER_MAPPING_SCHEMA_V1.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+71,ZDU_INFRA_MILESTONE_001.md,private/infra/milestones/ZDU_INFRA_MILESTONE_001.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+109,ZDU_QUALITY_INDEX.md,private/quality/ZDU_QUALITY_INDEX.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+110,ZDU_QUALITY_INDEX.md,private/quality/console/ZDU_QUALITY_INDEX.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+48,bitacora-ingesta-cdu_20250801.md,private/infra/logs/ingestas/bitacora-ingesta-cdu_20250801.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+8,clerk-identity-core.md,private/infra/auth/clerk-identity-core.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+7,clerk-supabase-jwt-bridge.md,private/infra/auth/clerk-supabase-jwt-bridge.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+49,ligas-tecnologias.md,private/infra/ai/ligas-tecnologias.md,other,🔍 Fuera de checkpoints,🟡 Por mover
+3,readme.md,private/infra/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+5,readme.md,private/infra/experimental/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+11,readme.md,private/infra/zdu-storage/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+13,readme.md,private/infra/zdu-storage/crawlers/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+63,readme.md,private/infra/scripts/audits/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+65,readme.md,private/infra/scripts/audits/runners/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+67,readme.md,private/infra/scripts/audits/data/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+70,readme.md,private/infra/milestones/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+73,readme.md,private/infra/mappings/readme.md,readmes,🔍 Fuera de checkpoints,🟡 Por mover
+51,roadmap.md,private/infra/ai/roadmap.md,other,🔍 Fuera de checkpoints,🟡 Por mover

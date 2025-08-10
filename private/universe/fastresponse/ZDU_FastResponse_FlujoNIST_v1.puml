@@ -1,0 +1,78 @@
+
+@startuml
+skinparam backgroundColor white
+skinparam wrapWidth 200
+skinparam dpi 200
+skinparam defaultTextAlignment center
+
+title FAST RESPONSE · ZDU
+Protocolo simbiótico basado en NIST
+
+' Etapas previas al incidente
+start
+:Escena 1
+Rutina narrativa;
+:Escena 2
+Tensiones internas;
+:Escena 3
+Detonante simbólico;
+
+' Evento de activación
+:FAST RESPONSE
+(Evento central);
+
+partition "Fase 1 - Preparación" {
+  :NeonMind
+Coordina políticas y módulos;
+  :CISO
+Supervisión estratégica;
+  :Veritas
+Auditoría previa;
+}
+
+partition "Fase 2 - Detección & Análisis" {
+  :Eris Sentinel
+Threat Hunter
+Análisis profundo;
+  :Pixelin
+Scraping de evidencia;
+  :Black Trace
+Forense / OSINT;
+  :Cerebrum
+Evaluación lógica de IA;
+}
+
+partition "Fase 3 - Contención & Erradicación" {
+  :Magna
+Tácticas de respuesta OT;
+  :Nebulon
+Blindaje de perímetros;
+  :RULESTACK
+Aplicación de RLS;
+}
+
+partition "Fase 4 - Recuperación" {
+  :NeonMind
+Reestablece servicios;
+  :Veritas
+Validación post-acción;
+  :Cerebrum
+Retroalimentación IA;
+}
+
+partition "Fase 5 - Lecciones aprendidas" {
+  :Luna Varela
+Stakeholders & Narrativa;
+  :Black Trace
+Forense documental;
+  :Escena Post 1
+Evaluación externa;
+  :Escena Post 2
+Ajustes de universo;
+  :Escena Post 3
+Nueva amenaza;
+}
+
+stop
+
+@enduml

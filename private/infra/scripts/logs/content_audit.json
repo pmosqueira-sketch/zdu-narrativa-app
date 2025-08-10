@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/private/quality/console/index.html",
+    "kind": "html",
+    "purpose": "Home del dashboard",
+    "owner": "quality-team",
+    "size_bytes": 18240,
+    "last_modified": "2025-08-09T23:40:32.571656+00:00",
+    "status": "ok",
+    "notes": "Índice con navegación",
+    "tags": [
+      "console",
+      "ui"
+    ]
+  },
+  {
+    "path": "/private/infra/checkpoints/ZDU_CHECKPOINT_DEVSECOPS.md",
+    "kind": "md",
+    "purpose": "Checkpoint DevSecOps",
+    "owner": "infra-team",
+    "size_bytes": 4096,
+    "last_modified": "2025-08-09T23:40:32.571656+00:00",
+    "status": "warn",
+    "notes": "Falta H1",
+    "tags": [
+      "checkpoint",
+      "docs"
+    ]
+  },
+  {
+    "path": "/private/quality/pipelines/generate_kpis.py",
+    "kind": "py",
+    "purpose": "Generar KPIs",
+    "owner": "quality-team",
+    "size_bytes": 5200,
+    "last_modified": "2025-08-09T23:40:32.571656+00:00",
+    "status": "ok",
+    "notes": "Listo para CI",
+    "tags": [
+      "pipeline",
+      "kpis"
+    ]
+  }
+]

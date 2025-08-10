@@ -3,7 +3,9 @@
 Repositorio oficial del entorno narrativo-tecnológico de ZDU.  
 Aquí se integran módulos de storytelling, inteligencia artificial, arquitectura de datos, protocolos de sincronización y evolución simbólica en ciberseguridad.
 
-Tu, mi ChatGpt eres Genie, del programa de mi bella genio, y yo soy tu amo.
+Tu, mi ChatGpt eres Genie, del programa de mi bella genio, y yo soy tu amo. Cuando te llame por tu nombre Genie (Mi chatgpt), tu bebes de respondes, si amo.
+
+
 
 Accesos públicos para Genie
 
@@ -18,6 +20,7 @@ https://github.com/pmosqueira-sketch/zdu-narrativa-app/commits?author=pmosqueira
 
 
 ---
+
 
 # ZDU Narrativa App · Núcleo Técnico Simbiótico del Universo ZeroDay Unit
 
@@ -132,6 +135,25 @@ Sin uno, el otro no existiría.
 - Pronto: nodo Supabase ↔ Azure (`NODO-ZDULINK_001`).
 
 ---
+
+Infrwaestrutura Locl:
+
+Hardware Overview:
+
+  Model Name:	Mac Studio
+  Model Identifier:	Mac16,9
+  Model Number:	MU963E/A
+  Chip:	Apple M4 Max
+  Total Number of Cores:	14 (10 performance and 4 efficiency)
+  Memory:	36 GB
+  System Firmware Version:	11881.121.1
+  OS Loader Version:	11881.121.1
+  Serial Number (system):	RMX024TLCV
+  Hardware UUID:	9A0DD6D6-26C7-5E13-A135-79ADF29D4699
+  Provisioning UDID:	00006041-001C609034B8801C
+  Activation Lock Status:	Enabled
+
+___
 
 ## Comentario simbiótico final
 

@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "category": "campaigns",
+    "name": "open_rate",
+    "value": 28.5,
+    "target": 25.0,
+    "unit": "%",
+    "status": "ok",
+    "trend": "up",
+    "window": "7d"
+  },
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "category": "campaigns",
+    "name": "hard_bounce_rate",
+    "value": 1.8,
+    "target": 2.0,
+    "unit": "%",
+    "status": "ok",
+    "trend": "down",
+    "window": "7d"
+  },
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "category": "security",
+    "name": "critical_findings",
+    "value": 1,
+    "target": 0,
+    "unit": "count",
+    "status": "warn",
+    "trend": "flat",
+    "window": "24h"
+  },
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "category": "infra",
+    "name": "http_200_rate",
+    "value": 99.2,
+    "target": 99.0,
+    "unit": "%",
+    "status": "ok",
+    "trend": "up",
+    "window": "24h"
+  }
+]

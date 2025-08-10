@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ZDU Protocols Status",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "category",
+      "status",
+      "progress",
+      "last_update"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "slug e.g., fast-response, comix, ifrl, cerebrum, comcon"
+      },
+      "name": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "operational",
+          "narrative",
+          "security",
+          "qa",
+          "research",
+          "comics"
+        ]
+      },
+      "owner": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "not_started",
+          "in_progress",
+          "blocked",
+          "done"
+        ]
+      },
+      "progress": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "last_update": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "milestones": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "name",
+            "status"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "ongoing",
+                "done",
+                "blocked"
+              ]
+            },
+            "due": {
+              "type": "string",
+              "format": "date"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "dependencies": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "risks": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "links": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

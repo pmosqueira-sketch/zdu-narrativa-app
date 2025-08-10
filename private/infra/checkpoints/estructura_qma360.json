@@ -1,0 +1,56 @@
+[
+  {
+    "codigo": "salud-beneficios",
+    "descripcion": "Argumentarios comerciales sector salud",
+    "tipo": "beneficios",
+    "vertical": "salud",
+    "activo": true,
+    "path_blob": "qma360/salud-beneficios/",
+    "path_local": "/private/infra/assets/qma360/salud-beneficios/"
+  },
+  {
+    "codigo": "salud-casos-estudio",
+    "descripcion": "Casos de \u00e9xito aplicados al sector salud",
+    "tipo": "caso_estudio",
+    "vertical": "salud",
+    "activo": true,
+    "path_blob": "qma360/salud-casos-estudio/",
+    "path_local": "/private/infra/assets/qma360/salud-casos-estudio/"
+  },
+  {
+    "codigo": "salud-datasheets",
+    "descripcion": "Fichas t\u00e9cnicas de soluciones aplicadas a salud",
+    "tipo": "datasheet",
+    "vertical": "salud",
+    "activo": true,
+    "path_blob": "qma360/salud-datasheets/",
+    "path_local": "/private/infra/assets/qma360/salud-datasheets/"
+  },
+  {
+    "codigo": "banca-beneficios",
+    "descripcion": "Beneficios clave en soluciones para banca",
+    "tipo": "beneficios",
+    "vertical": "banca",
+    "activo": true,
+    "path_blob": "qma360/banca-beneficios/",
+    "path_local": "/private/infra/assets/qma360/banca-beneficios/"
+  },
+  {
+    "codigo": "banca-datasheets",
+    "descripcion": "Documentaci\u00f3n t\u00e9cnica para el sector bancario",
+    "tipo": "datasheet",
+    "vertical": "banca",
+    "activo": true,
+    "path_blob": "qma360/banca-datasheets/",
+    "path_local": "/private/infra/assets/qma360/banca-datasheets/"
+  },
+  {
+    "codigo": "educacion-textsheets",
+    "descripcion": "Textsheets educativos y explicativos",
+    "tipo": "textsheets",
+    "vertical": "educacion",
+    "activo": true,
+    "path_blob": "qma360/educacion-textsheets/",
+    "path_local": "/private/infra/assets/qma360/educacion-textsheets/"
+  }
+]

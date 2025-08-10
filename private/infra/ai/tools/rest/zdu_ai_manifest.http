@@ -1,0 +1,14 @@
+### Insertar módulo AI en Supabase (usando Service Role)
+
+POST https://lilxvmvykdssotolctbl.supabase.co/rest/v1/ai_modules HTTP/1.1
+apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxpbHh2bXZ5a2Rzc290b2xjdGJsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MzQ1NTEwOSwiZXhwIjoyMDY5MDMxMTA5fQ.0KZrTMLVIG5rfphfuk-lIDBnjGj1cuxG2V8AlTk4BTw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxpbHh2bXZ5a2Rzc290b2xjdGJsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MzQ1NTEwOSwiZXhwIjoyMDY5MDMxMTA5fQ.0KZrTMLVIG5rfphfuk-lIDBnjGj1cuxG2V8AlTk4BTw
+Content-Type: application/json
+
+{
+  "manifest_name": "ZDU_AI_MANIFEST",
+  "generated_on": "2025-08-02T05:56:29",
+  "ai_root": "private/infra/ai/",
+  "components": ["README-AI-MASTER.md"],
+  "status": ["activo"]
+}

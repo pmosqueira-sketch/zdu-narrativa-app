@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DevSecOps Platform KPIs",
+  "description": "KPIs de entrega, calidad, seguridad y operaciones para ZDU Platform",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "timestamp",
+      "pillar",
+      "name",
+      "value",
+      "unit",
+      "status"
+    ],
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "pillar": {
+        "type": "string",
+        "enum": [
+          "delivery",
+          "quality",
+          "security",
+          "operations"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "value": {
+        "type": [
+          "number",
+          "integer"
+        ]
+      },
+      "target": {
+        "type": [
+          "number",
+          "integer",
+          "string"
+        ]
+      },
+      "unit": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "warn",
+          "fail"
+        ]
+      },
+      "window": {
+        "type": "string"
+      },
+      "notes": {
+        "type": "string"
+      }
+    }
+  }
+}

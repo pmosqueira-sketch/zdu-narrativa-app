@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QUALITY KPIs",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "timestamp",
+      "category",
+      "name",
+      "value",
+      "unit",
+      "status"
+    ],
+    "properties": {
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "category": {
+        "type": "string",
+        "description": "e.g., campaigns, infra, security, qa"
+      },
+      "name": {
+        "type": "string"
+      },
+      "value": {
+        "type": [
+          "number",
+          "integer"
+        ]
+      },
+      "target": {
+        "type": [
+          "number",
+          "integer"
+        ]
+      },
+      "unit": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "warn",
+          "fail"
+        ]
+      },
+      "trend": {
+        "type": "string",
+        "enum": [
+          "up",
+          "down",
+          "flat"
+        ]
+      },
+      "window": {
+        "type": "string",
+        "description": "time window, e.g., 7d, 30d"
+      }
+    }
+  }
+}

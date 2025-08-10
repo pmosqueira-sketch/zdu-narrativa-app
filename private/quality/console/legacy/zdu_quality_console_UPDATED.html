@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ZDU Quality Console</title>
+  <style>
+    body { font-family: Helvetica, sans-serif; background-color: #0f0f0f; color: #e0e0e0; margin: 0; padding: 20px; }
+    h1 { color: #00ffcc; }
+    .section { background-color: #1a1a1a; padding: 20px; margin-bottom: 20px; border-radius: 10px; }
+    .log-entry { margin: 5px 0; font-size: 0.95em; color: #a0ffcc; }
+    .status-ok { color: #00ff00; }
+    .status-alert { color: #ffcc00; }
+    .status-error { color: #ff4444; }
+    .button {
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #00c0aa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>ZDU Quality Console · v1.0</h1>
+
+  <div class="section">
+    <h2>🧠 Estado del Universo</h2>
+    <p class="log-entry">🟢 Manifiesto detectado: <strong>AI_Manifest.json</strong> <span class="status-ok">[OK]</span></p>
+    <p class="log-entry">🟢 iCrawler.md activo <span class="status-ok">[OK]</span></p>
+    <p class="log-entry">🟡 README-AI-MASTER.md no encontrado <span class="status-alert">[PENDIENTE]</span></p>
+  </div>
+
+  <div class="section">
+    <h2>📦 Módulos simbólicos</h2>
+    <p class="log-entry">📁 /private <span class="status-ok">[Detectado]</span></p>
+    <p class="log-entry">📁 /experimental <span class="status-ok">[Detectado]</span></p>
+    <p class="log-entry">📁 /framework <span class="status-alert">[No detectado]</span></p>
+  </div>
+
+  <div class="section">
+    <h2>📋 Tareas sugeridas</h2>
+    <ul>
+      <li>✔️ Consolidar todos los README en módulos activos</li>
+      <li>⚠️ Revisar integridad del manifiesto AI para `framework/`</li>
+      <li>⚠️ Activar vigilancia de seguridad desde iCrawler</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔄 Ejecutar Crawler</h2>
+    <p>Haz clic en el botón para ejecutar el escaneo estructural desde la raíz del universo.</p>
+    <button class="button" onclick="alert('Simulación: iCrawler iniciado. (Fase local)')">Ejecutar iCrawler</button>
+    <p style="font-size: 0.8em; color: #888;">*En producción se conectará a Azure Function o backend dinámico*</p>
+  </div>
+
+</body>
+</html>

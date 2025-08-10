@@ -1,54 +1,60 @@
 # ================================
-# Dependencias y paquetes
+# Node.js dependencies and lock files
 # ================================
 node_modules/
-.env
 package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # ================================
-# Archivos temporales / desarrollo
+# Development and editor configs
 # ================================
 .vscode/
 .idea/
-*.log
-*.swp
-*.swo
-
-# ================================
-# Salidas de pruebas o scripts
-# ================================
-/coverage
-/dist
-/build
-/scripts/output/
-
-# ================================
-# Archivos temporales del sistema / git
-# ================================
-*.pid
-*.seed
-*.bak
-*.tmp
-*.orig
-
-# ================================
-# Archivos de Mac y Linux
-# ================================
 *.sublime-workspace
 *.sublime-project
 
 # ================================
-# Ignorar archivos creados por errores de merge
+# Build and output directories
 # ================================
-*.merge_backup.*
-*.rej
-*.orig
+dist/
+build/
+coverage/
+scripts/output/
+.out/
+.cache/
 
 # ================================
-# Python virtualenv y caché
+# Logs and temporary files
+# ================================
+*.log
+*.tmp
+*.bak
+*.pid
+*.seed
+*.orig
+*.rej
+*.swp
+*.swo
+*.merge_backup.*
+
+# ================================
+# Environment and secrets
+# ================================
+.env
+.env.*
+.env_backup
+.env_corrupto
+
+# ================================
+# macOS system files
+# ================================
+.DS_Store
+__MACOSX/
+
+# ================================
+# Python virtual environments and cache
 # ================================
 venv/
 __pycache__/
@@ -57,14 +63,21 @@ __pycache__/
 *.pyd
 
 # ================================
-# Archivos de entorno
-# ================================
-.env
-*.env
-
-# ================================
-# Playwright / Drivers pesados
+# Playwright binaries or local drivers
 # ================================
 venv/lib/**/playwright/driver/node
+
+# ================================
+# Database dumps and archives
+# ================================
+*.zip
+*.sql
+*.sqlite
+*.dump
+*.tar.gz
+*.7z
+
+# ================================
+# Git archive exports
+# ================================
 .git.zip
-.env

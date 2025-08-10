@@ -1,0 +1,51 @@
+{
+    "agent_name": "iCrawler",
+    "hook": "INTELGEN-RISK",
+    "description": "Agente simbi\u00f3tico de auditor\u00eda narrativa y estructural. Escanea desde la ra\u00edz todos los m\u00f3dulos .md, .json y tablas Supabase para detectar inconsistencias, relaciones no mapeadas y generar logs de estado.",
+    "version": "1.0.0",
+    "activation_timestamp": "2025-08-02T22:46:17.048823",
+    "scan_scope": {
+        "root_path": "/mnt/data/zdu-narrativa-app-2/zdu-narrativa-app",
+        "scan_types": [
+            "markdown",
+            "json",
+            "sql",
+            "csv"
+        ],
+        "include_dirs": [
+            "infra",
+            "framework",
+            "quality",
+            "checkpoints",
+            "scripts/crawlers",
+            "zdu-storage",
+            "docs",
+            "private",
+            "zdu-campanas"
+        ],
+        "supabase": {
+            "enabled": true,
+            "modules": [
+                "heroes",
+                "villanos",
+                "casos",
+                "campa\u00f1as",
+                "checkpoints",
+                "powers",
+                "crawler_output"
+            ]
+        },
+        "blob_storage_check": true,
+        "ram_check": true
+    },
+    "log_output_path": "private/infra/scripts/logs/crawl_audit_2025_08_03.json",
+    "dependencies": [
+        "Supabase client",
+        "Blob SDK",
+        "filewalker",
+        "INTELGEN-RISK"
+    ],
+    "ai_feedback_enabled": true,
+    "ai_feedback_target": "INTELGEN-RISK.md",
+    "notes": "Versi\u00f3n combinada y corregida. Se consolidaron rutas, se expandi\u00f3 el scope y se fij\u00f3 carpeta \u00fanica para logs."
+}

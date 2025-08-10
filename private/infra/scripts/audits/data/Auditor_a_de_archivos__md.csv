@@ -1,0 +1,207 @@
+relative_path,filename,hash,filename_dup,hash_dup,conflict_type
+zdu-narrativa-app/iCrawler.md,iCrawler.md,c3ec43b5d07613f0cbf7b4011fd71fbf,False,False,Unique
+zdu-narrativa-app/README.md,README.md,4f164ce2a9688a5710c7860fba5cf029,True,False,Name Duplicate
+zdu-narrativa-app/zdu-storage/readme.md,readme.md,01138f079d15b1b8b4459f215731fc61,True,False,Name Duplicate
+zdu-narrativa-app/zdu-storage/blob-inventory/README.md,README.md,132ce5a969a4efc88b8cd578ada60d94,True,False,Name Duplicate
+zdu-narrativa-app/zdu-storage/crawlers/readme.md,readme.md,ad60ab19507e9d408d3f9565ec5cc083,True,False,Name Duplicate
+zdu-narrativa-app/zdu-storage/specs/ZDU_BLOB_VALIDATION_ENGINE_V1.md,ZDU_BLOB_VALIDATION_ENGINE_V1.md,7862dac0091013db97b89b8c472e12b5,False,False,Unique
+zdu-narrativa-app/zdu-storage/specs/README.md,README.md,616d4a2a40b07662de3dc19b4f0acb52,True,False,Name Duplicate
+zdu-narrativa-app/zdu-storage/specs/ZDU_BLOB_SYNC_ENGINE_V1.md,ZDU_BLOB_SYNC_ENGINE_V1.md,a8eb7842c48e49172c8bf456dae624c4,False,False,Unique
+zdu-narrativa-app/docs/README_COMPONENTES_ZDU.md,README_COMPONENTES_ZDU.md,03763a2f4b92ac009887adfb09a357df,False,False,Unique
+zdu-narrativa-app/docs/nodos-operativos.md,nodos-operativos.md,dbb32b3a04a203b5d4ddc5add5566342,False,False,Unique
+zdu-narrativa-app/docs/arquitectura-hibrida.md,arquitectura-hibrida.md,74af9b28bf26d85081744e4523359d85,False,False,Unique
+zdu-narrativa-app/docs/sincronizacion-qma360.md,sincronizacion-qma360.md,95874fe23bb52b9b3818b17f198af921,False,False,Unique
+zdu-narrativa-app/private/changelog.md,changelog.md,22a4bfab66d18b8cdc763551c1bf1db9,False,False,Unique
+zdu-narrativa-app/private/readme.md,readme.md,df33ecd2cd54cdd340269650b861681b,True,False,Name Duplicate
+zdu-narrativa-app/private/experimental/README.md,README.md,6caf283650332b201aa3dc12d171e788,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/ZDU_INFRA_INDEX.md,ZDU_INFRA_INDEX.md,690d2ac683144f51320498c00c2f38be,False,False,Unique
+zdu-narrativa-app/private/infra/README_SUPRASTRUCTURE.md,README_SUPRASTRUCTURE.md,bfa0489315af25047a1bf8a4e86adaad,False,False,Unique
+zdu-narrativa-app/private/infra/readme.md,readme.md,46497ef8e8ef5740c6102da5ae4b3f0c,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/experimental/readme.md,readme.md,ebb4664ca6c1367e71328475a504df09,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/experimental/README-AI-MASTER2.md,README-AI-MASTER2.md,925981e4d13e38547e5a166d6afcb855,False,False,Unique
+zdu-narrativa-app/private/infra/identity/clerk/README-CLERK-IDENTITY.md,README-CLERK-IDENTITY.md,14ed1a62df40e839dc08c9298a7980fb,False,False,Unique
+zdu-narrativa-app/private/infra/identity/clerk/clerk-identity-core.md,clerk-identity-core.md,1d6299776461729b4e33cb79f409eafb,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/auth/clerk-supabase-jwt-bridge.md,clerk-supabase-jwt-bridge.md,05871914087bad0c153084c57aa3cd0a,False,False,Unique
+zdu-narrativa-app/private/infra/auth/clerk-identity-core.md,clerk-identity-core.md,190992a99e49ee6bf5654bae12288e8d,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/auth/jwt/README.md,README.md,f9f7626e7efe18a5b71afe2448972b39,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/auth/jwt/README_AUTH.md,README_AUTH.md,6961932892c906d8e3dc00256e325d9c,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/ZDU_INFRA_MILESTONE_002.md,ZDU_INFRA_MILESTONE_002.md,2e2011a861e8f00b0751856a8003deb4,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/ZDU_CHECKPOINT_CLEANUP_20250801.md,ZDU_CHECKPOINT_CLEANUP_20250801.md,b03edd6dd5b7156cbd6163b045f9b74c,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/bitacora-sync-campanas.md,bitacora-sync-campanas.md,42f126b5be1970c98e03dd4a8b347550,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/zdu_quality_checkpoint_PHASE_IV.md,zdu_quality_checkpoint_PHASE_IV.md,e2f208a12ec2741d133ad7e86e62d9ad,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/ZDU_SUPABASE_AZURE_SYNC_V1.md,ZDU_SUPABASE_AZURE_SYNC_V1.md,ae1267b8940498659dd91f50f04e5460,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/readme.md,readme.md,c16228c42b28126709d042600452994a,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/checkpoints/ZDU_CONTAINER_VALIDATION_010825.md,ZDU_CONTAINER_VALIDATION_010825.md,fe560c0665b2fd2c832d125a921c9444,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/ZDU_AUDIT_INFRA_010825.md,ZDU_AUDIT_INFRA_010825.md,d5c3def9dbb438a3f913388d420b25b7,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/qma360_candado_readmes.md,qma360_candado_readmes.md,54d294e29217fc644c56182e30f261ec,True,True,Name + Content Duplicate
+zdu-narrativa-app/private/infra/checkpoints/ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,271d1f0bd073cbf109016efdf4673e00,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,62be17722855157869eb96ca9170a74c,False,False,Unique
+zdu-narrativa-app/private/infra/checkpoints/supabase/SUPABASE-STRUCTURE-AUDIT.md,SUPABASE-STRUCTURE-AUDIT.md,48666bf03703483a1cdd346b1c1c54eb,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/logs/ingestas/bitacora-ingesta-cdu_20250801.md,bitacora-ingesta-cdu_20250801.md,cb94f020e1e5b76fbac3285fbbe53699,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README-ZDU-AI-AGENTS.md,README-ZDU-AI-AGENTS.md,9ddd5f4a5049792faff70630b326c89a,False,False,Unique
+zdu-narrativa-app/private/infra/ai/ligas-tecnologias.md,ligas-tecnologias.md,7cc51db44246fcb03c3a6cdeaa5b2af5,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README_AI_MANIFEST.md,README_AI_MANIFEST.md,bcd1edc32c8ae7ed2fe7f99dbdc16eca,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README-AI-MASTER.md,README-AI-MASTER.md,adba0d839676053640dc4f4ad7ad609f,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README.md,README.md,f39832ca878354cb146d4d0c616cdc62,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/ai/roadmap.md,roadmap.md,73b04a9666ebe49a1b389a215f14d248,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README-AI-INVESTIGACION.md,README-AI-INVESTIGACION.md,0015f1f1ebf8519fd3e8d232eb281d3a,False,False,Unique
+zdu-narrativa-app/private/infra/ai/README_AI_CORE.md,README_AI_CORE.md,504e52b9fbe13aefc251fff56d345c28,False,False,Unique
+zdu-narrativa-app/private/infra/ai/docs/README-AI-REST.md,README-AI-REST.md,d0c4a1e0387a0a5fdaefca8f81cf6947,False,False,Unique
+zdu-narrativa-app/private/infra/ai/docs/README-AI-ROADMAP.md,README-AI-ROADMAP.md,7cf3310fd8afad223af686f6cf1e3c21,False,False,Unique
+zdu-narrativa-app/private/infra/ai/genie/README_master_genie.md,README_master_genie.md,af6c7db72f1ccdeed55a6a7644fcae66,False,False,Unique
+zdu-narrativa-app/private/infra/ai/modulos-sugeridos/ZDU-WORKFLOW-INTEL.md,ZDU-WORKFLOW-INTEL.md,e409ce1ae263003313d3a8832de1a740,False,False,Unique
+zdu-narrativa-app/private/infra/ai/modulos-sugeridos/ZDU-OSS-HEALTHSCAN.md,ZDU-OSS-HEALTHSCAN.md,09c66b6dce31dd86d9ff7c45f8d3cb6f,False,False,Unique
+zdu-narrativa-app/private/infra/ai/modulos-sugeridos/ZDU-GITHUB-CONTROL.md,ZDU-GITHUB-CONTROL.md,cf84411f058237dbf65c0044f5f57a25,False,False,Unique
+zdu-narrativa-app/private/infra/scripts/README.md,README.md,e971414883f7a4cd9a3f86e5c13e4a3d,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/crawlers/README_CRAWLER_ZDU.md,README_CRAWLER_ZDU.md,76cf2e481720f09f59a4af3af93aa50b,False,False,Unique
+zdu-narrativa-app/private/infra/scripts/crawlers/README.md,README.md,5c5c00862dc45e4eafb81c55d43a4d9e,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/crawlers/README-iCrawler.md,README-iCrawler.md,fc3c4c2d43fe249dc4f9b3ded13e9094,False,False,Unique
+zdu-narrativa-app/private/infra/scripts/audits/readme.md,readme.md,db5fdbfe7253ec50692eae353076084c,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/audits/runners/README_INTELGEN-MD-AUDIT.md,README_INTELGEN-MD-AUDIT.md,24e53e69d0ada22b0edcac7e15d096d2,False,False,Unique
+zdu-narrativa-app/private/infra/scripts/audits/runners/readme.md,readme.md,4ea2408c42a6bee67ab3df033c5e78a4,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/audits/modules/README.md,README.md,c55f6692359ea4b665ee91ea029a4a74,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/audits/data/readme.md,readme.md,fee8270a98c2f3c58a224c9bf77a1d95,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/utils/README.md,README.md,e6b39673c4d773642b5cedbe578d3128,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/scripts/data/README.md,README.md,ab6529112d806acfc5c10e7fdb8e3d6f,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/milestones/readme.md,readme.md,73068e414b55ebff39835f70d3400e05,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/milestones/ZDU_INFRA_MILESTONE_001.md,ZDU_INFRA_MILESTONE_001.md,f4ddb45ed9e390aed5640dfa3f8b8fe4,False,False,Unique
+zdu-narrativa-app/private/infra/mappings/README_ZDU_MANIFESTS.md,README_ZDU_MANIFESTS.md,bf4743fc20bbd40ae5187a53564bdc22,False,False,Unique
+zdu-narrativa-app/private/infra/mappings/readme.md,readme.md,81b8187de96f36548d85656e6b386b61,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/mappings/ZDU_FOLDER_MAPPING_SCHEMA_V1.md,ZDU_FOLDER_MAPPING_SCHEMA_V1.md,c3f1daf192ddd973b189d6be0d65da6e,False,False,Unique
+zdu-narrativa-app/private/infra/mappings/ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,ff84e108ebc53b5f73d6ea62024d38b8,False,False,Unique
+zdu-narrativa-app/private/infra/assets/renders/README_renders.md,README_renders.md,8d2d8d64e6934e189f3c3db2b05c3203,False,False,Unique
+zdu-narrativa-app/private/infra/assets/heroes/luna-varela/README_luna_varela.md,README_luna_varela.md,2b50e68826e88935764b1fc413905ca0,False,False,Unique
+zdu-narrativa-app/private/infra/assets/cdu/ZDU-002/ZDU-002_README.md,ZDU-002_README.md,5b85c7181c442118483ffed89b1bed9d,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/README_QMA360_STRUCTURE.md,README_QMA360_STRUCTURE.md,2468ac3f9ab3b5d330d0fa7aaa8aebdb,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/README_qma360.md,README_qma360.md,0706a18cd7c0f60e98a392887bf5ad83,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/banca/input/README.md,README.md,e962c82d3e5e411efc0a1ad0e496e5a6,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/banca/output/README.md,README.md,3875b1c5462c9cddcd216ea69ffd501b,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/banca/procesado/README.md,README.md,dd28b49a52313ef681ae8e023772205c,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/industria/input/README.md,README.md,6108aa066ace86fdac6e6f82f322fdb2,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/industria/output/README.md,README.md,d49bc0055d911f05ca32e77450d3b309,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/industria/procesado/README.md,README.md,9ee8dbf4ff94ab1db1c195311dc3256c,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/salud-beneficios/README_salud-beneficios.md,README_salud-beneficios.md,1ec7695e396ea18cbe845fc229ef6770,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/gobierno/input/README.md,README.md,6409162c259a671ea9ed14a7ec963a16,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/gobierno/output/README.md,README.md,b1af29b3b69c5ac5b9b6c3a7225f68d4,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/gobierno/procesado/README.md,README.md,1bc86c33d0a34834cff17fec15266651,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/salud-casos-estudio/README_salud-casos-estudio.md,README_salud-casos-estudio.md,c5766b464e4cdc0d9f2fef494bf409d3,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/banca-beneficios/README_banca-beneficios.md,README_banca-beneficios.md,7a90eae1a3fb12163724c8d631240c10,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/salud/input/README.md,README.md,4f8a796cb2c306ea73907349f847c65b,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/salud/output/README.md,README.md,ade1229b1c35fd1cb7efbeb05eae8925,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/salud/procesado/README.md,README.md,6731857fa0c24effc4852af299607edc,True,False,Name Duplicate
+zdu-narrativa-app/private/infra/assets/qma360/partners/README_PARTNER_SYNC.md,README_PARTNER_SYNC.md,31cc9b89dbdc091645b6170203f8a263,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/banca-datasheets/README_banca-datasheets.md,README_banca-datasheets.md,92807225a6b971193bdff1a9f747ca68,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/educacion-textsheets/README_educacion-textsheets.md,README_educacion-textsheets.md,bdc8ca047ce8e610e1e389c1c3a265bf,False,False,Unique
+zdu-narrativa-app/private/infra/assets/qma360/salud-datasheets/README_salud-datasheets.md,README_salud-datasheets.md,40d65c48a1f142ec849d2e4c95ee951e,False,False,Unique
+zdu-narrativa-app/private/infra/assets/villanos/blackhat/README_blackcat.md,README_blackcat.md,6c82b452e014239e13d6c22e3d18338e,False,False,Unique
+zdu-narrativa-app/private/infra/validation/README-JAVA-ENV.md,README-JAVA-ENV.md,a7c1e0c39b987477cacb244d9a97f619,False,False,Unique
+zdu-narrativa-app/private/infra/sql/README_sql.md,README_sql.md,a58f983746e308d6febe690de6709101,False,False,Unique
+zdu-narrativa-app/private/infra/sql/qma360_candado_readmes.md,qma360_candado_readmes.md,54d294e29217fc644c56182e30f261ec,True,True,Name + Content Duplicate
+zdu-narrativa-app/private/infra/sql/auditoria/structure_snapshots/SUPABASE-STRUCTURE-AUDIT.md,SUPABASE-STRUCTURE-AUDIT.md,067f113f228e1fce9a9f4037ab46df2d,True,False,Name Duplicate
+zdu-narrativa-app/private/inteligen/README-INTELGEN-RISK.md,README-INTELGEN-RISK.md,8ea2dad1dc567dfbb54fc1ddce20f987,False,False,Unique
+zdu-narrativa-app/private/inteligen/INTELGEN-RISK.md,INTELGEN-RISK.md,5fe3fbd49d63cec8d1b411904b4e946b,False,False,Unique
+zdu-narrativa-app/private/bitacoras/README.md,README.md,b024d4e6fe2bccbf7886077511618511,True,False,Name Duplicate
+zdu-narrativa-app/private/quality/README-QUALITY-CONTROL-PLAN.md,README-QUALITY-CONTROL-PLAN.md,abca3f2add69f88bea074ba584a19cc4,False,False,Unique
+zdu-narrativa-app/private/quality/README-QUALITY-CHECKPOINT.md,README-QUALITY-CHECKPOINT.md,d1b5caf7bc2de5ef620cfa045d92f3be,False,False,Unique
+zdu-narrativa-app/private/quality/ZDU-SIGMA-CORE-CHECKPOINT.md,ZDU-SIGMA-CORE-CHECKPOINT.md,f3a53ca3a69ca18fa67087cb6a5edec8,False,False,Unique
+zdu-narrativa-app/private/quality/CONTROL_PLAN-ZDU.md,CONTROL_PLAN-ZDU.md,2171e281e4c2fbcbc41774fd53fd19f9,False,False,Unique
+zdu-narrativa-app/private/quality/AMEF-ZDU.md,AMEF-ZDU.md,62229ecf61b8ae32a1e0a4a527b9c33e,False,False,Unique
+zdu-narrativa-app/private/quality/README-QUALITY-AMEF.md,README-QUALITY-AMEF.md,3b9433222ecc05ab89ec57a3a149a9d4,False,False,Unique
+zdu-narrativa-app/private/quality/ZDU_QUALITY_INDEX.md,ZDU_QUALITY_INDEX.md,905c93c597f9e6913cf7807f7fbbef10,True,False,Name Duplicate
+zdu-narrativa-app/private/quality/console/ZDU_QUALITY_INDEX.md,ZDU_QUALITY_INDEX.md,9751b46205325f08a44943f408f4d8fa,True,False,Name Duplicate
+zdu-narrativa-app/private/framework/README-ZDU-FRAMEWORK.md,README-ZDU-FRAMEWORK.md,dc311f0203abcbf7c74e93ac14b08f2d,False,False,Unique
+zdu-narrativa-app/private/recalc/ZDU-RECALC.md,ZDU-RECALC.md,b11eea600976d4730563d3fd31c7a4fd,False,False,Unique
+zdu-narrativa-app/private/rules/RULESTACK.md,RULESTACK.md,2636f83b05a8f8da42301607bea56bb4,False,False,Unique
+zdu-narrativa-app/private/rules/ZDU-RULESTACK.md,ZDU-RULESTACK.md,ca5c74ff60218ee83ff93ab0f7a53419,False,False,Unique
+zdu-narrativa-app/private/campaigns/NODO-CAMP.md,NODO-CAMP.md,5ea2772aaf69aa5f58b5f708e23757bb,True,False,Name Duplicate
+zdu-narrativa-app/private/universe/ifrl/IFRL.md,IFRL.md,e99844f17fad4282f414f006529b1023,False,False,Unique
+zdu-narrativa-app/private/universe/mutacore/MUTACORE.md,MUTACORE.md,ae2fba7d1da46108a06757e77dee19f0,False,False,Unique
+zdu-narrativa-app/private/universe/nodecamp/NODO-CAMP.md,NODO-CAMP.md,810ded7feb54c66aacd656173df1f628,True,False,Name Duplicate
+zdu-narrativa-app/private/universe/cerebrum/CEREBRUM.md,CEREBRUM.md,70e8926eed8e4927c1407ebd851a8c74,False,False,Unique
+__MACOSX/zdu-narrativa-app/._iCrawler.md,._iCrawler.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/._README.md,._README.md,ef9ea67a8b533616c8b9f2a15164c9ac,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/zdu-storage/._readme.md,._readme.md,db40dbe3217bfec4c2a47419bdd57643,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/zdu-storage/crawlers/._readme.md,._readme.md,8458794e7c5c06cbb43af00cc98d371c,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/docs/._README_COMPONENTES_ZDU.md,._README_COMPONENTES_ZDU.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/._changelog.md,._changelog.md,9df8b00d18ccd0911f79622d1f62cc86,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/._readme.md,._readme.md,c200066a7a02691e94bc9c7d02ecdfb4,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/experimental/._README.md,._README.md,1694129d891dc3e476454f8ff8d7d21f,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/._ZDU_INFRA_INDEX.md,._ZDU_INFRA_INDEX.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/._readme.md,._readme.md,24391db1eb93da53502abfef9acfe2c4,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/experimental/._readme.md,._readme.md,ba3d8d0cf3d0e4185c074f26027e7982,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/experimental/._README-AI-MASTER2.md,._README-AI-MASTER2.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/identity/clerk/._README-CLERK-IDENTITY.md,._README-CLERK-IDENTITY.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/identity/clerk/._clerk-identity-core.md,._clerk-identity-core.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/auth/._clerk-supabase-jwt-bridge.md,._clerk-supabase-jwt-bridge.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/auth/._clerk-identity-core.md,._clerk-identity-core.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/auth/jwt/._README.md,._README.md,4916d9b77d2684e802534ee8ace988b5,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/auth/jwt/._README_AUTH.md,._README_AUTH.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._ZDU_CHECKPOINT_CLEANUP_20250801.md,._ZDU_CHECKPOINT_CLEANUP_20250801.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._zdu_quality_checkpoint_PHASE_IV.md,._zdu_quality_checkpoint_PHASE_IV.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._readme.md,._readme.md,98a0034671726ec9069716dc4213a360,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._ZDU_CONTAINER_VALIDATION_010825.md,._ZDU_CONTAINER_VALIDATION_010825.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._ZDU_AUDIT_INFRA_010825.md,._ZDU_AUDIT_INFRA_010825.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._qma360_candado_readmes.md,._qma360_candado_readmes.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,._ZDU_SUPABASE_FOLDER_OPTIMIZATION_V1.md,16040e1b065a3067cb6f596680787ff5,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,._ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/checkpoints/supabase/._SUPABASE-STRUCTURE-AUDIT.md,._SUPABASE-STRUCTURE-AUDIT.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/logs/ingestas/._bitacora-ingesta-cdu_20250801.md,._bitacora-ingesta-cdu_20250801.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/ai/._README-ZDU-AI-AGENTS.md,._README-ZDU-AI-AGENTS.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/ai/._README_AI_MANIFEST.md,._README_AI_MANIFEST.md,0bb503fe8a2dddf42c215a9f25a13e0d,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/ai/._README-AI-MASTER.md,._README-AI-MASTER.md,db70033df1b5b7a688e1fccfd1331c7d,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/ai/._README.md,._README.md,51fca7235298fa975b9e39037d92c5e1,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/ai/._README-AI-INVESTIGACION.md,._README-AI-INVESTIGACION.md,c7c305904225b052fca38cd951aedf9f,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/ai/docs/._README-AI-REST.md,._README-AI-REST.md,34e10d3d24faf090987b74e2756c9c67,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/ai/docs/._README-AI-ROADMAP.md,._README-AI-ROADMAP.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/ai/genie/._README_master_genie.md,._README_master_genie.md,55f0d80d37d57a7b4a1b722569bb7380,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/scripts/._README.md,._README.md,3d868e622f061f7e466e4c2e7831cb5c,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/crawlers/._README_CRAWLER_ZDU.md,._README_CRAWLER_ZDU.md,bde002751abc7beac19bdfd2aacdd4cf,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/scripts/crawlers/._README.md,._README.md,ffcc6cad34db1ec334f083fe7816af6a,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/crawlers/._README-iCrawler.md,._README-iCrawler.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/runners/._README_INTELGEN-MD-AUDIT.md,._README_INTELGEN-MD-AUDIT.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/runners/._readme.md,._readme.md,aba500f4c393678299f5a460c3cbb0aa,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/modules/._README.md,._README.md,fdc32c4d8741d1e168954801ec364579,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/data/._readme.md,._readme.md,88fe3d6724601940c4e91265011be06b,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/utils/._README.md,._README.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/scripts/data/._README.md,._README.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/milestones/._readme.md,._readme.md,8907d442d77da62a38b6851d94197d0c,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/milestones/._ZDU_INFRA_MILESTONE_001.md,._ZDU_INFRA_MILESTONE_001.md,5db31e6c64ac09666c24bc82a614ee1e,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/mappings/._readme.md,._readme.md,3ac53512d5b7a01d92cb04a2cde838c9,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/mappings/._ZDU_FOLDER_MAPPING_SCHEMA_V1.md,._ZDU_FOLDER_MAPPING_SCHEMA_V1.md,16040e1b065a3067cb6f596680787ff5,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/mappings/._ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,._ZDU_FOLDER_DEPENDENCY_STRATEGY_V1.md,3683121ba148906ea66e4b54da60e140,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/assets/renders/._README_renders.md,._README_renders.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/heroes/luna-varela/._README_luna_varela.md,._README_luna_varela.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/cdu/ZDU-002/._ZDU-002_README.md,._ZDU-002_README.md,a8e494b08e59d3e1ee766044e2c17fba,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/._README_qma360.md,._README_qma360.md,f38114767e34e5e5ca00b43fffa7b48c,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/banca/output/._README.md,._README.md,30075ccc37c92c0d9e044c1c9ef4d14e,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/salud-beneficios/._README_salud-beneficios.md,._README_salud-beneficios.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/salud-casos-estudio/._README_salud-casos-estudio.md,._README_salud-casos-estudio.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/banca-beneficios/._README_banca-beneficios.md,._README_banca-beneficios.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/banca-datasheets/._README_banca-datasheets.md,._README_banca-datasheets.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/educacion-textsheets/._README_educacion-textsheets.md,._README_educacion-textsheets.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/salud-datasheets/._README_salud-datasheets.md,._README_salud-datasheets.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/assets/villanos/blackhat/._README_blackcat.md,._README_blackcat.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/validation/._README-JAVA-ENV.md,._README-JAVA-ENV.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/sql/._README_sql.md,._README_sql.md,0010922fb7f5214e8d7413c2dedcd84d,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/infra/sql/._qma360_candado_readmes.md,._qma360_candado_readmes.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/infra/sql/auditoria/structure_snapshots/._SUPABASE-STRUCTURE-AUDIT.md,._SUPABASE-STRUCTURE-AUDIT.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/inteligen/._README-INTELGEN-RISK.md,._README-INTELGEN-RISK.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/inteligen/._INTELGEN-RISK.md,._INTELGEN-RISK.md,6b54a8c3df3dda478734f518550a232b,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/bitacoras/._README.md,._README.md,d86e34cc7dd786b664075b8c17717a0a,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/quality/._README-QUALITY-CONTROL-PLAN.md,._README-QUALITY-CONTROL-PLAN.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/quality/._README-QUALITY-CHECKPOINT.md,._README-QUALITY-CHECKPOINT.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/quality/._ZDU-SIGMA-CORE-CHECKPOINT.md,._ZDU-SIGMA-CORE-CHECKPOINT.md,8295424b9fee1321ac370290d45ecca2,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/quality/._CONTROL_PLAN-ZDU.md,._CONTROL_PLAN-ZDU.md,e91cd56cbfa34a728b9124e5259b4abf,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/quality/._AMEF-ZDU.md,._AMEF-ZDU.md,7b1084651a451ff3e2a6d958cccf0111,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/quality/._README-QUALITY-AMEF.md,._README-QUALITY-AMEF.md,d4c13ab2c824212157135c0fe24162aa,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/quality/._ZDU_QUALITY_INDEX.md,._ZDU_QUALITY_INDEX.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/quality/console/._ZDU_QUALITY_INDEX.md,._ZDU_QUALITY_INDEX.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/framework/._README-ZDU-FRAMEWORK.md,._README-ZDU-FRAMEWORK.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/recalc/._ZDU-RECALC.md,._ZDU-RECALC.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/rules/._RULESTACK.md,._RULESTACK.md,c3186eefc23bc80727d64c07e9a27d29,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/rules/._ZDU-RULESTACK.md,._ZDU-RULESTACK.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/campaigns/._NODO-CAMP.md,._NODO-CAMP.md,b0b9a9cb59f89b18f7412065b0862f8d,True,True,Name + Content Duplicate
+__MACOSX/zdu-narrativa-app/private/universe/ifrl/._IFRL.md,._IFRL.md,2106ecd6b8b8d3b4daddd3fa5592b2d3,False,False,Unique
+__MACOSX/zdu-narrativa-app/private/universe/mutacore/._MUTACORE.md,._MUTACORE.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate
+__MACOSX/zdu-narrativa-app/private/universe/nodecamp/._NODO-CAMP.md,._NODO-CAMP.md,3333ab759dde5c13a47616b91bab313b,True,False,Name Duplicate
+__MACOSX/zdu-narrativa-app/private/universe/cerebrum/._CEREBRUM.md,._CEREBRUM.md,b0b9a9cb59f89b18f7412065b0862f8d,False,True,Content Duplicate

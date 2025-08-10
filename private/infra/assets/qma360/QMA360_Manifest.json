@@ -1,0 +1,14 @@
+{
+    "name": "QMA360 Campaigns Manifest",
+    "scope": "qma360",
+    "description": "Manifiesto de contenido simb\u00f3lico, por vertical y por partner. Estructura narrativa y activos de campa\u00f1as.",
+    "paths": [
+        "salud/",
+        "banca/",
+        "gobierno/",
+        "educacion/",
+        "partners/",
+        "README.md"
+    ],
+    "version": "2025-08-01"
+}

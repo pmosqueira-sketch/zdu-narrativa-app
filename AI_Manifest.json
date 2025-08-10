@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Infra AI Manifest",
+    "scope": "infra-ai",
+    "description": "Organiza el contenido bajo private/infra/ai incluyendo investigación, módulos simbióticos y archivos auxiliares.",
+    "paths": [
+      "README-AI-MASTER.md",
+      "AI-Investigacion-ZDU.zip",
+      "genie/",
+      "README.md"
+    ],
+    "version": "2025-08-01"
+  },
+  {
+    "name": "ZDU iCrawler Activation",
+    "scope": "quality-crawler",
+    "description": "Activa el módulo iCrawler para escaneo narrativo y técnico desde raíz del proyecto. Conecta con manifiestos, archivos markdown y estructuras simbólicas.",
+    "paths": [
+      "private/",
+      "private/changelog.md",
+      "private/readme.md",
+      "private/experimental/README.md",
+      "AI_Manifest.json"
+    ],
+    "version": "2025-08-02"
+  }
+]

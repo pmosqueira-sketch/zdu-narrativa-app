@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "file_path": "/private/infra/README.md",
+    "title": "Infra – README",
+    "severity": "warning",
+    "findings_count": 2,
+    "issues": [
+      {
+        "code": "MD001",
+        "message": "Falta título H1",
+        "location": "L1",
+        "severity": "warning",
+        "hint": "Agregar `# Título` al inicio"
+      },
+      {
+        "code": "MD010",
+        "message": "Tabla sin encabezados",
+        "location": "L42",
+        "severity": "warning",
+        "hint": "Añadir fila de encabezados y separadores"
+      }
+    ],
+    "owner": "infra-team",
+    "tags": [
+      "md",
+      "infra",
+      "audit"
+    ]
+  },
+  {
+    "timestamp": "2025-08-09T23:40:32.571656+00:00",
+    "file_path": "/private/infra/checkpoints/ZDU_CHECKPOINT_DEVSECOPS.md",
+    "title": "Checkpoint DevSecOps",
+    "severity": "info",
+    "findings_count": 0,
+    "issues": [],
+    "owner": "quality-team",
+    "tags": [
+      "checkpoint",
+      "quality"
+    ]
+  }
+]

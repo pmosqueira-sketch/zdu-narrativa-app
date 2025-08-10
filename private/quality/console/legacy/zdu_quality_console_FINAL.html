@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ZDU Quality Console · Auditoría & Crawler</title>
+    <style>
+        body { font-family: Helvetica, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        header { background: #222; color: white; padding: 10px 20px; }
+        h1 { margin: 0; font-size: 1.6em; }
+        section { margin-top: 20px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        footer { margin-top: 30px; font-size: 0.9em; color: #666; text-align: center; }
+        pre { background: #eee; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ZDU Quality Console · Auditoría & Crawler</h1>
+    </header>
+
+    <section>
+        <h2>Auditoría Markdown Inteligente</h2>
+        <p>Este módulo está diseñado para mostrar el resultado del análisis de archivos <code>.md</code> dentro del universo ZDU. Utiliza los resultados generados por <code>intelligent_md_audit.py</code> y los archivos de log ubicados en <code>private/infra/scripts/logs</code>.</p>
+        <div id="auditResults">
+            <pre>Cargar aquí el contenido de crawl_audit_*.json para visualizar los resultados.</pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>Visualización Extendida del iCrawler</h2>
+        <p>La siguiente área está reservada para los reportes completos del módulo de crawler (estructura de carpetas, archivos y conflictos).</p>
+        <div id="reportOutput">
+            <pre>Sección lista para incorporar datos de icrawler_agent.py</pre>
+        </div>
+    </section>
+
+    <footer>
+        ZDU QUALITY SYSTEM · Consola Final v1 – Fase IV Consolidada · 2 Agosto 2025
+    </footer>
+</body>
+</html>

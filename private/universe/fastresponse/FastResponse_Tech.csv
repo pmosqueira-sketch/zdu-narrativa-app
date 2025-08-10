@@ -1,0 +1,26 @@
+hero_name,alias,fast_response_role,specialty,ai_module_crawler,superpowers_crawlers,qma_product,certifications,knowledge_sources
+NeonMind,Comandante,SOC Manager / Orquestadora,"Coordinación estratégica, activación narrativa",LURA central,"LURA-SHIELD, ZIP-INTEL","- iboss Zero Trust SASE (https://www.iboss.com/),
+Exabeam SIEM https://www.exabeam.com/capabilities/siem/
+","CISSP, MIT Policy Engine","MIT, Stanford"
+Eris Sentinel,Cazadora interior,"Threat Hunter, In the battle against ever-evolving cyber threats, we need to act faster and smarter than what’s possible with human-powered technology. SentinelOne is intelligent, data-driven, enterprise-wide cybersecurity built for what’s next.
+Exabeam UEBA that applies AI and automation to security operations workflows for a holistic approach to combating cyberthreats, delivering the industry’s most effective TDIR.
+","Detección, adversario furtivo, análisis simbiótico",IFRL,"THREAT-GRABBER, ZIP-DECODER","- https://www.sentinelone.com/why-sentinelone/
+
+- https://www.exabeam.com/capabilities/ueba/","MITRE ATT&CK, CEH","MIT, SANS"
+Cerebrum,La Mente Digital,IA táctica,"Policy Engine, autoaprendizaje, contención lógica",Cerebrum Core,"POLICY-CHECKER, JSON-VALIDATOR",Compliance Suite QMA,"ISO 27001, SOC2","Google Research, OpenAI"
+Nebulon,Arquitecto lógico,Infraestructura / PEP,"Defensa de perímetro, segmentación, módulos RAM",InfraViewer + RAM,"RAM-WATCHER, NODE-SCANNER","- Tenable- Cloud Native Application Protection Platform (CNAPP): Close cloud exposures with actionable cloud security
+ https://www.tenable.com/data-sheets/tenable-cloud-security
+- Cloud Infrastructure Entitlement Management (CIEM): Take action on cloud identity exposures with Tenable CIEM
+ https://www.tenable.com/data-sheets/tenable-ciem
+","CISSP, Fortinet NSE4","MIT, Cisco NetAcad"
+Pixelin,Agente de Crawling,Recolector simbiótico,"Scraping narrativo, visualización de campañas",LightGrabber,"HTML-PARSER, SITE-CHECKER",Inteligencia de campañas QMA 360,Web Intelligence Analyst,"W3C, Mozilla DevNet"
+Trinity,Disruptiva controlada,Simulador adversarial,"Ataques éticos, testing narrativo, desbalance artificial",RAM sandbox inverso,"ADVERSARY-MODEL, CHAOS-TESTER",Red Team Simulations,"OSCP, Red Team MITRE","HackerOne, DEFCON Archives"
+Magna,La Táctica Soberana,"Especialista OT / Tácticas comando
+Manage and configure automation rules and triggers for the New-Scale Platform. Centralize management of automation workflows for faster threat detection, investigation, and response (TDIR).","Resiliencia OT, defensa adaptativa, liderazgo operativo",MODULUM,"OT-SCANNER, FIELD-SHIELD, TACTICAL-FEED","https://www.exabeam.com/capabilities/soar
+https://www.tenable.com/products/ot-security
+
+OT Defender + eVoz ZTX","CISSP, OT Security Expert, CISA","MIT, Harvard Cyber Policy, IEC-CERT"
+Black Trace,El Rastro Fantasma,Rastreador encubierto / Análisis de trazas,"OSINT, manipulación de logs, evasión, inteligencia forense",ShadowWalker,"TRACE-BINDER, GHOST-LOGGER, LOG-ERASER, RANSOM-HUNTER, PHISH-TRACKER",Fraude Tracker / Anti-Ransom Module,"OSINT Pro, CHFI, DoD Financial Forensics, Blockchain Tracing Certified","SANS, EC-Council, MIT"
+CISO,El Comandante Invisible,Líder supremo de seguridad narrativa,"Gobierno de identidades, estrategia global, comandos de emergencia",Cerebrum + MODULUM,"ZDU-PRIVPOL, AUTH-CONTROL, PANOPTICON-OVR",Zero Trust Command Center,"CISM, CISSP, Zero Trust Architect","NIST, Harvard Policy, ISACA"
+Veritas,El Testigo Estructural,Auditor simbiótico / Validador estructural,"Validación de JSON, estructura narrativa, contratos, reglas",RULESTACK + VALID-CORE,"JSON-INSPECTOR, RLS-CHECKER, LOGIC-PROBE","Verificador de estructuras QMA, política de integridad narrativa","JSON Schema Expert, MIT Integrity AI, ISO 27001 Auditor","MIT, NIST, JSON.org"
+Observaciones Criticas,,,,,,,,

@@ -1,0 +1,65 @@
+[
+  {
+    "filename": "ZDU_AUDIT_INFRA_010825.md",
+    "title": "Auditoría Infraestructura Híbrida Supabase ↔ Azure",
+    "date": "2025-08-01",
+    "type": "auditoría",
+    "description": "Consolidación de la infraestructura activa y relaciones entre contenedores de Azure y tablas simbólicas Supabase."
+  },
+  {
+    "filename": "ZDU_CHECKPOINT_CLEANUP_20250801.md",
+    "title": "Checkpoint de Limpieza y Validación de ZIPs",
+    "date": "2025-08-01",
+    "type": "cleanup",
+    "description": "Validación de archivos ZIP simbólicos cargados en blob y limpieza programada del contenedor CDU."
+  },
+  {
+    "filename": "ZDU_SUPABASE_AZURE_SYNC_V1.md",
+    "title": "Sync Inicial Supabase ↔ Azure",
+    "date": "2025-07-28",
+    "type": "sincronización",
+    "description": "Sincronización narrativa de casos CDU entre base de datos Supabase y blobs Azure."
+  },
+  {
+    "filename": "ZDU_INFRA_MILESTONE_002.md",
+    "title": "Milestone Técnico ZDU",
+    "date": "2025-07-25",
+    "type": "milestone",
+    "description": "Segundo hito técnico consolidado del ecosistema ZDU. Activación de Genie y blobs narrativos."
+  },
+  {
+    "filename": "bitacora-sync-campanas.md",
+    "title": "Bitácora de Sincronización de Campañas",
+    "date": "2025-07-27",
+    "type": "bitácora",
+    "description": "Registro simbiótico del trigger `NODO-CAMP` activado por llegada de ZIPs a Blob Storage."
+  },
+  {
+    "filename": "ZDU_CHECKPOINT_INGESTA_QMA360_20250801.md",
+    "title": "Checkpoint de Ingesta QMA360 – Fase Inicial",
+    "date": "2025-08-01",
+    "type": "milestone",
+    "description": "Registro del plan inicial de ingesta por lotes de activos simbólicos QMA360 y su reflejo en Supabase/Azure."
+  },
+  {
+    "filename": "manifest_qma360.json",
+    "title": "Manifest simbólico QMA360",
+    "date": "2025-08-01",
+    "type": "estructura",
+    "description": "Estructura jerárquica codificada para activos QMA360, con vista previa de carpetas por vertical (salud, banca, etc)."
+  },
+  {
+    "filename": "estructura_qma360.sql",
+    "title": "Esquema SQL – estructura_qma360",
+    "date": "2025-08-01",
+    "type": "esquema_sql",
+    "description": "Definición técnica de tabla para ingesta estructurada en Supabase, enlazada a carpetas simbólicas."
+  },
+  {
+    "filename": "estructura_qma360.json",
+    "title": "Estructura.json QMA360 para inspección",
+    "date": "2025-08-01",
+    "type": "estructura",
+    "description": "Archivo JSON con representación simbólica previa a la ingesta, usado como base para validaciones lógicas."
+  }
+]

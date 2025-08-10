@@ -1,0 +1,18 @@
+
+# requirements.txt simbólico para motor de crawling Python · ZDU
+# Esta lista refleja las dependencias utilizadas en el entorno original (ya eliminado)
+# No es necesario mantener el entorno virtual, ya que la ingesta simbiótica ocurre en Supabase
+
+# Cliente oficial de Supabase para Python
+supabase-py
+
+# Scraping y automatización
+playwright
+requests
+beautifulsoup4
+
+# Entorno y configuración
+python-dotenv
+
+# Manejo de PDFs y formatos alternativos (si se requiere)
+pdfminer.six

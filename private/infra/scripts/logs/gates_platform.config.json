@@ -1,0 +1,22 @@
+{
+  "delivery": {
+    "deployment_frequency_min_per_7d": 4,
+    "lead_time_hours_max": 24,
+    "change_failure_rate_max_pct": 15,
+    "mttr_hours_max": 4
+  },
+  "quality": {
+    "unit_test_coverage_min_pct": 80,
+    "lint_errors_max": 5,
+    "schema_validation_min_pct": 95
+  },
+  "security": {
+    "critical_vulns_open_max": 0,
+    "high_vulns_open_max": 3,
+    "secrets_exposed_max": 0
+  },
+  "operations": {
+    "staging_uptime_min_pct": 99.0,
+    "error_rate_backend_max_pct": 1.0
+  }
+}

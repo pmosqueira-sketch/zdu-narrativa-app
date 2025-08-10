@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZDU · AI MODULES ROADMAP</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem;
+      background-color: #0f0f10;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #ff9800;
+    }
+    code, pre {
+      background-color: #1f1f1f;
+      padding: 0.5rem;
+      border-radius: 4px;
+      display: block;
+      overflow-x: auto;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    @media screen and (max-width: 600px) {
+      body {
+        margin: 1rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 ZDU · AI MODULES ROADMAP</h1>
+
+  <div class="section">
+    <p>Este documento define el roadmap estratégico, técnico y simbiótico del módulo de Inteligencia Artificial dentro del universo ZDU. Sirve como bitácora viva para la evolución del subsistema CEREBRUM ↔ IFRL ↔ MUTA·CORE ↔ Supabase.</p>
+  </div>
+
+  <div class="section">
+    <h2>✅ ESTADO ACTUAL</h2>
+    <ul>
+      <li>Supabase conectado</li>
+      <li>Tabla <code>ai_modules</code> activada</li>
+      <li>RLS activado con políticas seguras</li>
+      <li>REST API funcional (POST vía .http y Terminal)</li>
+      <li>Primer manifiesto cargado con éxito</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🔭 ROADMAP DE FASES SIMBIÓTICAS</h2>
+
+    <h3>🧩 FASE 1 · Visualizador REST simbiótico</h3>
+    <p>Crear un servicio Flask o script para consultar los <code>ai_modules</code> existentes.</p>
+
+    <h3>🔄 FASE 2 · Inserción Condicional (if_exists → UPDATE)</h3>
+    <p>Agregar lógica condicional al <code>.sh</code> o <code>.http</code>. Reemplaza <code>POST</code> por <code>UPSERT</code>.</p>
+
+    <h3>☁️ FASE 3 · Integración con Azure Functions</h3>
+    <p>Activar función automatizada que escuche cambios en Blob y actualice Supabase.</p>
+
+    <h3>🧠 FASE 4 · Activación narrativa</h3>
+    <p>El manifiesto AI puede detonar generación de casos, alertas, recalibraciones, etc.</p>
+
+    <h3>♻️ FASE 5 · Retroalimentación IA</h3>
+    <p>IA interpreta manifiestos y propone ajustes narrativos, autocuración simbiótica.</p>
+  </div>
+
+  <div class="section">
+    <h2>🔒 POLÍTICAS DE SEGURIDAD ACTIVAS</h2>
+    <ul>
+      <li><code>INSERT</code> solo permitido con <code>service_role</code></li>
+      <li><code>SELECT</code> solo para usuarios autenticados</li>
+      <li><code>UPDATE</code> controlado por backend</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📂 RUTA RECOMENDADA DE ESTE DOCUMENTO</h2>
+    <code>/private/infra/ai/docs/index-roadmap-ai.html</code>
+  </div>
+
+  <p><strong>✍️ Última actualización:</strong> 2025-08-02</p>
+</body>
+</html>

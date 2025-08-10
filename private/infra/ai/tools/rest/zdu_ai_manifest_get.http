@@ -1,0 +1,8 @@
+
+### Consultar manifiesto AI por nombre (autenticado con Clerk token)
+
+GET https://lilxvmvykdssotolctlbl.supabase.co/rest/v1/ai_modules?manifest_name=eq.ZDU_AI_MANIFEST HTTP/1.1
+apikey: {{SUPABASE_SERVICE_ROLE}}
+Authorization: Bearer {{SUPABASE_SERVICE_ROLE}}
+Content-Type: application/json
+Prefer: return=representation

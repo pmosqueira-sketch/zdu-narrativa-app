@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resumen Auditoría JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #eee;
+            padding: 2em;
+        }
+        h1 {
+            color: #f39c12;
+        }
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+            background-color: #222;
+            color: #ddd;
+        }
+        .audit-table th, .audit-table td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+        .audit-table th {
+            background-color: #444;
+        }
+        .audit-table tr:nth-child(even) {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resumen de Auditoría de Archivos JSON (.json)</h1>
+    <p>Reporte generado automáticamente. Clasifica archivos únicos y duplicados por nombre y contenido.</p>
+    <table class="dataframe audit-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>relative_path</th>
+      <th>filename</th>
+      <th>hash</th>
+      <th>filename_dup</th>
+      <th>hash_dup</th>
+      <th>conflict_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>zdu-narrativa-app/crawl_audit_2025_08_02.json</td>
+      <td>crawl_audit_2025_08_02.json</td>
+      <td>f9b79493b46400c435a7d5f6730fd8da</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/intelgen_risk_EXEC_ENV.json</td>
+      <td>intelgen_risk_EXEC_ENV.json</td>
+      <td>3988b5127539c731a19d80428689142e</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/AI_Manifest.json</td>
+      <td>AI_Manifest.json</td>
+      <td>4f3a0832830072979b42c023a669579f</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/intelgen_risk.json</td>
+      <td>intelgen_risk.json</td>
+      <td>a5c48634491cc1aaceac0d7e405b2947</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-narrativa-app/logs/crawl_audit_2025_08_02.json</td>
+      <td>crawl_audit_2025_08_02.json</td>
+      <td>ff125e5d87a449e898274d835aa52662</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-storage/blob-inventory/blobs_zdu-campanas.json</td>
+      <td>blobs_zdu-campanas.json</td>
+      <td>d873dea80bf9fd5e9495e63ba14c17a5</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-campanas/campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json</td>
+      <td>campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json</td>
+      <td>3b04d3efbebd82605b8faae742acd2a0</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-campanas/campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json</td>
+      <td>campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json</td>
+      <td>12f261893bbe651621f2d319b4ed9f08</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-campanas/campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json</td>
+      <td>campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json</td>
+      <td>6c52d19ec6ac7da5d151f9ac22a09b84</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/zdu-campanas/campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json</td>
+      <td>campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json</td>
+      <td>fcecdcd9bc0095e6e9a42e4776feb783</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/auth/jwt/clerk_supabase_jwks.json</td>
+      <td>clerk_supabase_jwks.json</td>
+      <td>45069726920631f48a665f0d575fb2fa</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/checkpoints/checkpoint_supabase_structure_2025-08-02.json</td>
+      <td>checkpoint_supabase_structure_2025-08-02.json</td>
+      <td>38934d605e44257ad78b4937976d138c</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/checkpoints/package-lock.json</td>
+      <td>package-lock.json</td>
+      <td>3622a8c7c8dcb224c399536c9a4cc074</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/checkpoints/package.json</td>
+      <td>package.json</td>
+      <td>26b4e3a90849513df01d74a9d9c0ec2e</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/checkpoints/checkpoint_manifest.json</td>
+      <td>checkpoint_manifest.json</td>
+      <td>74f44cd3f3c46e49e426c171354434ae</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/ai/AI_Manifest.json</td>
+      <td>AI_Manifest.json</td>
+      <td>3e760c642e6c0d0e0eaec5c5fe94d961</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/ai/manifest/ZDU_AI_MANIFEST.json</td>
+      <td>ZDU_AI_MANIFEST.json</td>
+      <td>98dae28ff36adf4263a03b65339e7e25</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/crawlers/Crawler_Manifest.json</td>
+      <td>Crawler_Manifest.json</td>
+      <td>b06f2ce680004a82411f859e478e77d4</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/crawlers/manifest.crawler.json</td>
+      <td>manifest.crawler.json</td>
+      <td>8d8745c0fa0b84ca6b7178d5eb276ecf</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/audits/modules/supabase_table_index.json</td>
+      <td>supabase_table_index.json</td>
+      <td>f3a0597bad754828bcd8ad1a62556b96</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/audits/modules/bitacoras/processed_campaigns.json</td>
+      <td>processed_campaigns.json</td>
+      <td>e990297c0fd7dbc115b74be676d3e2e7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>Name + Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/audits/modules/logs/repo_json_audit_data.json</td>
+      <td>repo_json_audit_data.json</td>
+      <td>589d35a5d1b285c6ec51d51514c0ff03</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/audits/data/processed_campaigns.json</td>
+      <td>processed_campaigns.json</td>
+      <td>e990297c0fd7dbc115b74be676d3e2e7</td>
+      <td>True</td>
+      <td>True</td>
+      <td>Name + Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/logs/crawl_audit_2025_08_03.json</td>
+      <td>crawl_audit_2025_08_03.json</td>
+      <td>d82da8685127199754299c468fb21fab</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/logs/md_audit_results.json</td>
+      <td>md_audit_results.json</td>
+      <td>aa62e26ef2ddac1048c82bc221e30fed</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/logs/repo_json_audit_data.json</td>
+      <td>repo_json_audit_data.json</td>
+      <td>d751713988987e9331980363e24189ce</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/data/logs/campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json</td>
+      <td>campaign_1aaae783-d8b2-4d29-9bb6-059008b243a8.json</td>
+      <td>0d76e82c0c84f9e8310d76c924ac4818</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/data/logs/campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json</td>
+      <td>campaign_b635e2b7-5403-41c3-af75-a6f1ff1a032c.json</td>
+      <td>6eae99d1eb5ae0810991419ab03935f1</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/data/logs/campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json</td>
+      <td>campaign_83234bd7-6c4b-4587-bd9a-fa8397d128bf.json</td>
+      <td>ec9d45c7f9efa1c27c1ef8d8dc7901a8</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/data/logs/campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json</td>
+      <td>campaign_f40db8b5-2d61-4a94-a27b-0e1f3b0b68af.json</td>
+      <td>c062a82df43bc6bf45dcf8d0a74f00f0</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/scripts/data/logs/repo_json_audit_data.json</td>
+      <td>repo_json_audit_data.json</td>
+      <td>5a2ee7453a4069b4170fb73a4ad450b8</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/assets/qma360/estructura_qma360.json</td>
+      <td>estructura_qma360.json</td>
+      <td>d9e0c7677975b55e4edb9160f6b04966</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/assets/qma360/QMA360_Manifest.json</td>
+      <td>QMA360_Manifest.json</td>
+      <td>b01672f665f4873367563f74dd3df4cc</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/infra/assets/qma360/manifest_qma360.json</td>
+      <td>manifest_qma360.json</td>
+      <td>990a6cc2f21c749bc9f08ee8078e11a0</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/inteligen/intelgen-risk-checkpoint.json</td>
+      <td>intelgen-risk-checkpoint.json</td>
+      <td>b23a0bf9bbca8a6ae0e89d6f8b4df60e</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/logs/crawl_audit_2025_08_02.json</td>
+      <td>crawl_audit_2025_08_02.json</td>
+      <td>d1b8ff2b3e9425c76c77f98907175171</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/logs/crawl_audit_2025_08_02_FULL_BASELINE.json</td>
+      <td>crawl_audit_2025_08_02_FULL_BASELINE.json</td>
+      <td>1e9b7db9dd826eb4d9060bc9e76109e7</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>zdu-narrativa-app/private/logs/repo_json_audit_data.json</td>
+      <td>repo_json_audit_data.json</td>
+      <td>78df4243c38de8d81948a010f7b6437f</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/._crawl_audit_2025_08_02.json</td>
+      <td>._crawl_audit_2025_08_02.json</td>
+      <td>95001f63ac1e34800d19f0786597eafc</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/._intelgen_risk_EXEC_ENV.json</td>
+      <td>._intelgen_risk_EXEC_ENV.json</td>
+      <td>4b64d9b767131e702200960b2ff0288d</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/._AI_Manifest.json</td>
+      <td>._AI_Manifest.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>True</td>
+      <td>True</td>
+      <td>Name + Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/._intelgen_risk.json</td>
+      <td>._intelgen_risk.json</td>
+      <td>415dbaf94b6fc0719d490973d5d95c89</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/auth/jwt/._clerk_supabase_jwks.json</td>
+      <td>._clerk_supabase_jwks.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._checkpoint_supabase_structure_2025-08-02.json</td>
+      <td>._checkpoint_supabase_structure_2025-08-02.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._package-lock.json</td>
+      <td>._package-lock.json</td>
+      <td>a0afe6e940daa7b8064112675242bb73</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._package.json</td>
+      <td>._package.json</td>
+      <td>a0afe6e940daa7b8064112675242bb73</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/checkpoints/._checkpoint_manifest.json</td>
+      <td>._checkpoint_manifest.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/ai/._AI_Manifest.json</td>
+      <td>._AI_Manifest.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>True</td>
+      <td>True</td>
+      <td>Name + Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/ai/manifest/._ZDU_AI_MANIFEST.json</td>
+      <td>._ZDU_AI_MANIFEST.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/scripts/crawlers/._manifest.crawler.json</td>
+      <td>._manifest.crawler.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/modules/._supabase_table_index.json</td>
+      <td>._supabase_table_index.json</td>
+      <td>75536387864749f4d1351c59a9e4b52e</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/scripts/audits/data/._processed_campaigns.json</td>
+      <td>._processed_campaigns.json</td>
+      <td>62ca3b8722e1f70aaec4e38fdf0ef16a</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/scripts/logs/._md_audit_results.json</td>
+      <td>._md_audit_results.json</td>
+      <td>8cdea597087be9dbde188ea234bb612f</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/scripts/data/logs/._repo_json_audit_data.json</td>
+      <td>._repo_json_audit_data.json</td>
+      <td>00a302b3c0091d9913b3128d3bd985f7</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/._estructura_qma360.json</td>
+      <td>._estructura_qma360.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/infra/assets/qma360/._manifest_qma360.json</td>
+      <td>._manifest_qma360.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/inteligen/._intelgen-risk-checkpoint.json</td>
+      <td>._intelgen-risk-checkpoint.json</td>
+      <td>b0b9a9cb59f89b18f7412065b0862f8d</td>
+      <td>False</td>
+      <td>True</td>
+      <td>Content Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/logs/._crawl_audit_2025_08_02.json</td>
+      <td>._crawl_audit_2025_08_02.json</td>
+      <td>26b455e5856c6abfb71af398a0060d57</td>
+      <td>True</td>
+      <td>False</td>
+      <td>Name Duplicate</td>
+    </tr>
+    <tr>
+      <td>__MACOSX/zdu-narrativa-app/private/logs/._crawl_audit_2025_08_02_FULL_BASELINE.json</td>
+      <td>._crawl_audit_2025_08_02_FULL_BASELINE.json</td>
+      <td>06d198412ae1052a7b7bf068aae002f1</td>
+      <td>False</td>
+      <td>False</td>
+      <td>Unique</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

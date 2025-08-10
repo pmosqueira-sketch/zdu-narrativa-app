@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZDU · Quality Console (Home)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#0e1117; --panel:#151923; --panel-2:#1c1f26; --ink:#d8dee9;
+      --muted:#8b93a1; --hi:#33ccff; --ok:#00ff99; --warn:#ffcc66; --fail:#ff667a;
+      --card:#0f141c; --chip:#0d1117; --border:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg,var(--panel) 0%,rgba(21,25,35,.85) 100%);
+      border-bottom:2px solid var(--ok);padding:12px 18px}
+    h1{margin:0;font-size:18px;color:var(--hi)}
+    main{padding:20px;display:grid;gap:18px}
+    section{background:var(--panel-2);border-radius:12px;padding:16px;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset}
+    section h2{margin:0 0 8px;color:var(--ok);font-size:16px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--muted);font-size:12px}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .fail{color:var(--fail)}
+    footer{padding:14px 20px;color:var(--muted);text-align:center}
+    /* NAV */
+    nav{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+    nav a{color:#b9c6d6;text-decoration:none;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--chip)}
+    nav a:hover{border-color:#2a2f3a}
+    nav a.active{background:#0b0f14;color:var(--ok);border-color:#214436}
+    nav a.master{font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ZDU · Quality Console (Home)</h1>
+    <nav>
+      <a class="master active" aria-current="page" href="./index.html" title="Consola Maestra (Home)">Home</a>
+      <a href="./devsecops.html">DevSecOps</a>
+      <a href="./content.html">Content Audit</a>
+      <a href="./security.html">Security Posture</a>
+      <a href="./campaigns.html">QMA‑C360</a>
+      <a href="./protocols.html">Protocols</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Semáforo rápido</h2>
+      <div id="sem" class="grid-3">
+        <div class="card">Cargando…</div><div class="card">Cargando…</div><div class="card">Cargando…</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Accesos rápidos</h2>
+      <div class="grid-3">
+        <a class="card" href="./devsecops.html"><b>DevSecOps</b><br><span class="pill">Gates & KPIs</span></a>
+        <a class="card" href="./security.html"><b>Security Posture</b><br><span class="pill">Findings by Severity</span></a>
+        <a class="card" href="./content.html"><b>Content Audit</b><br><span class="pill">Inventario</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ZDU QUALITY SYSTEM · Home · v2
+  </footer>
+
+  <script>
+    const P="/private/infra/scripts/logs/";
+    async function j(p){ const r=await fetch(P+p,{cache:'no-store'}); if(!r.ok) throw new Error(p); return r.json(); }
+    function card(label, value, cls=""){ return `<div class="card ${cls}"><div class="pill">${label}</div><div style="font-size:22px;font-weight:700">${value}</div></div>`; }
+
+    (async ()=>{
+      try{
+        const [kpis, inv] = await Promise.all([ j('kpis_quality.json'), j('content_audit.json') ]);
+        const cCrit = (kpis.find(k=>k.name==='critical_findings')?.value ?? '–');
+        const httpOk = (kpis.find(k=>k.name==='http_200_rate')?.value ?? '–');
+        const cnt   = Array.isArray(inv) ? inv.length : '–';
+        document.querySelector('#sem').innerHTML =
+          card('critical_findings', cCrit, Number(cCrit)>0?'fail':'ok') +
+          card('http_200_rate', `${httpOk}%`, Number(httpOk)>=99 ? 'ok':'warn') +
+          card('inventario', `${cnt} archivos`);
+      }catch(e){
+        document.querySelector('#sem').innerHTML = `<div class="card fail">Error al cargar datos base</div>`;
+      }
+    })();
+  </script>
+</body>
+</html>
