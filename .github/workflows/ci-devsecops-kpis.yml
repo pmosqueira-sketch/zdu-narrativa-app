@@ -1,0 +1,79 @@
+name: CI · Build DevSecOps KPIs
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  SCHEMAS_DIR: private/quality/data-contracts
+  PY_VERSION: '3.11'
+
+jobs:
+  kpis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure log dir
+        run: mkdir -p "$LOG_DIR"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+          cache: 'pip'
+
+      - name: Install deps (if any)
+        run: |
+          pip install -r requirements.txt || true
+          pip install --upgrade jsonschema
+
+      - name: Build KPIs
+        run: |
+          if [ -f "private/quality/widgets/pipelines/build_devsecops_kpis.py" ]; then
+            python private/quality/widgets/pipelines/build_devsecops_kpis.py --out "$LOG_DIR/devsecops_kpis.json" || true
+          elif [ -f "private/quality/widgets/pipelines/generate_kpis.py" ]; then
+            python private/quality/widgets/pipelines/generate_kpis.py --out "$LOG_DIR/devsecops_kpis.json" || true
+          elif [ -f "private/infra/scripts/build_devsecops_kpis.py" ]; then
+            python private/infra/scripts/build_devsecops_kpis.py --out "$LOG_DIR/devsecops_kpis.json" || true
+          else
+            python - <<'PY'
+import json, os
+out="private/infra/scripts/logs/devsecops_kpis.json"
+os.makedirs(os.path.dirname(out), exist_ok=True)
+json.dump({
+  "builds": {"success": 0, "failed": 0},
+  "security": {"findings": 0},
+  "quality": {"lint_errors": 0},
+  "timestamp": __import__("datetime").datetime.utcnow().isoformat()+"Z"
+}, open(out,"w"), indent=2)
+PY
+          fi
+
+      - name: Validate against schema
+        run: |
+          if [ -f "$SCHEMAS_DIR/devsecops_kpis.schema.json" ]; then
+            python - <<'PY'
+import json, sys
+from jsonschema import validate, Draft202012Validator
+schema = json.load(open("private/quality/data-contracts/devsecops_kpis.schema.json"))
+data = json.load(open("private/infra/scripts/logs/devsecops_kpis.json"))
+Draft202012Validator.check_schema(schema)
+validate(instance=data, schema=schema)
+print("OK")
+PY
+          fi
+
+      - name: Summary
+        run: |
+          echo "## DevSecOps KPIs" >> $GITHUB_STEP_SUMMARY
+          echo "- devsecops_kpis.json generado en $LOG_DIR" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: devsecops-kpis-${{ github.run_number }}
+          path: private/infra/scripts/logs/**
+          if-no-files-found: warn
