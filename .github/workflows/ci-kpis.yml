@@ -1,15 +1,11 @@
-name: CI · KPIs (generate + validate)
+name: CI · KPIs (generate + compose DevSecOps) with schema validation
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   push:
     branches: [ main, master, develop ]
-    paths:
-      - private/quality/pipelines/generate_kpis.py
-      - private/quality/pipelines/build_devescops_kpis.py
-      - private/quality/data-contracts/kpis.schema.json
-      - private/quality/data-contracts/devsecops_kpis.schema.json
-      - .github/workflows/ci-kpis.yml
+  pull_request:
+    branches: [ main, master, develop ]
 
 permissions:
   contents: read
@@ -38,69 +34,52 @@ jobs:
           python-version: ${{ env.PY_VERSION }}
           cache: 'pip'
 
-      - name: Install deps (jsonschema + optional requirements.txt)
+      - name: Install CLI tools
         run: |
           pip install --upgrade jsonschema
-          test -f private/quality/pipelines/requirements.txt && pip install -r private/quality/pipelines/requirements.txt || true
+          npm i -g ajv-cli ajv-formats
 
       - name: Generate KPIs
         run: |
           if [ -f "private/quality/pipelines/generate_kpis.py" ]; then
-            python private/quality/pipelines/generate_kpis.py --out "$LOG_DIR/kpis.json" 2>&1 | tee "$LOG_DIR/generate_kpis.log" || true
-            test -s "$LOG_DIR/kpis.json" || python private/quality/pipelines/generate_kpis.py > "$LOG_DIR/kpis.json" 2>>"$LOG_DIR/generate_kpis.log" || true
+            python private/quality/pipelines/generate_kpis.py --out "$LOG_DIR/kpis_latest.json" || true
           else
-            echo '{}' > "$LOG_DIR/kpis.json"
+            echo '{}' > "$LOG_DIR/kpis_latest.json"
           fi
 
-      - name: Build DevSecOps KPIs (composite)
+      - name: Compose DevSecOps KPIs
         run: |
-          if [ -f "private/quality/pipelines/build_devescops_kpis.py" ]; then
-            python private/quality/pipelines/build_devescops_kpis.py --in "$LOG_DIR/kpis.json" --out "$LOG_DIR/devsecops_kpis.json" 2>&1 | tee "$LOG_DIR/build_devescops_kpis.log" || true
-            # Fallback si no acepta --in/--out
-            test -s "$LOG_DIR/devsecops_kpis.json" || python private/quality/pipelines/build_devescops_kpis.py < "$LOG_DIR/kpis.json" > "$LOG_DIR/devsecops_kpis.json" 2>>"$LOG_DIR/build_devescops_kpis.log" || true
+          if [ -f "private/quality/pipelines/build_devsecops_kpis.py" ]; then
+            python private/quality/pipelines/build_devsecops_kpis.py \
+              --in "$LOG_DIR/kpis_latest.json" --out "$LOG_DIR/devsecops_kpis.json" || true
           else
-            cp "$LOG_DIR/kpis.json" "$LOG_DIR/devsecops_kpis.json" || echo '{}' > "$LOG_DIR/devsecops_kpis.json"
+            cp "$LOG_DIR/kpis_latest.json" "$LOG_DIR/devsecops_kpis.json"
           fi
 
-      - name: Validate KPIs JSONs (Python jsonschema)
+      - name: Validate KPIs schemas (AJV)
         run: |
-          python - <<'PY'
-import json, os
-from jsonschema import Draft7Validator
-base = "private/quality/data-contracts"
-logs = "private/infra/scripts/logs"
-pairs = [
-  ("kpis.schema.json", "kpis.json"),
-  ("devsecops_kpis.schema.json", "devsecops_kpis.json"),
-]
-for schema_name, data_name in pairs:
-    sp = os.path.join(base, schema_name)
-    dp = os.path.join(logs, data_name)
-    if not (os.path.isfile(sp) and os.path.isfile(dp)):
-        print(f"Skip: {schema_name} or {data_name} not found")
-        continue
-    schema = json.load(open(sp))
-    data   = json.load(open(dp))
-    errs = sorted(Draft7Validator(schema).iter_errors(data), key=lambda e: e.path)
-    if errs:
-        print(f"❌ {data_name} fails {schema_name}:")
-        for e in errs:
-            print(" -", e.message, "at", "/".join(map(str,e.path)))
-    else:
-        print(f"✅ {data_name} matches {schema_name}")
-PY
+          rc=0
+          if [ -f "$SCHEMAS_DIR/kpis.schema.json" ] && [ -f "$LOG_DIR/kpis_latest.json" ]; then
+            ajv -c ajv-formats -s "$SCHEMAS_DIR/kpis.schema.json" -d "$LOG_DIR/kpis_latest.json" --strict=false \
+              > "$LOG_DIR/kpis_schema.txt" 2>&1 || rc=1
+          fi
+          if [ -f "$SCHEMAS_DIR/devsecops_kpis.schema.json" ] && [ -f "$LOG_DIR/devsecops_kpis.json" ]; then
+            ajv -c ajv-formats -s "$SCHEMAS_DIR/devsecops_kpis.schema.json" -d "$LOG_DIR/devsecops_kpis.json" --strict=false \
+              > "$LOG_DIR/devsecops_kpis_schema.txt" 2>&1 || rc=1
+          fi
+          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/kpis_schema_results.json"
+          exit 0
 
       - name: Summary
         run: |
-          echo "## KPIs generation & validation" >> $GITHUB_STEP_SUMMARY
-          echo "- Outputs: \`$LOG_DIR/kpis.json\`, \`$LOG_DIR/devsecops_kpis.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "## KPIs" >> $GITHUB_STEP_SUMMARY
+          echo "- Logs: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
+          ls -la "$LOG_DIR" >> $GITHUB_STEP_SUMMARY || true
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifacts
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: kpis-${{ github.run_number }}
-          path: |
-            ${{ env.LOG_DIR }}/kpis.json
-            ${{ env.LOG_DIR }}/devsecops_kpis.json
-            ${{ env.LOG_DIR }}/*.log
+          name: kpis-and-devsecops-${{ github.run_number }}
+          path: ${{ env.LOG_DIR }}/**
           if-no-files-found: warn
