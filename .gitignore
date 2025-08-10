@@ -81,3 +81,9 @@ venv/lib/**/playwright/driver/node
 # Git archive exports
 # ================================
 .git.zip
+
+# audit reports
+changed_integrations.txt
+deleted_all.txt
+deleted_integrations.txt
+diff_all.txt
