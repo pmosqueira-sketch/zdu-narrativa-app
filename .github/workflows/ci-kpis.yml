@@ -1,0 +1,106 @@
+name: CI · KPIs (generate + validate)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master, develop ]
+    paths:
+      - private/quality/pipelines/generate_kpis.py
+      - private/quality/pipelines/build_devescops_kpis.py
+      - private/quality/data-contracts/kpis.schema.json
+      - private/quality/data-contracts/devsecops_kpis.schema.json
+      - .github/workflows/ci-kpis.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-kpis-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  SCHEMAS_DIR: private/quality/data-contracts
+  PY_VERSION: '3.11'
+
+jobs:
+  kpis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare log dir
+        run: mkdir -p "$LOG_DIR"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+          cache: 'pip'
+
+      - name: Install deps (jsonschema + optional requirements.txt)
+        run: |
+          pip install --upgrade jsonschema
+          test -f private/quality/pipelines/requirements.txt && pip install -r private/quality/pipelines/requirements.txt || true
+
+      - name: Generate KPIs
+        run: |
+          if [ -f "private/quality/pipelines/generate_kpis.py" ]; then
+            python private/quality/pipelines/generate_kpis.py --out "$LOG_DIR/kpis.json" 2>&1 | tee "$LOG_DIR/generate_kpis.log" || true
+            test -s "$LOG_DIR/kpis.json" || python private/quality/pipelines/generate_kpis.py > "$LOG_DIR/kpis.json" 2>>"$LOG_DIR/generate_kpis.log" || true
+          else
+            echo '{}' > "$LOG_DIR/kpis.json"
+          fi
+
+      - name: Build DevSecOps KPIs (composite)
+        run: |
+          if [ -f "private/quality/pipelines/build_devescops_kpis.py" ]; then
+            python private/quality/pipelines/build_devescops_kpis.py --in "$LOG_DIR/kpis.json" --out "$LOG_DIR/devsecops_kpis.json" 2>&1 | tee "$LOG_DIR/build_devescops_kpis.log" || true
+            # Fallback si no acepta --in/--out
+            test -s "$LOG_DIR/devsecops_kpis.json" || python private/quality/pipelines/build_devescops_kpis.py < "$LOG_DIR/kpis.json" > "$LOG_DIR/devsecops_kpis.json" 2>>"$LOG_DIR/build_devescops_kpis.log" || true
+          else
+            cp "$LOG_DIR/kpis.json" "$LOG_DIR/devsecops_kpis.json" || echo '{}' > "$LOG_DIR/devsecops_kpis.json"
+          fi
+
+      - name: Validate KPIs JSONs (Python jsonschema)
+        run: |
+          python - <<'PY'
+import json, os
+from jsonschema import Draft7Validator
+base = "private/quality/data-contracts"
+logs = "private/infra/scripts/logs"
+pairs = [
+  ("kpis.schema.json", "kpis.json"),
+  ("devsecops_kpis.schema.json", "devsecops_kpis.json"),
+]
+for schema_name, data_name in pairs:
+    sp = os.path.join(base, schema_name)
+    dp = os.path.join(logs, data_name)
+    if not (os.path.isfile(sp) and os.path.isfile(dp)):
+        print(f"Skip: {schema_name} or {data_name} not found")
+        continue
+    schema = json.load(open(sp))
+    data   = json.load(open(dp))
+    errs = sorted(Draft7Validator(schema).iter_errors(data), key=lambda e: e.path)
+    if errs:
+        print(f"❌ {data_name} fails {schema_name}:")
+        for e in errs:
+            print(" -", e.message, "at", "/".join(map(str,e.path)))
+    else:
+        print(f"✅ {data_name} matches {schema_name}")
+PY
+
+      - name: Summary
+        run: |
+          echo "## KPIs generation & validation" >> $GITHUB_STEP_SUMMARY
+          echo "- Outputs: \`$LOG_DIR/kpis.json\`, \`$LOG_DIR/devsecops_kpis.json\`" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kpis-${{ github.run_number }}
+          path: |
+            ${{ env.LOG_DIR }}/kpis.json
+            ${{ env.LOG_DIR }}/devsecops_kpis.json
+            ${{ env.LOG_DIR }}/*.log
+          if-no-files-found: warn
