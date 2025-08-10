@@ -30,8 +30,9 @@ jobs:
           pip install jsonschema
       - name: Build KPIs
         run: |
-          python private/quality/pipelines/build_devsecops_kpis.py \
-            --out "${LOG_DIR}/devsecops_kpis.json"
+         python private/quality/pipelines/build_devsecops_kpis.py \
+           --logs-root "${LOG_DIR}" \
+           --out "${LOG_DIR}/devsecops_kpis.json"
       - name: Upload logs
         if: always()
         uses: actions/upload-artifact@v4
