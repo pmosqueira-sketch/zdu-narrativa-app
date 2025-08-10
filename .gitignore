@@ -88,3 +88,8 @@ changed_integrations.txt
 deleted_all.txt
 deleted_integrations.txt
 diff_all.txt
+
+# Logs locales
+private/logs/
+private/infra/scripts/logs/
+
