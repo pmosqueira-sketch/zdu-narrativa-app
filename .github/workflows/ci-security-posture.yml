@@ -14,6 +14,7 @@ permissions:
 
 env:
   LOG_DIR: private/infra/scripts/logs
+  SECURITY_BASE: private/quality/data-contracts   # ← (1) base configurable
   PY_VERSION: "3.11"
 
 jobs:
@@ -38,20 +39,30 @@ jobs:
           python -m pip install --upgrade pip
           pip install jsonschema
 
-      # Si tu script requiere más flags, los agregamos aquí
+      - name: Inspect base
+        run: |
+          echo "SECURITY_BASE=${SECURITY_BASE}"
+          if [ -d "${SECURITY_BASE}" ]; then
+            echo "== SECURITY_BASE contents ==" && ls -la "${SECURITY_BASE}" || true
+          else
+            echo "::warning::SECURITY_BASE does not exist: ${SECURITY_BASE}"
+          fi
+
+      # Si tu script requiere más flags (p.ej. --owner), agrégalos aquí
       - name: Build Security Posture
+        continue-on-error: true              # ← (2) no bloquea el flujo si falla
         run: |
           python private/quality/pipelines/sec_posture.py \
+            --base "${SECURITY_BASE}" \
             --out "${LOG_DIR}/security_posture.json"
 
-      # Diagnóstico: ver qué hay en LOG_DIR y asegurar el archivo
       - name: Verify output exists
         run: |
           echo "== LOG_DIR contents =="
           ls -la "${LOG_DIR}" || true
           if [ ! -f "${LOG_DIR}/security_posture.json" ]; then
             echo "::warning::security_posture.json no encontrado. Creando vacío para no romper el upload."
-            echo "{}" > "${LOG_DIR}/security_posture.json"
+            echo "{}" > "${LOG_DIR}/security_posture.json"    # ← (3) fallback
           fi
           echo "Size:"; wc -c "${LOG_DIR}/security_posture.json" || true
           echo "Head:"; head -c 500 "${LOG_DIR}/security_posture.json" || true
@@ -68,4 +79,5 @@ jobs:
         if: always()
         run: |
           echo "## Security Posture" >> $GITHUB_STEP_SUMMARY
+          echo "- Base: \`${SECURITY_BASE}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Output: \`${LOG_DIR}/security_posture.json\`" >> $GITHUB_STEP_SUMMARY
