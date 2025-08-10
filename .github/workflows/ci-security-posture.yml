@@ -1,11 +1,11 @@
-name: CI · Security posture (scan + schema validation)
+name: CI - Security posture (scan + schema validation)
 
 on:
   workflow_dispatch: {}
   push:
-    branches: [ main, master, develop ]
+    branches: [main, master, develop]
   pull_request:
-    branches: [ main, master, develop ]
+    branches: [main, master, develop]
 
 permissions:
   contents: read
@@ -39,13 +39,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
+          cache: "npm"
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PY_VERSION }}
-          cache: pip
+          cache: "pip"
 
       - name: Install tools
         run: |
@@ -56,8 +56,7 @@ jobs:
           npm i -g ajv-cli ajv-formats
           set +x
 
-      # Usa tu escáner si existe; si no, genera un reporte mínimo.
-      - name: Scan repository (or fallback generator)
+      - name: Scan repository or generate minimal report
         run: |
           set -e
           if [ -f "private/quality/console/pipelines/scan_security.py" ]; then
@@ -69,7 +68,7 @@ jobs:
 import os, json, time
 os.makedirs("private/infra/scripts/logs", exist_ok=True)
 report = {
-  "generated_at": time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
+  "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
   "sast_findings": 0,
   "dast_findings": 0,
   "dependencies_vulns": 0,
@@ -90,7 +89,7 @@ PY
             ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false >> "$LOG_DIR/security_posture_schema.txt" 2>&1 || true
             echo '{"ok": true}' > "$LOG_DIR/security_schema_results.json"
           else
-            echo "Faltan archivo ($OUT) o esquema ($SCH)" >> "$LOG_DIR/security_posture_schema.txt"
+            echo "Missing file ($OUT) or schema ($SCH)" >> "$LOG_DIR/security_posture_schema.txt"
             echo '{"ok": false}' > "$LOG_DIR/security_schema_results.json"
           fi
 
@@ -98,9 +97,9 @@ PY
         run: |
           {
             echo "## Security posture"
-            echo "- Reporte: \`$LOG_DIR/security_posture.json\`"
-            echo "- Validación: \`$LOG_DIR/security_posture_schema.txt\`"
-            echo "- Resultado: \`$LOG_DIR/security_schema_results.json\`"
+            echo "- Report: $LOG_DIR/security_posture.json"
+            echo "- Validation log: $LOG_DIR/security_posture_schema.txt"
+            echo "- Result: $LOG_DIR/security_schema_results.json"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Inspect logs dir
@@ -108,7 +107,7 @@ PY
         run: |
           ls -al "$LOG_DIR" || true
           echo "---- security_posture_schema.txt ----"
-          [ -f "$LOG_DIR/security_posture_schema.txt" ] && cat "$LOG_DIR/security_posture_schema.txt" || echo "(no existe)"
+          [ -f "$LOG_DIR/security_posture_schema.txt" ] && cat "$LOG_DIR/security_posture_schema.txt" || echo "(not found)"
 
       - name: Upload artifacts
         if: always()
