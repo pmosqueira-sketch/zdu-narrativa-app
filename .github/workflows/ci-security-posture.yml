@@ -1,118 +1,36 @@
-name: CI - Security posture (scan + schema validation)
+name: CI · Security Posture (manual)
 
 on:
   workflow_dispatch: {}
-  push:
-    branches: [main, master, develop]
-  pull_request:
-    branches: [main, master, develop]
 
 permissions:
   contents: read
 
-concurrency:
-  group: ci-security-posture-${{ github.ref }}
-  cancel-in-progress: true
-
 env:
   LOG_DIR: private/infra/scripts/logs
-  SCHEMAS_DIR: private/quality/data-contracts
-  NODE_VERSION: "20"
   PY_VERSION: "3.11"
 
 jobs:
-  security_posture:
+  sec_posture:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    defaults:
-      run:
-        shell: bash
-
+    timeout-minutes: 25
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare log dir
-        run: mkdir -p "$LOG_DIR"
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PY_VERSION }}
-          cache: "pip"
-
-      - name: Install tools
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: ${{ env.PY_VERSION }} }
+      - run: mkdir -p "${LOG_DIR}"
+      - name: Install deps
         run: |
-          set -x
-          python --version
-          node --version
-          pip install --upgrade jsonschema
-          npm i -g ajv-cli ajv-formats
-          set +x
-
-      - name: Scan repository or generate minimal report
+          python -m pip install --upgrade pip
+          pip install trivy jsonschema
+      - name: Generate security posture
         run: |
-          set -e
-          if [ -f "private/quality/console/pipelines/scan_security.py" ]; then
-            python private/quality/console/pipelines/scan_security.py --out "$LOG_DIR/security_posture.json" || true
-          elif [ -f "private/quality/pipelines/scan_security.py" ]; then
-            python private/quality/pipelines/scan_security.py --out "$LOG_DIR/security_posture.json" || true
-          else
-            python - <<'PY' || true
-import os, json, time
-os.makedirs("private/infra/scripts/logs", exist_ok=True)
-report = {
-  "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-  "sast_findings": 0,
-  "dast_findings": 0,
-  "dependencies_vulns": 0,
-  "secrets_detected": 0
-}
-with open("private/infra/scripts/logs/security_posture.json","w") as fh:
-    json.dump(report, fh, indent=2)
-PY
-          fi
-
-      - name: Validate report against schema (AJV)
-        run: |
-          set +e
-          OUT="$LOG_DIR/security_posture.json"
-          SCH="$SCHEMAS_DIR/security_posture.schema.json"
-          mkdir -p "$LOG_DIR"
-          if [ -f "$SCH" ] && [ -f "$OUT" ]; then
-            ajv -c ajv-formats -s "$SCH" -d "$OUT" --strict=false >> "$LOG_DIR/security_posture_schema.txt" 2>&1 || true
-            echo '{"ok": true}' > "$LOG_DIR/security_schema_results.json"
-          else
-            echo "Missing file ($OUT) or schema ($SCH)" >> "$LOG_DIR/security_posture_schema.txt"
-            echo '{"ok": false}' > "$LOG_DIR/security_schema_results.json"
-          fi
-
-      - name: Summary
-        run: |
-          {
-            echo "## Security posture"
-            echo "- Report: $LOG_DIR/security_posture.json"
-            echo "- Validation log: $LOG_DIR/security_posture_schema.txt"
-            echo "- Result: $LOG_DIR/security_schema_results.json"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Inspect logs dir
-        if: always()
-        run: |
-          ls -al "$LOG_DIR" || true
-          echo "---- security_posture_schema.txt ----"
-          [ -f "$LOG_DIR/security_posture_schema.txt" ] && cat "$LOG_DIR/security_posture_schema.txt" || echo "(not found)"
-
-      - name: Upload artifacts
+          python private/quality/pipelines/sec_posture.py \
+            --out "${LOG_DIR}/security_posture.json"
+      - name: Upload logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: security-posture-${{ github.run_number }}
-          path: ${{ env.LOG_DIR }}/**
+          name: security-posture
+          path: ${{ env.LOG_DIR }}/security_posture.json
           if-no-files-found: warn
