@@ -3,7 +3,13 @@ name: CI · Inventory & Lint & Schemas
 on:
   push:
     branches: [ main, master, develop ]
-    paths-ignore: [ '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.webp', '**/*.pdf' ]
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
   pull_request:
     branches: [ main, master, develop ]
 
@@ -22,30 +28,54 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # =========================
+      # Guardrails: evitar basura
+      # =========================
+      - name: Guardrails (sin node_modules ni workflows anidados)
+        run: |
+          test ! -d node_modules || { echo "❌ node_modules no debe versionarse"; exit 1; }
+          test ! -d .github/workflows/workflows || { echo "❌ No usar .github/workflows/workflows/"; exit 1; }
+
       - name: Prepare log dir
         run: mkdir -p "$LOG_DIR"
 
+      # =========================
+      # Setup Node.js
+      # =========================
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
+      # =========================
+      # Setup Python
+      # =========================
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PY_VERSION }}
           cache: 'pip'
 
+      # =========================
+      # Install CLI tools
+      # =========================
       - name: Install CLI tools
         run: |
           pip install --upgrade ruff jsonschema
-          npm i -g markdownlint-cli @biomejs/biome ajv-cli ajv-formats
+          npm i -g @biomejs/biome markdownlint-cli ajv-cli ajv-formats
 
-      - name: Repo inventory
+      # =========================
+      # Repo Inventory
+      # =========================
+ - name: Repo inventory
         shell: bash
         run: |
-          if [ -f "private/quality/widgets/pipelines/scan_repo.py" ]; then
+          if [ -f "private/quality/console/pipelines/scan_repo.py" ]; then
+            python private/quality/console/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/pipelines/scan_repo.py" ]; then
+            python private/quality/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
+          elif [ -f "private/quality/widgets/pipelines/scan_repo.py" ]; then
             python private/quality/widgets/pipelines/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           elif [ -f "private/infra/scripts/scan_repo.py" ]; then
             python private/infra/scripts/scan_repo.py --out "$LOG_DIR/inventory.json" || true
@@ -73,27 +103,39 @@ with open('private/infra/scripts/logs/inventory.json','w') as fh: json.dump(summ
 PY
           fi
 
+      # =========================
+      # Lint Markdown
+      # =========================
       - name: Lint Markdown
         run: markdownlint "**/*.md" --ignore "node_modules" --json > "$LOG_DIR/markdownlint.json" || true
 
+      # =========================
+      # Lint Python (ruff)
+      # =========================
       - name: Lint Python (ruff)
         run: ruff check . --output-format=json > "$LOG_DIR/ruff.json" || true
 
+      # =========================
+      # Lint JS/TS (biome)
+      # =========================
       - name: Lint JS/TS (biome)
         run: biome lint . --reporter=json > "$LOG_DIR/biome.json" || true
 
+      # =========================
+      # Validate JSON Schemas (AJV)
+      # =========================
       - name: Validate JSON against schemas (AJV)
         shell: bash
         run: |
           set +e
           rc=0
-          # campaigns
-          if [ -f "$SCHEMAS_DIR/campaigns.schema.json" ] && [ -f "private/infra/scripts/logs/campaigns_latest.json" ]; then
+          # campaigns específicos
+          if [ -f "$SCHEMAS_DIR/campaigns.schema.json" ] && [ -f "$LOG_DIR/campaigns_latest.json" ]; then
             ajv -c ajv-formats -s "$SCHEMAS_DIR/campaigns.schema.json" \
-                -d "private/infra/scripts/logs/campaigns_latest.json" --strict=false \
+                -d "$LOG_DIR/campaigns_latest.json" --strict=false \
                 > "$LOG_DIR/campaigns_schema.txt" 2>&1 || rc=1
           fi
-          # genérico: validar cualquier *.schema.json contra JSONs en logs y en repo
+          # genérico
           for s in $(git ls-files "$SCHEMAS_DIR/*.schema.json"); do
             base="$(basename "$s" .schema.json)"
             for d in $(git ls-files | grep -E "/(${base}|.*)\.json$" | grep -v '\.schema\.json' || true); do
@@ -103,12 +145,19 @@ PY
           echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/schema_results.json"
           exit 0
 
+      # =========================
+      # Summary en la UI
+      # =========================
       - name: Summary
         run: |
           echo "## Inventory & Lint & Schemas" >> $GITHUB_STEP_SUMMARY
           echo "- Logs dir: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
 
+      # =========================
+      # Upload logs
+      # =========================
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: inventory-and-schemas-${{ github.run_number }}
           path: private/infra/scripts/logs/**
