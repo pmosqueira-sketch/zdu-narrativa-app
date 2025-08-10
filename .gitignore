@@ -81,3 +81,4 @@ venv/lib/**/playwright/driver/node
 # Git archive exports
 # ================================
 .git.zip
+node_modules/
