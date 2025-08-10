@@ -93,7 +93,7 @@ PY
                 -d "private/infra/scripts/logs/campaigns_latest.json" --strict=false \
                 > "$LOG_DIR/campaigns_schema.txt" 2>&1 || rc=1
           fi
-          # genérico: validar cualquier *.schema.json contra JSONs en logs y en repo
+          # genérico: para validar cualquier *.schema.json contra JSONs en logs y en repo
           for s in $(git ls-files "$SCHEMAS_DIR/*.schema.json"); do
             base="$(basename "$s" .schema.json)"
             for d in $(git ls-files | grep -E "/(${base}|.*)\.json$" | grep -v '\.schema\.json' || true); do
