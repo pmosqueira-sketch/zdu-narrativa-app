@@ -1,19 +1,17 @@
-name: CI · Security Posture
+name: CI · Security posture (scan + schema validation)
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   push:
     branches: [ main, master, develop ]
-    paths:
-      - private/quality/pipelines/sec_posture.py
-      - private/quality/data-contracts/security_posture.schema.json
-      - .github/workflows/ci-security-posture.yml
+  pull_request:
+    branches: [ main, master, develop ]
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-sec-posture-${{ github.ref }}
+  group: ci-security-posture-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -22,7 +20,7 @@ env:
   PY_VERSION: '3.11'
 
 jobs:
-  sec_posture:
+  security_posture:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,52 +34,40 @@ jobs:
           python-version: ${{ env.PY_VERSION }}
           cache: 'pip'
 
-      - name: Install deps (jsonschema + optional requirements.txt)
+      - name: Install CLI tools
         run: |
           pip install --upgrade jsonschema
-          test -f private/quality/pipelines/requirements.txt && pip install -r private/quality/pipelines/requirements.txt || true
+          npm i -g ajv-cli ajv-formats
 
-      - name: Run sec_posture.py
+      - name: Run security posture scan
         run: |
           if [ -f "private/quality/pipelines/sec_posture.py" ]; then
-            python private/quality/pipelines/sec_posture.py --out "$LOG_DIR/security_posture.json" 2>&1 | tee "$LOG_DIR/sec_posture.log" || true
-            # Fallback si no soporta --out
-            test -s "$LOG_DIR/security_posture.json" || python private/quality/pipelines/sec_posture.py > "$LOG_DIR/security_posture.json" 2>>"$LOG_DIR/sec_posture.log" || true
+            python private/quality/pipelines/sec_posture.py --out "$LOG_DIR/security_posture.json" || true
           else
             echo '{}' > "$LOG_DIR/security_posture.json"
           fi
 
-      - name: Validate security_posture.json with Python jsonschema
+      - name: Validate schema (AJV)
         run: |
-          python - <<'PY'
-import json, sys, os
-from jsonschema import Draft7Validator
-schema_path = os.path.join("private","quality","data-contracts","security_posture.schema.json")
-data_path   = os.path.join("private","infra","scripts","logs","security_posture.json")
-if not os.path.isfile(schema_path) or not os.path.isfile(data_path):
-    print("Schema or data not found; skipping strict validation.")
-    sys.exit(0)
-schema = json.load(open(schema_path))
-data   = json.load(open(data_path))
-errs = sorted(Draft7Validator(schema).iter_errors(data), key=lambda e: e.path)
-if errs:
-    print("Validation errors:")
-    for e in errs:
-        print("-", e.message, "at", "/".join(map(str,e.path)))
-else:
-    print("OK: security_posture.json matches schema.")
-PY
+          rc=0
+          if [ -f "$SCHEMAS_DIR/security_posture.schema.json" ] && [ -f "$LOG_DIR/security_posture.json" ]; then
+            ajv -c ajv-formats -s "$SCHEMAS_DIR/security_posture.schema.json" \
+                -d "$LOG_DIR/security_posture.json" --strict=false \
+                > "$LOG_DIR/security_posture_schema.txt" 2>&1 || rc=1
+          fi
+          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/security_schema_results.json"
+          exit 0
 
       - name: Summary
         run: |
-          echo "## Security Posture" >> $GITHUB_STEP_SUMMARY
-          echo "- Output: \`$LOG_DIR/security_posture.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "## Security posture" >> $GITHUB_STEP_SUMMARY
+          echo "- Logs: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
+          ls -la "$LOG_DIR" >> $GITHUB_STEP_SUMMARY || true
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifacts
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: security-posture-${{ github.run_number }}
-          path: |
-            ${{ env.LOG_DIR }}/security_posture.json
-            ${{ env.LOG_DIR }}/sec_posture.log
+          path: ${{ env.LOG_DIR }}/**
           if-no-files-found: warn
