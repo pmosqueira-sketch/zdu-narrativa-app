@@ -1,0 +1,66 @@
+name: CI · Security Scan & SCA
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+permissions:
+  contents: read
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  PY_VERSION: '3.11'
+
+jobs:
+  security_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare log dir
+        run: mkdir -p "$LOG_DIR"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+          cache: 'pip'
+
+      - name: Install tools
+        run: |
+          pip install --upgrade safety
+          npm install -g trivy
+
+      # --- SECRET SCAN ---
+      - name: GitHub Secret Scan (gitleaks)
+        uses: zricethezav/gitleaks-action@v2
+        with:
+          config-path: ""
+          report-path: ${{ env.LOG_DIR }}/secret_scan.json
+          fail: "false"
+
+      # --- DEPENDENCY SCAN ---
+      - name: SCA - Python (safety)
+        run: |
+          pip install -r requirements.txt || true
+          safety check --full-report --json > "$LOG_DIR/python_safety.json" || true
+
+      - name: SCA - Node (trivy fs)
+        run: |
+          trivy fs --security-checks vuln --format json . > "$LOG_DIR/node_trivy.json" || true
+
+      # --- SUMMARY ---
+      - name: Summary
+        run: |
+          echo "## Security Scan & SCA" >> $GITHUB_STEP_SUMMARY
+          echo "- Secrets: secret_scan.json" >> $GITHUB_STEP_SUMMARY
+          echo "- Python deps: python_safety.json" >> $GITHUB_STEP_SUMMARY
+          echo "- Node deps: node_trivy.json" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: security-scan-${{ github.run_number }}
+          path: private/infra/scripts/logs/**
+          if-no-files-found: warn
