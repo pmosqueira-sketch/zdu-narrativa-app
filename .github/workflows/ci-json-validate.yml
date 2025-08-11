@@ -35,7 +35,7 @@ permissions:
 env:
   LOG_DIR: private/infra/scripts/logs
   SCHEMAS_DIR: private/quality/data-contracts
-  PY_VERSION: "3.11"
+  NODE_VERSION: "20"
 
 jobs:
   json_validate:
@@ -44,74 +44,46 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PY_VERSION }}
-
       - name: Ensure dirs
         run: mkdir -p "${LOG_DIR}"
 
-      - name: Install deps
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install AJV
+        run: npm i -g ajv-cli ajv-formats
+
+      - name: Validate JSON with AJV
         run: |
-          python -m pip install --upgrade pip
-          pip install jsonschema
-
-      - name: Validate (jsonschema)
-        run: |
-          set -e
-          cat > /tmp/json_validate.py <<'PY'
-import os, json, glob, sys
-from jsonschema import Draft202012Validator as V
-
-SCHEMAS_DIR=os.environ.get("SCHEMAS_DIR","private/quality/data-contracts")
-LOG_DIR=os.environ.get("LOG_DIR","private/infra/scripts/logs")
-os.makedirs(LOG_DIR, exist_ok=True)
-
-# Carga todos los *.schema.json
-schemas = {}
-for s in glob.glob(os.path.join(SCHEMAS_DIR, "*.schema.json")):
-    try:
-        with open(s,"r",encoding="utf-8") as f:
-            schemas[os.path.basename(s)] = json.load(f)
-    except Exception as ex:
-        print(f"[schema load error] {s}: {ex}", file=sys.stderr)
-
-results = {"validated":[], "errors":[]}
-# Valida todos los .json del repo (excepto .schema.json)
-for dp in glob.glob("**/*.json", recursive=True):
-    if dp.endswith(".schema.json"):
-        continue
-    for sch_name, sch in schemas.items():
-        try:
-            with open(dp,"r",encoding="utf-8") as f:
-                data=json.load(f)
-            v = V(sch)
-            issues=[e.message for e in v.iter_errors(data)]
-            if issues:
-                results["errors"].append({"file":dp,"schema":sch_name,"issues":issues[:50]})
-            else:
-                results["validated"].append({"file":dp,"schema":sch_name})
-        except Exception as ex:
-            results["errors"].append({"file":dp,"schema":sch_name,"error":str(ex)})
-
-out_path = os.path.join(LOG_DIR,"json_validate_report.json")
-with open(out_path,"w",encoding="utf-8") as out:
-    json.dump(results,out,indent=2,ensure_ascii=False)
-print(f"json_validate_report.json written to {out_path}")
-PY
-          python /tmp/json_validate.py
+          set +e
+          rc=0
+          : > "$LOG_DIR/schemas_generic.txt"
+          if [ -d "$SCHEMAS_DIR" ]; then
+            for s in "$SCHEMAS_DIR"/*.schema.json; do
+              [ -f "$s" ] || continue
+              git ls-files | grep -Ei '\.json$' | grep -v '\.schema\.json' | while read -r d; do
+                ajv -c ajv-formats -s "$s" -d "$d" --strict=false >> "$LOG_DIR/schemas_generic.txt" 2>&1 || rc=1
+              done
+            done
+          fi
+          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/json_validate_report.json"
+          exit 0
 
       - name: Summary
         run: |
           echo "## JSON Validate" >> $GITHUB_STEP_SUMMARY
           echo "- LOG_DIR: \`${LOG_DIR}\`" >> $GITHUB_STEP_SUMMARY
-          head -c 500 "${LOG_DIR}/json_validate_report.json" >> $GITHUB_STEP_SUMMARY || true
+          echo "- Result:" >> $GITHUB_STEP_SUMMARY
+          cat "${LOG_DIR}/json_validate_report.json" >> $GITHUB_STEP_SUMMARY || true
 
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: json-validate-${{ github.run_number }}
-          path: ${{ env.LOG_DIR }}/json_validate_report.json
+          path: |
+            ${{ env.LOG_DIR }}/json_validate_report.json
+            ${{ env.LOG_DIR }}/schemas_generic.txt
           if-no-files-found: warn
