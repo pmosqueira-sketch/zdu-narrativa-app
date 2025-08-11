@@ -73,7 +73,7 @@ jobs:
           npm i -g markdownlint-cli @biomejs/biome ajv-cli ajv-formats
 
       # =========================
-      # Repo Inventory (con fallback sin here-doc)
+      # Repo Inventory (sin here-doc; con fallback simple)
       # =========================
       - name: Repo inventory
         run: |
@@ -87,29 +87,8 @@ jobs:
           elif [ -f "private/infra/scripts/scan_repo.py" ]; then
             python private/infra/scripts/scan_repo.py --out "$LOG_DIR/inventory.json" || true
           else
-            cat > /tmp/inventory_fallback.py <<'PY'
-import os, json, time
-root='.'
-summary={'files':0,'bytes':0,'by_ext':{},'latest_mtime':0}
-skip=['./.git','/node_modules','/.venv','/.pytest_cache']
-for dp,_,fs in os.walk(root):
-    if any(s in dp for s in skip): continue
-    for f in fs:
-        p=os.path.join(dp,f)
-        try:
-            st=os.stat(p)
-            summary['files']+=1
-            summary['bytes']+=st.st_size
-            ext=os.path.splitext(f)[1].lower() or 'noext'
-            summary['by_ext'][ext]=summary['by_ext'].get(ext,0)+1
-            if st.st_mtime>summary['latest_mtime']: summary['latest_mtime']=st.st_mtime
-        except: pass
-summary['latest_mtime_iso']=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime(summary['latest_mtime']))
-os.makedirs('private/infra/scripts/logs', exist_ok=True)
-with open('private/infra/scripts/logs/inventory.json','w',encoding='utf-8') as fh:
-    json.dump(summary, fh, indent=2, ensure_ascii=False)
-PY
-            python /tmp/inventory_fallback.py || true
+            ts="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+            echo "{\"generated_at\":\"$ts\",\"note\":\"fallback inventory\",\"files\":0}" > "$LOG_DIR/inventory.json"
           fi
 
       # =========================
@@ -134,7 +113,6 @@ PY
           if [ -d "$SCHEMAS_DIR" ]; then
             for s in "$SCHEMAS_DIR"/*.schema.json; do
               [ -f "$s" ] || continue
-              # valida todos los .json del repo (excluye schemas)
               git ls-files | grep -Ei '\.json$' | grep -v '\.schema\.json' | while read -r d; do
                 ajv -c ajv-formats -s "$s" -d "$d" --strict=false >> "$LOG_DIR/schemas_generic.txt" 2>&1 || rc=1
               done
