@@ -1,3 +1,73 @@
+name: CI · Security Posture
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+env:
+  LOG_DIR: private/infra/scripts/logs
+  SECURITY_BASE: private/infra/scripts/logs
+  PY_VERSION: "3.11"
+
+jobs:
+  security_posture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PY_VERSION }}
+
+      - name: Ensure dirs
+        run: mkdir -p "${LOG_DIR}"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install jsonschema
+
+      - name: Inspect base
+        run: |
+          echo "SECURITY_BASE=${SECURITY_BASE}"
+          if [ -d "${SECURITY_BASE}" ]; then
+            echo "== SECURITY_BASE contents ==" && ls -la "${SECURITY_BASE}" || true
+          else
+            echo "::warning::SECURITY_BASE does not exist: ${SECURITY_BASE}"
+          fi
+
       - name: Build Security Posture
         continue-on-error: true
         run: |
@@ -74,4 +144,3 @@ PY
             head -c 400 "${LOG_DIR}/security_posture.json" >> $GITHUB_STEP_SUMMARY || true
           else
             echo "- Output: missing ❌" >> $GITHUB_STEP_SUMMARY
-          fi
