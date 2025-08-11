@@ -55,10 +55,10 @@ jobs:
         run: mkdir -p "$LOG_DIR"
 
       - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
+  uses: actions/setup-node@v4
+  with:
+    node-version: ${{ env.NODE_VERSION }}
+    cache: ${{ hashFiles('package-lock.json') != '' && 'npm' || '' }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
