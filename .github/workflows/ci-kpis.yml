@@ -2,7 +2,8 @@ name: CI · DevSecOps KPIs
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - '**/*.png'
       - '**/*.jpg'
@@ -14,7 +15,8 @@ on:
       - 'private/infra/scripts/logs/**'
       - '**/legacy/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - '**/*.png'
       - '**/*.jpg'
@@ -49,7 +51,7 @@ jobs:
         with:
           python-version: ${{ env.PY_VERSION }}
 
-      - name: Setup Node
+      - name: Setup Node (no cache)
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -91,14 +93,6 @@ jobs:
           echo "KPIs size:"; wc -c "${LOG_DIR}/devsecops_kpis.json" || true
           echo "Head:"; head -c 500 "${LOG_DIR}/devsecops_kpis.json" || true
 
-      - name: Upload KPIs artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: devsecops-kpis
-          path: ${{ env.LOG_DIR }}/devsecops_kpis.json
-          if-no-files-found: warn
-
       - name: Summary
         if: always()
         run: |
@@ -110,3 +104,11 @@ jobs:
           else
             echo "- Output: missing ❌" >> $GITHUB_STEP_SUMMARY
           fi
+
+      - name: Upload KPIs artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: devsecops-kpis
+          path: ${{ env.LOG_DIR }}/devsecops_kpis.json
+          if-no-files-found: warn
