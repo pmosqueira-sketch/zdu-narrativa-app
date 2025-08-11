@@ -58,6 +58,8 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install jsonschema
+          sudo apt-get update -y
+          sudo apt-get install -y jq
 
       - name: Inspect base
         run: |
@@ -74,45 +76,32 @@ jobs:
           python private/quality/pipelines/sec_posture.py \
             --base "${SECURITY_BASE}" \
             --owner "pmosqueira-sketch" \
-            --out "security_posture.json"
+            --out "security_posture.json" || true
 
+      # SÍNTESIS SIN HERE-DOC: usa bash + jq si el archivo está vacío o no existe
       - name: Synthesize posture if empty (lint + schemas)
         run: |
-          # si no existe o está vacío, sintetiza a partir de ruff/markdownlint/schema_results
           if [ ! -s "${LOG_DIR}/security_posture.json" ]; then
-            cat > /tmp/synth_posture.py <<'PY'
-import os, json, datetime as dt
-LOG=os.environ.get("LOG_DIR","private/infra/scripts/logs")
-def loadj(name):
-    p=os.path.join(LOG,name)
-    try:
-        with open(p,'r',encoding='utf-8') as f: return json.load(f)
-    except: return None
-ruff = loadj('ruff.json') or []
-md   = loadj('markdownlint.json') or []
-sche = loadj('schema_results.json') or {}
-def count_ruff_errors(items):
-    try: return sum(1 for _ in items)
-    except: return 0
-def count_md_errors(items):
-    try: return len(items)
-    except: return 0
-summary = {
-  "generated_at": dt.datetime.utcnow().isoformat()+"Z",
-  "sources": [p for p in ["ruff.json","markdownlint.json","schema_results.json"] if os.path.isfile(os.path.join(LOG,p))],
-  "summary": {
-    "lint_python_issues": count_ruff_errors(ruff),
-    "lint_markdown_issues": count_md_errors(md),
-    "schema_ok": bool(sche.get("ok", False))
-  },
-  "findings": []
-}
-os.makedirs(LOG, exist_ok=True)
-with open(os.path.join(LOG,"security_posture.json"),"w",encoding="utf-8") as f:
-    json.dump(summary, f, indent=2, ensure_ascii=False)
-print("Synthesized security_posture.json")
-PY
-            python /tmp/synth_posture.py
+            echo "::notice::Synthesizing security_posture.json from lint/schema results"
+            ruff_count=$(jq 'length' "${LOG_DIR}/ruff.json" 2>/dev/null || echo 0)
+            md_count=$(jq 'length' "${LOG_DIR}/markdownlint.json" 2>/dev/null || echo 0)
+            schema_ok=$(jq -r '.ok // false' "${LOG_DIR}/schema_results.json" 2>/dev/null || echo false)
+            ts=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            jq -n --arg ts "$ts" \
+                  --argjson ruff "$ruff_count" \
+                  --argjson md "$md_count" \
+                  --argjson ok "$schema_ok" \
+                  --arg sources '["ruff.json","markdownlint.json","schema_results.json"]' '
+              {
+                generated_at: $ts,
+                sources: ($sources|fromjson|map(.)),
+                summary: {
+                  lint_python_issues: $ruff,
+                  lint_markdown_issues: $md,
+                  schema_ok: $ok
+                },
+                findings: []
+              }' > "${LOG_DIR}/security_posture.json"
           fi
 
       - name: Verify output exists
@@ -144,3 +133,4 @@ PY
             head -c 400 "${LOG_DIR}/security_posture.json" >> $GITHUB_STEP_SUMMARY || true
           else
             echo "- Output: missing ❌" >> $GITHUB_STEP_SUMMARY
+          fi
