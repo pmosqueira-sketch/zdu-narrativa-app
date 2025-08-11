@@ -59,46 +59,45 @@ jobs:
 
       - name: Validate (jsonschema)
         run: |
-          cat > /tmp/json_validate.py <<'PY'
-import os, json, glob, sys
-from jsonschema import Draft202012Validator as V
+          python - <<'PY'
+          import os, json, glob, sys
+          from jsonschema import Draft202012Validator as V
 
-SCHEMAS_DIR=os.environ.get("SCHEMAS_DIR","private/quality/data-contracts")
-LOG_DIR=os.environ.get("LOG_DIR","private/infra/scripts/logs")
-os.makedirs(LOG_DIR, exist_ok=True)
+          SCHEMAS_DIR=os.environ.get("SCHEMAS_DIR","private/quality/data-contracts")
+          LOG_DIR=os.environ.get("LOG_DIR","private/infra/scripts/logs")
+          os.makedirs(LOG_DIR, exist_ok=True)
 
-# Busca *schema.json y valida ficheros de nombre parecido (naive)
-schemas = {}
-for s in glob.glob(os.path.join(SCHEMAS_DIR, "*.schema.json")):
-    try:
-        with open(s,"r",encoding="utf-8") as f:
-            schemas[os.path.basename(s)] = json.load(f)
-    except Exception as ex:
-        print(f"[schema load error] {s}: {ex}", file=sys.stderr)
+          # Carga todos los *.schema.json
+          schemas = {}
+          for s in glob.glob(os.path.join(SCHEMAS_DIR, "*.schema.json")):
+              try:
+                  with open(s,"r",encoding="utf-8") as f:
+                      schemas[os.path.basename(s)] = json.load(f)
+              except Exception as ex:
+                  print(f"[schema load error] {s}: {ex}", file=sys.stderr)
 
-results = {"validated":[], "errors":[]}
-for sch_name, sch in schemas.items():
-    v = V(sch)
-    # estrategia simple: validar TODOS los .json que no sean .schema.json
-    for dp in glob.glob("**/*.json", recursive=True):
-        if dp.endswith(".schema.json"): 
-            continue
-        try:
-            with open(dp,"r",encoding="utf-8") as f:
-                data=json.load(f)
-            issues=[e.message for e in v.iter_errors(data)]
-            if issues:
-                results["errors"].append({"file":dp,"schema":sch_name,"issues":issues[:20]})
-            else:
-                results["validated"].append({"file":dp,"schema":sch_name})
-        except Exception as ex:
-            results["errors"].append({"file":dp,"schema":sch_name,"error":str(ex)})
+          results = {"validated":[], "errors":[]}
+          # Valida todos los .json del repo (excepto .schema.json)
+          for dp in glob.glob("**/*.json", recursive=True):
+              if dp.endswith(".schema.json"):
+                  continue
+              for sch_name, sch in schemas.items():
+                  try:
+                      data = json.load(open(dp,"r",encoding="utf-8"))
+                      v = V(sch)
+                      issues=[e.message for e in v.iter_errors(data)]
+                      if issues:
+                          results["errors"].append({"file":dp,"schema":sch_name,"issues":issues[:50]})
+                      else:
+                          results["validated"].append({"file":dp,"schema":sch_name})
+                  except Exception as ex:
+                      results["errors"].append({"file":dp,"schema":sch_name,"error":str(ex)})
 
-with open(os.path.join(LOG_DIR,"json_validate_report.json"),"w",encoding="utf-8") as out:
-    json.dump(results,out,indent=2,ensure_ascii=False)
-print("json_validate_report.json written")
+          out_path = os.path.join(LOG_DIR,"json_validate_report.json")
+          with open(out_path,"w",encoding="utf-8") as out:
+              json.dump(results,out,indent=2,ensure_ascii=False)
+          print(f"json_validate_report.json written to {out_path}")
 PY
-          python /tmp/json_validate.py
 
       - name: Summary
         run: |
