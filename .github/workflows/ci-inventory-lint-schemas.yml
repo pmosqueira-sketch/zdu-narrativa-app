@@ -2,7 +2,8 @@ name: CI · Inventory + Lint + Schemas
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - '**/*.png'
       - '**/*.jpg'
@@ -14,7 +15,8 @@ on:
       - 'private/infra/scripts/logs/**'
       - '**/legacy/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - '**/*.png'
       - '**/*.jpg'
@@ -54,17 +56,15 @@ jobs:
       - name: Prepare log dir
         run: mkdir -p "$LOG_DIR"
 
-      - name: Setup Node
-  uses: actions/setup-node@v4
-  with:
-    node-version: ${{ env.NODE_VERSION }}
-    cache: ${{ hashFiles('package-lock.json') != '' && 'npm' || '' }}
+      - name: Setup Node (no cache to avoid lockfile warning)
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PY_VERSION }}
-          cache: 'pip'
 
       - name: Install CLI tools
         run: |
@@ -73,7 +73,7 @@ jobs:
           npm i -g markdownlint-cli @biomejs/biome ajv-cli ajv-formats
 
       # =========================
-      # Repo Inventory (sin here-doc; con fallback simple)
+      # Repo Inventory (con fallback simple)
       # =========================
       - name: Repo inventory
         run: |
@@ -124,8 +124,8 @@ jobs:
       - name: Summary
         run: |
           echo "## Inventory & Lint & Schemas" >> $GITHUB_STEP_SUMMARY
-          echo "- Logs dir: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
-          echo "- Schemas dir: \`$SCHEMAS_DIR\`" >> $GITHUB_STEP_SUMMARY
+          echo "- LOG_DIR: \`$LOG_DIR\`" >> $GITHUB_STEP_SUMMARY
+          echo "- SCHEMAS_DIR: \`$SCHEMAS_DIR\`" >> $GITHUB_STEP_SUMMARY
           echo "- Artifacts: inventory.json, markdownlint.json, ruff.json, biome.json, schema_results.json" >> $GITHUB_STEP_SUMMARY
 
       - name: Upload artifacts
