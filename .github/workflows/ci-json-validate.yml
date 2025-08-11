@@ -1,9 +1,9 @@
-name: CI · JSON validate
+name: CI · JSON Validate
 
 on:
-  workflow_dispatch: {}
   push:
-    branches: [ main, master, develop ]
+    branches:
+      - main
     paths-ignore:
       - '**/*.png'
       - '**/*.jpg'
@@ -11,20 +11,31 @@ on:
       - '**/*.gif'
       - '**/*.webp'
       - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
   pull_request:
-    branches: [ main, master, develop ]
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.png'
+      - '**/*.jpg'
+      - '**/*.jpeg'
+      - '**/*.gif'
+      - '**/*.webp'
+      - '**/*.pdf'
+      - '**/*.md'
+      - 'private/infra/scripts/logs/**'
+      - '**/legacy/**'
+  workflow_dispatch: {}
 
 permissions:
   contents: read
 
-concurrency:
-  group: ci-json-validate-${{ github.ref }}
-  cancel-in-progress: true
-
 env:
   LOG_DIR: private/infra/scripts/logs
   SCHEMAS_DIR: private/quality/data-contracts
-  NODE_VERSION: '20'
+  PY_VERSION: "3.11"
 
 jobs:
   json_validate:
@@ -33,44 +44,72 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare log dir
-        run: mkdir -p "$LOG_DIR"
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          python-version: ${{ env.PY_VERSION }}
 
-      - name: Install AJV CLI
+      - name: Ensure dirs
+        run: mkdir -p "${LOG_DIR}"
+
+      - name: Install deps
         run: |
-          npm i -g ajv-cli ajv-formats
+          python -m pip install --upgrade pip
+          pip install jsonschema
 
-      - name: Validate JSON against schemas (AJV)
-        shell: bash
+      - name: Validate (jsonschema)
         run: |
-          set +e
-          rc=0
+          cat > /tmp/json_validate.py <<'PY'
+import os, json, glob, sys
+from jsonschema import Draft202012Validator as V
 
-          if [ -d "$SCHEMAS_DIR" ]; then
-            : > "$LOG_DIR/schemas_generic.txt"  # limpia/crea archivo de resultados
+SCHEMAS_DIR=os.environ.get("SCHEMAS_DIR","private/quality/data-contracts")
+LOG_DIR=os.environ.get("LOG_DIR","private/infra/scripts/logs")
+os.makedirs(LOG_DIR, exist_ok=True)
 
-            for s in "$SCHEMAS_DIR"/*.schema.json; do
-              [ -f "$s" ] || continue
-              # Valida todos los JSON versionados que no sean *.schema.json
-              while IFS= read -r d; do
-                ajv -c ajv-formats -s "$s" -d "$d" --strict=false >> "$LOG_DIR/schemas_generic.txt" 2>&1 || rc=1
-              done < <(git ls-files | grep -Ei '\.json$' | grep -v '\.schema\.json')
-            done
-          fi
+# Busca *schema.json y valida ficheros de nombre parecido (naive)
+schemas = {}
+for s in glob.glob(os.path.join(SCHEMAS_DIR, "*.schema.json")):
+    try:
+        with open(s,"r",encoding="utf-8") as f:
+            schemas[os.path.basename(s)] = json.load(f)
+    except Exception as ex:
+        print(f"[schema load error] {s}: {ex}", file=sys.stderr)
 
-          echo "{\"ok\": $([ $rc -eq 0 ] && echo true || echo false) }" > "$LOG_DIR/schema_results.json"
-          # No fallamos el job: deja traza pero continúa el pipeline
-          exit 0
+results = {"validated":[], "errors":[]}
+for sch_name, sch in schemas.items():
+    v = V(sch)
+    # estrategia simple: validar TODOS los .json que no sean .schema.json
+    for dp in glob.glob("**/*.json", recursive=True):
+        if dp.endswith(".schema.json"): 
+            continue
+        try:
+            with open(dp,"r",encoding="utf-8") as f:
+                data=json.load(f)
+            issues=[e.message for e in v.iter_errors(data)]
+            if issues:
+                results["errors"].append({"file":dp,"schema":sch_name,"issues":issues[:20]})
+            else:
+                results["validated"].append({"file":dp,"schema":sch_name})
+        except Exception as ex:
+            results["errors"].append({"file":dp,"schema":sch_name,"error":str(ex)})
 
-      - name: Upload artifacts
+with open(os.path.join(LOG_DIR,"json_validate_report.json"),"w",encoding="utf-8") as out:
+    json.dump(results,out,indent=2,ensure_ascii=False)
+print("json_validate_report.json written")
+PY
+          python /tmp/json_validate.py
+
+      - name: Summary
+        run: |
+          echo "## JSON Validate" >> $GITHUB_STEP_SUMMARY
+          echo "- LOG_DIR: \`${LOG_DIR}\`" >> $GITHUB_STEP_SUMMARY
+          head -c 500 "${LOG_DIR}/json_validate_report.json" >> $GITHUB_STEP_SUMMARY || true
+
+      - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: json-validate-${{ github.run_number }}
-          path: ${{ env.LOG_DIR }}/**
+          path: ${{ env.LOG_DIR }}/json_validate_report.json
           if-no-files-found: warn
