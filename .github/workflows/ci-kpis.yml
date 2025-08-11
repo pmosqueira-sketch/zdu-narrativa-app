@@ -80,7 +80,7 @@ jobs:
         run: |
           python private/quality/pipelines/build_devsecops_kpis.py \
             --logs-root "${LOG_DIR}" \
-            --out "${LOG_DIR}/devsecops_kpis.json"
+            --out "devsecops_kpis.json"
 
       - name: Check KPIs file exists
         run: |
@@ -98,3 +98,15 @@ jobs:
           name: devsecops-kpis
           path: ${{ env.LOG_DIR }}/devsecops_kpis.json
           if-no-files-found: warn
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## DevSecOps KPIs" >> $GITHUB_STEP_SUMMARY
+          echo "- LOG_DIR: \`${LOG_DIR}\`" >> $GITHUB_STEP_SUMMARY
+          if [ -f "${LOG_DIR}/devsecops_kpis.json" ]; then
+            echo "- Output: \`devsecops_kpis.json\` ✅" >> $GITHUB_STEP_SUMMARY
+            head -c 400 "${LOG_DIR}/devsecops_kpis.json" >> $GITHUB_STEP_SUMMARY || true
+          else
+            echo "- Output: missing ❌" >> $GITHUB_STEP_SUMMARY
+          fi
